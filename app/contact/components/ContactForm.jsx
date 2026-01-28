@@ -186,7 +186,6 @@ export default function ContactForm() {
 
                                     <div className="col-md-12">
                                         <button
-                                            type="submit"
                                             className="btn-default"
                                             disabled={isSubmitting}
                                             dir="rtl"

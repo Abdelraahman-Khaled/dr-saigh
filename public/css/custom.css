@@ -2212,7 +2212,6 @@ footer.main-footer {
 /************************************/
 
 .page-header {
-    background: var(--secondary-color) url("../images/page-header-bg.svg") no-repeat;
     background-position: center center;
     background-size: auto;
     padding: 200px 0 150px;
