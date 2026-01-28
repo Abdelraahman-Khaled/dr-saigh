@@ -2,8 +2,57 @@ import { getBlogs } from '@/api/blog';
 import Link from 'next/link';
 
 export default async function BlogGrid() {
-    // Fetch blogs from API
-    const blogs = await getBlogs();
+    let blogs = [];
+    let error = null;
+
+    // Fetch blogs from API with error handling
+    try {
+        blogs = await getBlogs();
+
+        // Check if blogs is an array
+        if (!Array.isArray(blogs)) {
+            console.error('Invalid blogs data format:', blogs);
+            blogs = [];
+        }
+    } catch (err) {
+        console.error('Error fetching blogs:', err);
+        error = err.message || 'فشل في تحميل المدونات';
+    }
+
+    // Show error message if fetch failed
+    if (error) {
+        return (
+            <div className="our-blog" style={{ backgroundColor: '#fff', paddingTop: '80px', paddingBottom: '80px' }}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="alert alert-danger text-center" role="alert" dir="rtl">
+                                <h4>⚠️ خطأ في تحميل المدونات</h4>
+                                <p>{error}</p>
+                                <p className="mb-0">يرجى المحاولة مرة أخرى لاحقاً أو التواصل مع الدعم الفني.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    // Show empty state if no blogs
+    if (blogs.length === 0) {
+        return (
+            <div className="our-blog" style={{ backgroundColor: '#fff', paddingTop: '80px', paddingBottom: '80px' }}>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-12 text-center" dir="rtl">
+                            <h3>لا توجد مدونات متاحة حالياً</h3>
+                            <p>يرجى العودة لاحقاً للاطلاع على المحتوى الجديد.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="our-blog" style={{ backgroundColor: '#fff', paddingTop: '80px', paddingBottom: '80px' }}>
