@@ -1,9 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
-export default function Blog() {
-    const { t } = useLanguage();
+export default function Blog({ initialBlogs = [] }) {
+    const { t, language } = useLanguage();
 
     return (
         <div className="our-blog" id="blog">
@@ -25,41 +26,54 @@ export default function Blog() {
                 </div>
 
                 <div className="row">
-                    <div className="col-lg-4 col-md-6">
-                        {/* Blog Item Start */}
-                        <div className="blog-item wow fadeInUp">
-                            {/* Post Featured Image Start*/}
-                            <div className="post-featured-image" data-cursor-text={t('common.readMore')}>
-                                <figure>
-                                    <a href="blogs/blog-1.html" className="image-anime">
-                                        <img src="images/blog/1.webp" alt="image" />
-                                    </a>
-                                </figure>
-                            </div>
-                            {/* Post Featured Image End */}
+                    {initialBlogs.map((blog) => {
+                        const isAr = language === 'ar';
+                        const title = isAr ? (blog.title_ar || blog.title) : (blog.title_en || blog.title || blog.title_ar);
+                        const slug = isAr ? (blog.slug_ar || blog.slug) : (blog.slug_en || blog.slug || blog.slug_ar);
+                        const content = isAr ? (blog.contents?.[0]?.content_ar || '') : (blog.contents?.[0]?.content_en || '');
+                        const description = (isAr ? blog.description_ar : blog.description_en) || content.replace(/<[^>]*>/g, '').substring(0, 120) + '...';
 
-                            {/* post Item Body Start */}
-                            <div className="post-item-body">
-                                <h2>
-                                    <a href="blogs/blog-1.html">
-                                        الصيام بعد جراحة السمنة: المخاطر والنصائح الصحية لمرضى السمنة خلال رمضان
-                                    </a>
-                                </h2>
-                                <p>
-                                    تعتبر جراحة السمنة مثل تكميم المعدة، تحويل مسار المعدة، وتركيب الرباط المعدي من الخيارات
-                                    الطبية التي تهدف إلى...
-                                </p>
-                            </div>
-                            {/* Post Item Body End*/}
+                        // Image logic
+                        const mainPhoto = blog.photos?.find(p => isAr ? p.is_arabic : !p.is_arabic) || blog.photos?.[0];
+                        const imageUrl = mainPhoto?.url || blog.photo_url || 'images/blog/default.webp';
 
-                            {/* Post Item Footer Start*/}
-                            <div className="post-item-footer">
-                                <a href="blogs/blog-1.html" className="read-more-btn">{t('common.readMore')}</a>
+                        return (
+                            <div key={blog.id} className="col-lg-4 col-md-6">
+                                {/* Blog Item Start */}
+                                <div className="blog-item wow fadeInUp">
+                                    {/* Post Featured Image Start*/}
+                                    <div className="post-featured-image" data-cursor-text={t('common.readMore')}>
+                                        <figure>
+                                            <Link href={`/blog/${slug}`} className="image-anime">
+                                                <img src={imageUrl} alt={title} />
+                                            </Link>
+                                        </figure>
+                                    </div>
+                                    {/* Post Featured Image End */}
+
+                                    {/* post Item Body Start */}
+                                    <div className="post-item-body">
+                                        <h2>
+                                            <Link href={`/blog/${slug}`}>
+                                                {title}
+                                            </Link>
+                                        </h2>
+                                        <p className="line-clamp-2">
+                                            {description}
+                                        </p>
+                                    </div>
+                                    {/* Post Item Body End*/}
+
+                                    {/* Post Item Footer Start*/}
+                                    <div className="post-item-footer">
+                                        <Link href={`/blog/${slug}`} className="read-more-btn">{t('common.readMore')}</Link>
+                                    </div>
+                                    {/* Post Item Footer End*/}
+                                </div>
+                                {/* Blog Item End */}
                             </div>
-                            {/* Post Item Footer End*/}
-                        </div>
-                        {/* Blog Item End */}
-                    </div>
+                        );
+                    })}
                 </div>
             </div>
             {/* Icon Start Image Start */}

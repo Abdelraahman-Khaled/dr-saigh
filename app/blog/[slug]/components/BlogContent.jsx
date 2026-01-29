@@ -24,17 +24,22 @@ export default function BlogContent({ blog }) {
         const targetSlug =
             language === "ar"
                 ? blog.slug_ar || blog.slug
-                : blog.slug || blog.slug_ar; // Assumes slug_ar/slug exist. Fallback logic.
+                : blog.slug_en || blog.slug || blog.slug_ar;
 
-        // Adjust prefix based on language.
-        // If switching to 'ar', prefix /blogs/
-        const basePath = language === 'ar' ? '/blogs' : '/blogs';
+        // Correct basePath is /blog
+        const basePath = '/blog';
 
-        // Use replace to change URL without scroll
-        router.replace(`${basePath}/${targetSlug}`, { scroll: false });
+        // Only redirect if the current path doesn't already match the target
+        const currentPath = window.location.pathname;
+        const expectedPath = `${basePath}/${targetSlug}`;
+
+        // Decode to compare properly
+        if (decodeURIComponent(currentPath) !== decodeURIComponent(expectedPath)) {
+            router.replace(expectedPath, { scroll: false });
+        }
     }, [language, blog, router]);
 
-
+    // Helper to format content: add features-list class to uls, and checkmark icon to lis
     const formatContent = (htmlContent) => {
         if (!htmlContent) return "";
         let formatted = htmlContent;
@@ -49,7 +54,7 @@ export default function BlogContent({ blog }) {
         return formatted;
     };
 
-
+    // Render Logic
     const renderContent = () => {
         if (blog.contents && Array.isArray(blog.contents)) {
             return blog.contents.map((section, index) => (
@@ -84,7 +89,7 @@ export default function BlogContent({ blog }) {
         }
     };
 
-
+    if (!blog) return null;
 
     return (
         <div className="page-single-post">
@@ -93,7 +98,7 @@ export default function BlogContent({ blog }) {
                     <div className="col-lg-12">
                         {/* Post Featured Image Start */}
                         <div className="post-image">
-                            <figure className="image-anime reveal">
+                            <figure className="image-anime">
                                 {(() => {
                                     const mainPhoto = blog.photos?.find(p => language === "ar" ? p.is_arabic : !p.is_arabic) || blog.photos?.[0];
                                     const mainImage = mainPhoto?.url || blog.image || blog.photo_url;

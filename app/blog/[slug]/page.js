@@ -42,6 +42,8 @@ async function getBlog(slug) {
     }
 }
 
+
+
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
     const { slug: encodedSlug } = await params;
@@ -53,28 +55,19 @@ export async function generateMetadata({ params }) {
     const cookieStore = await cookies();
     const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
-    // Find the appropriate image for Open Graph
-    const arabicImage = blog.photos?.find(photo => photo.is_arabic === true);
-    const imageUrl = arabicImage?.url || blog.photos?.[0]?.url || 'https://aalsaigh.com/images/cover.png';
-
-    // Get title and description based on language
     const title = language === 'ar'
         ? (blog.meta_title_ar || blog.title_ar)
         : (blog.meta_title_en || blog.title_en);
 
-    // Get description from meta fields or extract from content
-    const content = language === 'ar'
-        ? (blog.contents?.[0]?.content_ar || '')
-        : (blog.contents?.[0]?.content_en || '');
-    const plainText = content.replace(/<[^>]*>/g, '');
-
     const description = language === 'ar'
-        ? (blog.meta_description_ar || plainText.substring(0, 160) || blog.title_ar)
-        : (blog.meta_description_en || plainText.substring(0, 160) || blog.title_en);
+        ? (blog.meta_description_ar || blog.description_ar)
+        : (blog.meta_description_en || blog.description_en);
 
     const keywords = language === 'ar'
-        ? `${blog.title_ar}, جراحة السمنة, الدكتور الصايغ, مقالات طبية`
-        : `${blog.title_en}, bariatric surgery, Dr. Alsaigh, medical articles`;
+        ? `${blog.title_ar || ''}, جراحة السمنة, الدكتور الصائغ, مقالات طبية`
+        : `${blog.title_en || ''}, bariatric surgery, Dr. Alsaigh, medical articles`;
+
+    const currentSlug = language === 'ar' ? (blog.slug_ar || blog.slug) : (blog.slug_en || blog.slug);
 
     return {
         title: `Dr. Alsaigh | ${title}`,
@@ -86,30 +79,23 @@ export async function generateMetadata({ params }) {
         },
         openGraph: {
             type: "article",
-            url: `https://aalsaigh.com/blog/${blog.slug_ar}`,
+            url: `https://aalsaigh.com/blog/${currentSlug}`,
             title: `Dr. Alsaigh | ${title}`,
             description,
-            images: [
-                {
-                    url: imageUrl,
-                    width: 1200,
-                    height: 630,
-                    alt: title
-                }
-            ]
+            images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
         },
         twitter: {
             card: "summary_large_image",
-            url: `https://aalsaigh.com/blog/${blog.slug_ar}`,
+            url: `https://aalsaigh.com/blog/${currentSlug}`,
             title: `Dr. Alsaigh | ${title}`,
             description,
-            images: [imageUrl]
+            images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
         },
         alternates: {
-            canonical: `/blog/${blog.slug_ar}`,
+            canonical: `/blog/${currentSlug}`,
             languages: {
-                ar: `/blog/${blog.slug_ar}`,
-                en: `/blog/${blog.slug_en || blog.slug_ar}`,
+                ar: `/blog/${blog.slug_ar || blog.slug}`,
+                en: `/blog/${blog.slug_en || blog.slug}`,
             }
         }
     };
@@ -119,6 +105,8 @@ export default async function BlogDetailPage({ params }) {
     const { slug: encodedSlug } = await params;
     const slug = decodeURIComponent(encodedSlug);
     const blog = await getBlog(slug);
+    const cookieStore = await cookies();
+    const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
     if (!blog) notFound();
 
@@ -127,8 +115,8 @@ export default async function BlogDetailPage({ params }) {
             <Preloader />
             <Header />
             <BlogHero
-                title={blog.title_ar}
-                author="د. عبدالرحمن الصائغ"
+                title={language === 'ar' ? (blog.title_ar || blog.title) : (blog.title_en || blog.title || blog.title_ar)}
+                author={language === 'ar' ? "د. عبدالرحمن الصائغ" : "Dr. Alsaigh"}
                 date={blog.created_at}
             />
             <BlogContent blog={blog} />

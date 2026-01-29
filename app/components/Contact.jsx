@@ -22,7 +22,7 @@ export default function Contact() {
                             {/* Section Title End */}
 
                             {/* Contact Info Start */}
-                            <div className="contact-now-info">
+                            <div className="contact-now-info" dir="rtl">
                                 {/* Contact Info Item Start */}
                                 <a href="tel:966552200258" className="contact-info-list wow fadeInUp d-flex" data-wow-delay="0.4s">
                                     {/* Icon Box Start */}

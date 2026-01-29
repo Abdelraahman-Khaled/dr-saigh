@@ -21,16 +21,6 @@ export default function FAQSlug({ items = [] }) {
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6">
-                        {/* How It Work Image Start */}
-                        <div className="how-it-work-img">
-                            <figure className="reveal image-anime">
-                                <img src="/images/faq.png" alt="FAQ" />
-                            </figure>
-                        </div>
-                        {/* How It Work Image End */}
-                    </div>
-
-                    <div className="col-lg-6">
                         <div className="how-it-work-content">
                             {/* FAQ Accordion Start */}
                             <div className="faq-accordion how-work-accordion" id="accordion">
@@ -46,9 +36,6 @@ export default function FAQSlug({ items = [] }) {
                                             className="accordion-item wow fadeInUp"
                                             data-wow-delay={`${delay}s`}
                                         >
-                                            <div className="icon-box">
-                                                <img src={iconSrc} alt="icon" />
-                                            </div>
                                             <h2 className="accordion-header" id={`heading${faq.id}`}>
                                                 <button
                                                     className="accordion-button collapsed"

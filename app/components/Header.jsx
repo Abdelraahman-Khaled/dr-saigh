@@ -11,7 +11,7 @@ export default function Header() {
         <nav className="navbar navbar-expand-lg">
           <div className="container">
             {/* Logo Start */}
-            <a className="navbar-brand" href="./">
+            <a className="navbar-brand" href="/">
               <img src="/images/logo.webp" alt="Logo" style={{ width: '70px' }} />
             </a>
             {/* Logo End */}

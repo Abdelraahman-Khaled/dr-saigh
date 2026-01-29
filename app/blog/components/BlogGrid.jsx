@@ -5,13 +5,20 @@ import { getBlogs } from '@/api/blog';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
-export default function BlogGrid() {
+
+export default function BlogGrid({ initialBlogs = [], initialError = null }) {
     const { t, language } = useLanguage();
-    const [blogs, setBlogs] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [blogs, setBlogs] = useState(initialBlogs);
+    const [loading, setLoading] = useState(initialBlogs.length === 0 && !initialError);
+    const [error, setError] = useState(initialError);
 
     useEffect(() => {
+        // If we already have blogs or an error from server, don't fetch again
+        if (initialBlogs.length > 0 || initialError) {
+            setLoading(false);
+            return;
+        }
+
         const fetchBlogs = async () => {
             try {
                 const data = await getBlogs();
@@ -30,7 +37,7 @@ export default function BlogGrid() {
         };
 
         fetchBlogs();
-    }, []);
+    }, [initialBlogs, initialError]);
 
     if (loading) {
         return (
@@ -82,6 +89,7 @@ export default function BlogGrid() {
             </div>
         );
     }
+
 
     return (
         <div className="our-blog" style={{ backgroundColor: '#fff', paddingTop: '80px', paddingBottom: '80px' }}>

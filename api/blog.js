@@ -10,7 +10,7 @@ export const getBlogs = async () => {
 };
 
 export const getBlogDetails = async (slug) => {
-    const res = await fetch(`${API}/blog_show?slug=${slug}`, {
+    const res = await fetch(`${API}/blog_show?slug=${encodeURIComponent(slug)}`, {
         next: { revalidate: 60 }, // IMPORTANT
     });
 

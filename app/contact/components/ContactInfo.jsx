@@ -3,7 +3,7 @@
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactInfo() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <div className="page-contact" style={{ paddingTop: '100px', paddingBottom: '50px' }}>
@@ -28,7 +28,7 @@ export default function ContactInfo() {
                             </div>
                             <div className="contact-info-content">
                                 <h3>{t('contactPage.info.phone')}</h3>
-                                <p dir="ltr" className="text-end">
+                                <p dir="ltr" className={`${language === 'ar' ? 'text-end' : 'text-start'}`}>
                                     <a href="tel:966552200258">+966 552 200 258</a>
                                 </p>
                             </div>

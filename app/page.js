@@ -1,3 +1,4 @@
+import { getBlogs } from '@/api/blog';
 import Preloader from './components/Preloader';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -14,7 +15,19 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import ClientScripts from './components/ClientScripts';
 
-export default function Home() {
+export const dynamic = 'force-dynamic';
+
+export default async function Home() {
+  let initialBlogs = [];
+  try {
+    initialBlogs = (await getBlogs()) || [];
+  } catch (err) {
+    console.error('Error fetching blogs for home:', err);
+  }
+
+  // Only show first 3 blogs on home page
+  const homeBlogs = initialBlogs.slice(0, 3);
+
   return (
     <>
       <Preloader />
@@ -26,7 +39,7 @@ export default function Home() {
       <BMICalculator />
       <WhyChooseUs />
       <FAQ />
-      <Blog />
+      <Blog initialBlogs={homeBlogs} />
       <Videos />
       <Contact />
       <Footer />

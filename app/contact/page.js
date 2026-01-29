@@ -9,17 +9,17 @@ import WhatsAppButton from '../components/WhatsAppButton';
 import ClientScripts from '../components/ClientScripts';
 
 export const metadata = {
-    title: "تواصل معنا - الدكتور عبدالرحمن الصايغ | Contact Us - Dr. Abdulrahman AlSaigh",
-    description: "تواصل مع الدكتور عبدالرحمن الصايغ - استشاري جراحة السمنة والمناظير | Contact Dr. Abdulrahman AlSaigh - Consultant Bariatric and Laparoscopic Surgery",
-    keywords: "اتصل بنا, تواصل معنا, contact us, الدكتور الصايغ, Dr AlSaigh, جراحة السمنة الرياض, bariatric surgery Riyadh, حجز موعد, book appointment",
+    title: "تواصل معنا - الدكتور عبدالرحمن الصائغ | Contact Us - Dr. Abdulrahman AlSaigh",
+    description: "تواصل مع الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير | Contact Dr. Abdulrahman AlSaigh - Consultant Bariatric and Laparoscopic Surgery",
+    keywords: "اتصل بنا, تواصل معنا, contact us, الدكتور الصائغ, Dr AlSaigh, جراحة السمنة الرياض, bariatric surgery Riyadh, حجز موعد, book appointment",
     robots: "index, follow",
     openGraph: {
         type: "website",
         locale: "ar_SA",
         url: "https://aalsaigh.com/contact",
-        siteName: "الدكتور عبدالرحمن الصايغ | Dr. Abdulrahman AlSaigh",
-        title: "تواصل معنا - الدكتور عبدالرحمن الصايغ | Contact Us - Dr. Abdulrahman AlSaigh",
-        description: "تواصل مع الدكتور عبدالرحمن الصايغ - استشاري جراحة السمنة والمناظير | Contact Dr. Abdulrahman AlSaigh - Consultant Bariatric Surgery",
+        siteName: "الدكتور عبدالرحمن الصائغ | Dr. Abdulrahman AlSaigh",
+        title: "تواصل معنا - الدكتور عبدالرحمن الصائغ | Contact Us - Dr. Abdulrahman AlSaigh",
+        description: "تواصل مع الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير | Contact Dr. Abdulrahman AlSaigh - Consultant Bariatric Surgery",
         images: [
             {
                 url: "https://aalsaigh.com/images/cover.png",
@@ -32,8 +32,8 @@ export const metadata = {
     twitter: {
         card: "summary_large_image",
         url: "https://aalsaigh.com/contact",
-        title: "تواصل معنا - الدكتور عبدالرحمن الصايغ | Contact Us - Dr. Abdulrahman AlSaigh",
-        description: "تواصل مع الدكتور عبدالرحمن الصايغ - استشاري جراحة السمنة والمناظير | Contact Dr. Abdulrahman AlSaigh",
+        title: "تواصل معنا - الدكتور عبدالرحمن الصائغ | Contact Us - Dr. Abdulrahman AlSaigh",
+        description: "تواصل مع الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير | Contact Dr. Abdulrahman AlSaigh",
         images: ["https://aalsaigh.com/images/cover.png"]
     }
 };

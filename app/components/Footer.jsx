@@ -3,7 +3,7 @@
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
-    const { t } = useLanguage();
+    const { t, language } = useLanguage();
 
     return (
         <footer className="main-footer">
@@ -48,7 +48,7 @@ export default function Footer() {
 
                     <div className="col-lg-3 col-md-4">
                         {/* Footer Social Links Start */}
-                        <div className="footer-links footer-social-links">
+                        <div className="footer-links footer-social-links" >
                             <h3>{t('footer.socialMedia')}</h3>
                             <ul className="d-flex flex-wrap gap-1 mt-5 justify-content-between">
                                 <li>
@@ -92,7 +92,7 @@ export default function Footer() {
                             <h3>{t('footer.contactUs')}</h3>
                             <ul>
                                 <li><a href="mailto:aarsaigh@hotmail.com">{t('contact.email')}</a></li>
-                                <li dir="ltr" className="text-end"><a href="tel:966552200258">{t('contact.phone')}</a></li>
+                                <li dir="ltr" className={`${language === 'ar' ? 'text-end' : 'text-start'}`}><a href="tel:966552200258">{t('contact.phone')}</a></li>
                             </ul>
                         </div>
                         {/* Footer Contact Links End */}

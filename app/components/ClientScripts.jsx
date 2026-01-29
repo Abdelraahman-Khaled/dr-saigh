@@ -86,10 +86,8 @@ export default function ClientScripts() {
                     }
                 });
 
-                // Preloader
-                $(window).on('load', function () {
-                    $('.preloader').fadeOut(500);
-                });
+                // Preloader dismissal is now handled by the Preloader component itself via React useEffect
+                // for better compatibility with Next.js client-side navigation.
             }
         };
 

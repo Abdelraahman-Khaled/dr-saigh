@@ -23,6 +23,11 @@ export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
         // Persist language choice
         localStorage.setItem('appLang', language);
 
+        // Sync with cookie for server-side components to know the language
+        if (typeof document !== 'undefined') {
+            document.cookie = `NEXT_LOCALE=${language}; path=/; max-age=31536000`;
+        }
+
         // Update body class for legacy scripts (like main.js)
         if (language === 'ar') {
             document.body.classList.add('arabic');

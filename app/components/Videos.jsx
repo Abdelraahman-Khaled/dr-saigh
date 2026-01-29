@@ -26,15 +26,15 @@ export default function Videos() {
                         {/* Blog Item Start */}
                         <div className="blog-item wow fadeInUp">
                             {/* Post Featured Image Start*/}
-                            <div className="post-featured-image">
-                                <iframe
-                                    src="https://www.youtube.com/embed/Tj8eV90-nVM?si=o69d--OVIJ0iIrV_"
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin"
-                                    allowFullScreen
-                                ></iframe>
+                            <div className="post-featured-image" data-cursor-text={t('common.watch')}>
+                                <figure>
+                                    <a href="https://www.youtube.com/watch?v=Tj8eV90-nVM" className="image-anime popup-video">
+                                        <img src="/images/thumbnail/1.png" alt="Video Thumbnail" />
+                                        <div className="video-play-button">
+                                            <i className="fa-solid fa-play"></i>
+                                        </div>
+                                    </a>
+                                </figure>
                             </div>
                             {/* Post Featured Image End */}
 
@@ -53,15 +53,15 @@ export default function Videos() {
                         {/* Blog Item Start */}
                         <div className="blog-item wow fadeInUp" data-wow-delay="0.25s">
                             {/* Post Featured Image Start*/}
-                            <div className="post-featured-image">
-                                <iframe
-                                    src="https://www.youtube.com/embed/wGfuMyImE7M?si=1T77n1wHr87hg7Fb"
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin"
-                                    allowFullScreen
-                                ></iframe>
+                            <div className="post-featured-image" data-cursor-text={t('common.watch')}>
+                                <figure>
+                                    <a href="https://www.youtube.com/watch?v=wGfuMyImE7M" className="image-anime popup-video">
+                                        <img src="/images/thumbnail/2.png" alt="Video Thumbnail" />
+                                        <div className="video-play-button">
+                                            <i className="fa-solid fa-play"></i>
+                                        </div>
+                                    </a>
+                                </figure>
                             </div>
                             {/* Post Featured Image End */}
 
@@ -78,17 +78,17 @@ export default function Videos() {
 
                     <div className="col-lg-4 col-md-6">
                         {/* Blog Item Start */}
-                        <div className="blog-item wow fadeInUp" data-wow-delay="0.25s">
+                        <div className="blog-item wow fadeInUp" data-wow-delay="0.5s">
                             {/* Post Featured Image Start*/}
-                            <div className="post-featured-image">
-                                <iframe
-                                    src="https://www.youtube.com/embed/80mOaGs_Poc?si=AsfMP-aWi5mrHu0V"
-                                    title="YouTube video player"
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin"
-                                    allowFullScreen
-                                ></iframe>
+                            <div className="post-featured-image" data-cursor-text={t('common.watch')}>
+                                <figure>
+                                    <a href="https://www.youtube.com/watch?v=80mOaGs_Poc" className="image-anime popup-video">
+                                        <img src="/images/thumbnail/3.png" alt="Video Thumbnail" />
+                                        <div className="video-play-button">
+                                            <i className="fa-solid fa-play"></i>
+                                        </div>
+                                    </a>
+                                </figure>
                             </div>
                             {/* Post Featured Image End */}
 
