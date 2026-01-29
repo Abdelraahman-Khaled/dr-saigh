@@ -1,4 +1,21 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function WhyChooseUs() {
+    const { t } = useLanguage();
+    const benefits = t('whyChooseUs.benefits');
+
+    // Icons mapping for each benefit
+    const benefitIcons = [
+        'weight-loss.png',
+        'hormone-therapy.png',
+        'cholesterol.png',
+        'gym.png',
+        'sleep-quality.png',
+        'eat.png'
+    ];
+
     return (
         <div className="why-choose-us" id="types">
             <div className="container">
@@ -6,16 +23,12 @@ export default function WhyChooseUs() {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">أمراض السمنة</h3>
+                            <h3 className="wow fadeInUp">{t('whyChooseUs.subtitle')}</h3>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
-                                تشخيص <span>أمراض</span> السمنة
+                                {t('whyChooseUs.title')} <span>{t('whyChooseUs.titleHighlight')}</span> {t('whyChooseUs.titleEnd')}
                             </h2>
                             <p className="wow fadeInUp" data-wow-delay="0.25s">
-                                قبل أن يتم إجراء أي عملية جراحية للسمنة، يقوم د. عبد الرحمن بتقييم الوضع الصحي للمريض وإجراء
-                                كافة الفحوصات اللازمة و
-                                التحضيرات التي تسبق العملية، لضمان حصوله على النتائج المرضية التي تحقق رضا المريض عن نفسه
-                                وتخلصه من المشاكل التي
-                                يواجهها، هذه أهم فوائد عملية السمنة:
+                                {t('whyChooseUs.description')}
                             </p>
                         </div>
                         {/* Section Title End */}
@@ -26,65 +39,24 @@ export default function WhyChooseUs() {
                     <div className="col-lg-4 col-md-6 order-1">
                         {/* Why Choose Box Start */}
                         <div className="why-choose-box-1">
-                            {/* Why Choose Item Start */}
-                            <div className="why-choose-item wow fadeInUp">
-                                {/* Icon Box Start */}
-                                <div className="icon-box">
-                                    <img src="images/weight-loss.png" alt="image" />
-                                </div>
-                                {/* Icon Box End */}
+                            {Array.isArray(benefits) && benefits.slice(0, 3).map((benefit, index) => (
+                                <div key={index} className="why-choose-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
+                                    {/* Icon Box Start */}
+                                    <div className="icon-box">
+                                        <img src={`images/${benefitIcons[index]}`} alt="image" />
+                                    </div>
+                                    {/* Icon Box End */}
 
-                                {/* Why Choose Content Start */}
-                                <div className="why-choose-content">
-                                    <h3>فقدان كبير ومستدام للوزن</h3>
-                                    <p>
-                                        أثبت جراحات السمنة فعاليتها على المدى الطويل للسمنة من الدرجة الثالثة، حيث ساهمت في
-                                        تحقيق فقدان وزن دائم.
-                                    </p>
+                                    {/* Why Choose Content Start */}
+                                    <div className="why-choose-content">
+                                        <h3>{benefit.title}</h3>
+                                        <p>{benefit.description}</p>
+                                    </div>
+                                    {/* Why Choose Content End */}
                                 </div>
-                                {/* Why Choose Content End */}
-                            </div>
-                            {/* Why Choose Item End */}
-
-                            {/* Why Choose Item Start */}
-                            <div className="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
-                                {/* Icon Box Start */}
-                                <div className="icon-box">
-                                    <img src="images/hormone-therapy.png" alt="image" />
-                                </div>
-                                {/* Icon Box End */}
-
-                                {/* Why Choose Content Start */}
-                                <div className="why-choose-content">
-                                    <h3>تقليل هرمونات الجوع وتحسين الأيض</h3>
-                                    <p>تعيد برمجة الأيض في الجسم بعد السمنة، مما يمنع استعادة الوزن.</p>
-                                </div>
-                                {/* Why Choose Content End */}
-                            </div>
-                            {/* Why Choose Item End */}
-
-                            {/* Why Choose Item Start */}
-                            <div className="why-choose-item wow fadeInUp" data-wow-delay="0.5s">
-                                {/* Icon Box Start */}
-                                <div className="icon-box">
-                                    <img src="images/cholesterol.png" alt="image" />
-                                </div>
-                                {/* Icon Box End */}
-
-                                {/* Why Choose Content Start */}
-                                <div className="why-choose-content">
-                                    <h3>تحسين مستويات الكوليسترول والسكر في الدم</h3>
-                                    <p>
-                                        تؤدي جراحة السمنة إلى تخفيف أعراض السكري من النوع الثاني وتحسن من المعدل التراكمي
-                                        لكن الأهم من هذا كله، المتابعة
-                                        المستمرة للحفاظ على نتيجة العملية.
-                                    </p>
-                                </div>
-                                {/* Why Choose Content End */}
-                            </div>
-                            {/* Why Choose Item End */}
+                            ))}
                         </div>
-                        {/* Why Choose Box Start */}
+                        {/* Why Choose Box End */}
                     </div>
 
                     <div className="col-lg-4 order-lg-1 order-md-2 order-1">
@@ -100,68 +72,24 @@ export default function WhyChooseUs() {
                     <div className="col-lg-4 col-md-6 order-lg-2 order-md-1 order-2">
                         {/* Why Choose Box Start */}
                         <div className="why-choose-box-2">
-                            {/* Why Choose Item Start */}
-                            <div className="why-choose-item wow fadeInUp">
-                                {/* Icon Box Start */}
-                                <div className="icon-box">
-                                    <img src="images/gym.png" alt="image" />
-                                </div>
-                                {/* Icon Box End */}
+                            {Array.isArray(benefits) && benefits.slice(3, 6).map((benefit, index) => (
+                                <div key={index + 3} className="why-choose-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
+                                    {/* Icon Box Start */}
+                                    <div className="icon-box">
+                                        <img src={`images/${benefitIcons[index + 3]}`} alt="image" />
+                                    </div>
+                                    {/* Icon Box End */}
 
-                                {/* Why Choose Content Start */}
-                                <div className="why-choose-content">
-                                    <h3>تحسين النشاط البدني</h3>
-                                    <p>
-                                        يساعدك فقدان الوزن الزائد في أن تصبح حركتك أخف مما يؤدي إلى تحسن قدرتك على ممارسة
-                                        الأنشطة البدنية بشكل أسهل.
-                                    </p>
+                                    {/* Why Choose Content Start */}
+                                    <div className="why-choose-content">
+                                        <h3>{benefit.title}</h3>
+                                        <p>{benefit.description}</p>
+                                    </div>
+                                    {/* Why Choose Content End */}
                                 </div>
-                                {/* Why Choose Content End */}
-                            </div>
-                            {/* Why Choose Item End */}
-
-                            {/* Why Choose Item Start */}
-                            <div className="why-choose-item wow fadeInUp" data-wow-delay="0.25s">
-                                {/* Icon Box Start */}
-                                <div className="icon-box">
-                                    <img src="images/sleep-quality.png" alt="image" />
-                                </div>
-                                {/* Icon Box End */}
-
-                                {/* Why Choose Content Start */}
-                                <div className="why-choose-content">
-                                    <h3>تحسين جودة النوم</h3>
-                                    <p>
-                                        يصاحب غالبية المصابين بالسمنة مشكلة انقطاع النفس، لذلك يمكن لجراحات السمنة أن تخفف
-                                        بشكل فعال من أعراض توقف التنفس أثناء
-                                        النوم و الحصول على نوم أفضل.
-                                    </p>
-                                </div>
-                                {/* Why Choose Content End */}
-                            </div>
-                            {/* Why Choose Item End */}
-
-                            {/* Why Choose Item Start */}
-                            <div className="why-choose-item wow fadeInUp" data-wow-delay="0.5s">
-                                {/* Icon Box Start */}
-                                <div className="icon-box">
-                                    <img src="images/eat.png" alt="image" />
-                                </div>
-                                {/* Icon Box End */}
-
-                                {/* Why Choose Content Start */}
-                                <div className="why-choose-content">
-                                    <h3>تقلل من رغبتك لتناول الطعام</h3>
-                                    <p>
-                                        تؤدي جراحات السمنة إلى تقليل كمية الطعام التي يُمكنك تناولها، بالتالي استهلاك سعرات
-                                        حرارية أقل و خسارة الوزن بشكل أسرع.
-                                    </p>
-                                </div>
-                                {/* Why Choose Content End */}
-                            </div>
-                            {/* Why Choose Item End */}
+                            ))}
                         </div>
-                        {/* Why Choose Box Start */}
+                        {/* Why Choose Box End */}
                     </div>
                 </div>
             </div>

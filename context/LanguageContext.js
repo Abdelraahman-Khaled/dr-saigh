@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import translations from '../app/translations';
 
 const LanguageContext = createContext();
 
@@ -34,8 +35,23 @@ export const LanguageProvider = ({ children, initialLanguage = 'ar' }) => {
         setLanguage((prev) => (prev === 'ar' ? 'en' : 'ar'));
     };
 
+    const t = (key) => {
+        const keys = key.split('.');
+        let value = translations[language];
+
+        for (const k of keys) {
+            if (value && typeof value === 'object') {
+                value = value[k];
+            } else {
+                return key; // Return key if translation not found
+            }
+        }
+
+        return value || key;
+    };
+
     return (
-        <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage }}>
+        <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
             {children}
         </LanguageContext.Provider>
     );

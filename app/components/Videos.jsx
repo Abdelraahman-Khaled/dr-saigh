@@ -1,4 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Videos() {
+    const { t } = useLanguage();
+
     return (
         <div className="our-blog" id="videos" style={{ backgroundColor: '#fff' }}>
             <div className="container">
@@ -6,9 +12,9 @@ export default function Videos() {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">الفيديوهات</h3>
+                            <h3 className="wow fadeInUp">{t('videos.subtitle')}</h3>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
-                                اطلع <span>على أحدث</span> الفيديوهات
+                                {t('videos.title')} <span>{t('videos.titleHighlight')}</span> {t('videos.titleEnd')}
                             </h2>
                         </div>
                         {/* Section Title End */}
@@ -99,7 +105,7 @@ export default function Videos() {
 
                     <div className="contact-appointment-btn wow fadeInUp" style={{ width: 'fit-content', margin: 'auto', marginTop: '30px' }} data-wow-delay="1s">
                         <a target="_blank" href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" className="btn-default">
-                            المزيد من الفيديوهات
+                            {t('videos.moreVideos')}
                         </a>
                     </div>
                 </div>

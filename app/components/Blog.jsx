@@ -1,4 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Blog() {
+    const { t } = useLanguage();
+
     return (
         <div className="our-blog" id="blog">
             <div className="container">
@@ -6,12 +12,12 @@ export default function Blog() {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">المدونات</h3>
+                            <h3 className="wow fadeInUp">{t('blog.subtitle')}</h3>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
-                                اطلع <span>على أحدث</span> مقالاتنا
+                                {t('blog.title')} <span>{t('blog.titleHighlight')}</span> {t('blog.titleEnd')}
                             </h2>
                             <p className="wow fadeInUp" data-wow-delay="0.25s">
-                                نحن ملتزمون بالاستدامة والمبادرات الصديقة للبيئة.
+                                {t('blog.description')}
                             </p>
                         </div>
                         {/* Section Title End */}
@@ -23,7 +29,7 @@ export default function Blog() {
                         {/* Blog Item Start */}
                         <div className="blog-item wow fadeInUp">
                             {/* Post Featured Image Start*/}
-                            <div className="post-featured-image" data-cursor-text="اقرأ المقالة">
+                            <div className="post-featured-image" data-cursor-text={t('common.readMore')}>
                                 <figure>
                                     <a href="blogs/blog-1.html" className="image-anime">
                                         <img src="images/blog/1.webp" alt="image" />
@@ -48,7 +54,7 @@ export default function Blog() {
 
                             {/* Post Item Footer Start*/}
                             <div className="post-item-footer">
-                                <a href="blogs/blog-1.html" className="read-more-btn">اقرأ المزيد</a>
+                                <a href="blogs/blog-1.html" className="read-more-btn">{t('common.readMore')}</a>
                             </div>
                             {/* Post Item Footer End*/}
                         </div>

@@ -1,4 +1,11 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function About() {
+    const { t } = useLanguage();
+    const qualifications = t('about.qualifications');
+
     return (
         <div className="about-us" id="about">
             <div className="container">
@@ -34,15 +41,12 @@ export default function About() {
                         <div className="about-content">
                             {/* Section Title Start */}
                             <div className="section-title">
-                                <h3 className="wow fadeInUp">عن الدكتور</h3>
+                                <h3 className="wow fadeInUp">{t('about.subtitle')}</h3>
                                 <h2 className="wow fadeInUp" data-cursor="-opaque">
-                                    د. عبدالرحمن الصايغ
+                                    {t('about.title')}
                                 </h2>
                                 <p className="wow fadeInUp" data-wow-delay="0.25s">
-                                    عمل اكثر من 9000 عملية سمنة مختلفة ومنها عمليات التكميم و عملية ربط المعدة وتحويل المسار
-                                    بالمنظار عمليات الإرتجاع
-                                    المريئي واصلاح الفتق في الحجاب الحاجز بالمنظار وعمليات الجراحة العامة بالمنظار ومنها
-                                    ازالة المرارة واصلاح الفتق بالمنظار
+                                    {t('about.description')}
                                 </p>
                             </div>
                             {/* Section Title End */}
@@ -50,12 +54,9 @@ export default function About() {
                             {/* About Us Body Start */}
                             <div className="about-us-body wow fadeInUp" data-wow-delay="0.5s">
                                 <ul>
-                                    <li>الزمالة العربية في الجراحة العامة</li>
-                                    <li>عضو في الجمعية الامريكية لجراحة السمنة ASMBS</li>
-                                    <li>عضو في الجمعية السعودية لجراحة المناظير</li>
-                                    <li>عضو في الجمعية الاسيوية لجراحة المناظير ELSA</li>
-                                    <li>الزمالة الأوروبية في جراحة المناظير والسمنة</li>
-                                    <li>شارك في كثير من الؤتمرات الدولية و المحلية وبعض الأوراق العلمية</li>
+                                    {Array.isArray(qualifications) && qualifications.map((qual, index) => (
+                                        <li key={index}>{qual}</li>
+                                    ))}
                                 </ul>
                             </div>
                             {/* About Us Body End */}
@@ -63,7 +64,7 @@ export default function About() {
                             {/* About Us Footer Start */}
                             <div className="about-us-footer wow fadeInUp" data-wow-delay="0.75s">
                                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" target="_blank" className="btn-default">
-                                    حجز موعد
+                                    {t('common.bookAppointment')}
                                 </a>
                             </div>
                             {/* About Us Footer End */}

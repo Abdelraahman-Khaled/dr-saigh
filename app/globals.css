@@ -47,3 +47,8 @@ a {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+
+ol{
+padding-inline-start: 40px;
+}

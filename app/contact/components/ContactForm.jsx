@@ -2,8 +2,10 @@
 
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactForm() {
+    const { t, language } = useLanguage();
     const formRef = useRef();
     const [formData, setFormData] = useState({
         name: '',
@@ -90,20 +92,20 @@ export default function ContactForm() {
                         <div className="contact-form">
                             {/* Section Title Start */}
                             <div className="section-title">
-                                <h3 className="wow fadeInUp">أرسل لنا رسالة</h3>
-                                <h2 className="wow fadeInUp">نحن هنا للإجابة على استفساراتك</h2>
+                                <h3 className="wow fadeInUp">{t('contactPage.form.subtitle')}</h3>
+                                <h2 className="wow fadeInUp">{t('contactPage.form.title')}</h2>
                             </div>
                             {/* Section Title End */}
 
                             {/* Status Messages */}
                             {submitStatus === 'success' && (
-                                <div className="alert alert-success mb-4" role="alert" dir="rtl">
-                                    ✅ شكراً لتواصلك معنا! تم إرسال رسالتك بنجاح. سنرد عليك في أقرب وقت ممكن.
+                                <div className="alert alert-success mb-4" role="alert">
+                                    {t('contactPage.form.alerts.success')}
                                 </div>
                             )}
                             {submitStatus === 'error' && (
-                                <div className="alert alert-danger mb-4" role="alert" dir="rtl">
-                                    ❌ عذراً، حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى أو التواصل معنا مباشرة.
+                                <div className="alert alert-danger mb-4" role="alert">
+                                    {t('contactPage.form.alerts.error')}
                                 </div>
                             )}
 
@@ -115,12 +117,11 @@ export default function ContactForm() {
                                             name="name"
                                             className="form-control"
                                             id="name"
-                                            placeholder="الاسم الكامل"
+                                            placeholder={t('contactPage.form.placeholders.name')}
                                             required
                                             value={formData.name}
                                             onChange={handleChange}
                                             disabled={isSubmitting}
-                                            dir="rtl"
                                         />
                                     </div>
 
@@ -130,12 +131,11 @@ export default function ContactForm() {
                                             name="email"
                                             className="form-control"
                                             id="email"
-                                            placeholder="البريد الإلكتروني"
+                                            placeholder={t('contactPage.form.placeholders.email')}
                                             required
                                             value={formData.email}
                                             onChange={handleChange}
                                             disabled={isSubmitting}
-                                            dir="rtl"
                                         />
                                     </div>
 
@@ -145,12 +145,11 @@ export default function ContactForm() {
                                             name="phone"
                                             className="form-control"
                                             id="phone"
-                                            placeholder="رقم الهاتف"
+                                            placeholder={t('contactPage.form.placeholders.phone')}
                                             required
                                             value={formData.phone}
                                             onChange={handleChange}
                                             disabled={isSubmitting}
-                                            dir="rtl"
                                         />
                                     </div>
 
@@ -160,12 +159,11 @@ export default function ContactForm() {
                                             name="subject"
                                             className="form-control"
                                             id="subject"
-                                            placeholder="الموضوع"
+                                            placeholder={t('contactPage.form.placeholders.subject')}
                                             required
                                             value={formData.subject}
                                             onChange={handleChange}
                                             disabled={isSubmitting}
-                                            dir="rtl"
                                         />
                                     </div>
 
@@ -175,12 +173,11 @@ export default function ContactForm() {
                                             className="form-control"
                                             id="message"
                                             rows="5"
-                                            placeholder="رسالتك"
+                                            placeholder={t('contactPage.form.placeholders.message')}
                                             required
                                             value={formData.message}
                                             onChange={handleChange}
                                             disabled={isSubmitting}
-                                            dir="rtl"
                                         ></textarea>
                                     </div>
 
@@ -188,9 +185,8 @@ export default function ContactForm() {
                                         <button
                                             className="btn-default"
                                             disabled={isSubmitting}
-                                            dir="rtl"
                                         >
-                                            {isSubmitting ? 'جاري الإرسال...' : 'إرسال الرسالة'}
+                                            {isSubmitting ? t('contactPage.form.buttons.sending') : t('contactPage.form.buttons.send')}
                                         </button>
                                     </div>
                                 </div>

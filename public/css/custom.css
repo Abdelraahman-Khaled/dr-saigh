@@ -1207,7 +1207,10 @@ header.main-header .header-sticky.active {
     top: 3px;
     right: 0;
 }
-
+[dir = "ltr"] .about-us-body ul li:before {
+    right: auto;
+    left: -30px;
+}
 /************************************/
 /***     07. Our Services css	  ***/
 /************************************/

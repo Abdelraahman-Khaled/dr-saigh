@@ -1,9 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function BMICalculator() {
+    const { t } = useLanguage();
     const [result, setResult] = useState(null);
+
+    const getBMICategory = (bmi) => {
+        if (bmi < 18.5) {
+            return t('bmiCalculator.categories.underweight');
+        } else if (bmi >= 18.5 && bmi < 25) {
+            return t('bmiCalculator.categories.normal');
+        } else if (bmi >= 25 && bmi < 30) {
+            return t('bmiCalculator.categories.overweight');
+        } else if (bmi >= 30 && bmi < 35) {
+            return t('bmiCalculator.categories.obeseClass1');
+        } else if (bmi >= 35 && bmi < 40) {
+            return t('bmiCalculator.categories.obeseClass2');
+        } else if (bmi >= 40 && bmi < 50) {
+            return t('bmiCalculator.categories.morbidObesity');
+        } else {
+            return t('bmiCalculator.categories.superObesity');
+        }
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,23 +33,7 @@ export default function BMICalculator() {
         if (height && weight) {
             const heightInMeters = height / 100;
             const bmi = (weight / (heightInMeters * heightInMeters)).toFixed(2);
-
-            let status = '';
-            if (bmi < 18.5) {
-                status = 'تحت الوزن الطبيعي';
-            } else if (bmi >= 18.5 && bmi < 25) {
-                status = 'الوزن الطبيعي';
-            } else if (bmi >= 25 && bmi < 30) {
-                status = 'وزن زائد';
-            } else if (bmi >= 30 && bmi < 35) {
-                status = 'سمنة من الدرجة الأولى';
-            } else if (bmi >= 35 && bmi < 40) {
-                status = 'سمنة من الدرجة الثانية';
-            } else if (bmi >= 40 && bmi < 50) {
-                status = 'سمنة مرضية مفرطة';
-            } else {
-                status = 'سمنة فوق المفرطة';
-            }
+            const status = getBMICategory(parseFloat(bmi));
 
             setResult({ bmi, status });
         }
@@ -45,48 +49,50 @@ export default function BMICalculator() {
                 <div className="hc-appointment-row">
                     <div className="hc-appointmnet-text">
                         <div className="hc-about-top">
-                            <h6 className="hc-about-subhead">حساب مؤشر كتلة الجسم (BMI)</h6>
-                            <h4 className="hc-about-head">حساب مؤشر كتلة الجسم</h4>
+                            <h6 className="hc-about-subhead">{t('bmiCalculator.subtitle')}</h6>
+                            <h4 className="hc-about-head">{t('bmiCalculator.title')}</h4>
                             <p className="hc-paragraph">
-                                مؤشر كتلة الجسم هو مقياس يستخدم لتحديد ما إذا كان وزنك مناسبًا لطولك. يساعد في تصنيف
-                                وزنك
-                                إلى نطاقات مثل الوزن الطبيعي،
-                                نقص الوزن، زيادة الوزن، أو السمنة. يتم حسابه بسهولة باستخدام معادلة تعتمد على وزنك
-                                بالكيلوجرام وطولك بالمتر.
+                                {t('bmiCalculator.description')}
                             </p>
                             <form className="form" id="bmiForm" onSubmit={handleSubmit}>
-                                <input type="number" id="height" name="height" className="form-control" placeholder="اكتب طولك (سم)" required />
-                                <input type="number" id="weight" name="weight" className="form-control" placeholder="اكتب وزنك (كغ)" required />
-                                <button type="submit" className="form-control">احسب</button>
+                                <input
+                                    type="number"
+                                    id="height"
+                                    name="height"
+                                    className="form-control"
+                                    placeholder={t('bmiCalculator.heightPlaceholder')}
+                                    required
+                                />
+                                <input
+                                    type="number"
+                                    id="weight"
+                                    name="weight"
+                                    className="form-control"
+                                    placeholder={t('bmiCalculator.weightPlaceholder')}
+                                    required
+                                />
+                                <button type="submit" className="form-control">{t('bmiCalculator.calculate')}</button>
                             </form>
                         </div>
                     </div>
                     <div className="bmi-table">
                         <div className="bmi-head">
-                            <i className="fas fa-tachometer-alt"></i> أقسام مؤشرات الكتلة
+                            <i className="fas fa-tachometer-alt"></i> {t('bmiCalculator.tableTitle')}
                         </div>
                         <ul className="mk-list bmi-list">
-                            <li>أقل من 18.5</li>
-                            <li>تحت الوزن الطبيعي</li>
-                            <li>من 18.5 إلى 24.99</li>
-                            <li>الوزن الطبيعي</li>
-                            <li>من 25 إلى 29.99</li>
-                            <li>وزن زائد</li>
-                            <li>من 30 إلى 34.99</li>
-                            <li>سمنة من الدرجة الأولى</li>
-                            <li>من 35 إلى 39.99</li>
-                            <li>سمنة من الدرجة الثانية</li>
-                            <li>من 40 إلى 49.99</li>
-                            <li>سمنة مرضية مفرطة</li>
-                            <li>أكثر من 50</li>
-                            <li>سمنة فوق المفرطة</li>
+                            {Array.isArray(t('bmiCalculator.ranges')) && t('bmiCalculator.ranges').map((item, index) => (
+                                <React.Fragment key={`bmi-${index}`}>
+                                    <li>{item.range}</li>
+                                    <li>{t(`bmiCalculator.categories.${item.category}`)}</li>
+                                </React.Fragment>
+                            ))}
                         </ul>
                     </div>
                     <div className="layout" style={{ display: result ? 'block' : 'none' }}>
                         <div className="result">
                             <i className="fa-solid fa-xmark" onClick={closeResult} style={{ cursor: 'pointer' }}></i>
                             <div>
-                                النتيجة: {result?.bmi}
+                                {t('bmiCalculator.result')} {result?.bmi}
                             </div>
                             <span className="status">
                                 {result?.status}

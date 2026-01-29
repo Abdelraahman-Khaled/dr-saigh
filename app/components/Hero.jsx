@@ -1,4 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Hero() {
+    const { t } = useLanguage();
+
     return (
         <div className="hero">
             <div className="container">
@@ -9,12 +15,10 @@ export default function Hero() {
                             {/* Section Title Start */}
                             <div className="section-title">
                                 <h1 className="wow fadeInUp" data-cursor="-opaque">
-                                    محارب <span>السمنة</span>
+                                    {t('hero.title')} <span>{t('hero.titleHighlight')}</span>
                                 </h1>
                                 <p className="wow fadeInUp" data-wow-delay="0.25s">
-                                    خبرة واسعة في تقديم أحدث التقنيات الجراحية، مع التركيز على تحقيق أفضل النتائج الطبية
-                                    بأعلى معايير الجودة.
-                                    نسعى لتوفير رعاية طبية شاملة ومتميزة لمرضانا.
+                                    {t('hero.description')}
                                 </p>
                             </div>
                             {/* Section Title End */}
@@ -22,7 +26,7 @@ export default function Hero() {
                             {/* Hero Content Body Start */}
                             <div className="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
                                 <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" className="btn-default">
-                                    حجز موعد
+                                    {t('common.bookAppointment')}
                                 </a>
                             </div>
                             {/* Hero Content Body End */}
@@ -49,8 +53,8 @@ export default function Hero() {
                                     </figure>
                                 </div>
                                 <div className="export-dantist-content">
-                                    <h3>د. عبد الرحمن الصائغ</h3>
-                                    <p>استشاري جراحة السمنة والمناظير و الجراحة العامة</p>
+                                    <h3>{t('hero.doctorName')}</h3>
+                                    <p>{t('hero.doctorTitle')}</p>
                                 </div>
                             </div>
                             {/* Hero Image Tag End */}

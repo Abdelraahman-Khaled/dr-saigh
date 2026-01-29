@@ -1,4 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Footer() {
+    const { t } = useLanguage();
+
     return (
         <footer className="main-footer">
             <div className="container">
@@ -15,8 +21,7 @@ export default function Footer() {
                             {/* About Footer Content Start */}
                             <div className="about-footer-content">
                                 <p>
-                                    صحتك أمانة بين أيدينا. نسعى دائمًا لتقديم أفضل استشارات جراحة السمنة والمناظير والجراحة
-                                    العامة.
+                                    {t('footer.description')}
                                 </p>
                             </div>
                             {/* About Footer Content End */}
@@ -26,14 +31,14 @@ export default function Footer() {
                     <div className="col-lg-3 col-md-4">
                         {/* Footer Quick Links Start */}
                         <div className="footer-links footer-quick-links">
-                            <h3>روابط سريعة</h3>
+                            <h3>{t('footer.quickLinks')}</h3>
                             <ul>
-                                <li><a href="#home">الرئيسية</a></li>
-                                <li><a href="#about">عن الدكتور</a></li>
-                                <li><a href="#operations">العمليات</a></li>
+                                <li><a href="#home">{t('footer.links.home')}</a></li>
+                                <li><a href="#about">{t('footer.links.about')}</a></li>
+                                <li><a href="#operations">{t('footer.links.operations')}</a></li>
                                 <li>
                                     <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
-                                        حجز موعد
+                                        {t('footer.links.bookAppointment')}
                                     </a>
                                 </li>
                             </ul>
@@ -44,7 +49,7 @@ export default function Footer() {
                     <div className="col-lg-3 col-md-4">
                         {/* Footer Social Links Start */}
                         <div className="footer-links footer-social-links">
-                            <h3>وسائل التواصل الاجتماعي</h3>
+                            <h3>{t('footer.socialMedia')}</h3>
                             <ul className="d-flex flex-wrap gap-1 mt-5 justify-content-between">
                                 <li>
                                     <a href="https://www.facebook.com/profile.php?id=100063006469853&mibextid=LQQJ4d" target="_blank">
@@ -84,10 +89,10 @@ export default function Footer() {
                     <div className="col-lg-2 col-md-4">
                         {/* Footer Contact Links Start */}
                         <div className="footer-links footer-contact-links">
-                            <h3>تواصل معنا</h3>
+                            <h3>{t('footer.contactUs')}</h3>
                             <ul>
-                                <li><a href="mailto:aarsaigh@hotmail.com">aarsaigh@hotmail.com</a></li>
-                                <li dir="ltr" className="text-end"><a href="tel:966552200258">+966 552 200 258</a></li>
+                                <li><a href="mailto:aarsaigh@hotmail.com">{t('contact.email')}</a></li>
+                                <li dir="ltr" className="text-end"><a href="tel:966552200258">{t('contact.phone')}</a></li>
                             </ul>
                         </div>
                         {/* Footer Contact Links End */}
@@ -100,7 +105,7 @@ export default function Footer() {
                         <div className="col-lg-12">
                             {/* Footer Copyright Start */}
                             <div className="footer-copyright-text">
-                                <p>جميع الحقوق محفوظة &copy; Milaknight LLC-FZ 2024</p>
+                                <p>{t('footer.copyright')}</p>
                             </div>
                             {/* Footer Copyright End */}
                         </div>

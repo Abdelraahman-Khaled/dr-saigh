@@ -1,4 +1,10 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function Contact() {
+    const { t } = useLanguage();
+
     return (
         <div className="contact-now" id="contact">
             <div className="container">
@@ -8,9 +14,9 @@ export default function Contact() {
                         <div className="contact-now-content">
                             {/* Section Title Start */}
                             <div className="section-title">
-                                <h3 className="wow fadeInUp">اتصل الان</h3>
+                                <h3 className="wow fadeInUp">{t('contact.subtitle')}</h3>
                                 <h2 className="wow fadeInUp" data-cursor="-opaque">
-                                    احصل على<span> استشارة</span> مجانية
+                                    {t('contact.title')}<span> {t('contact.titleHighlight')}</span> {t('contact.titleEnd')}
                                 </h2>
                             </div>
                             {/* Section Title End */}
@@ -28,7 +34,7 @@ export default function Contact() {
                                     {/* Contact Info Content Start */}
                                     <div className="contact-info-content">
                                         <p dir="ltr">
-                                            +966 552 200 258
+                                            {t('contact.phone')}
                                         </p>
                                     </div>
                                     {/* Contact Info Content End */}
@@ -45,7 +51,7 @@ export default function Contact() {
 
                                     {/* Contact Info Content Start */}
                                     <div className="contact-info-content">
-                                        <p>aarsaigh@hotmail.com</p>
+                                        <p>{t('contact.email')}</p>
                                     </div>
                                     {/* Contact Info Content End */}
                                 </a>
@@ -61,7 +67,7 @@ export default function Contact() {
 
                                     {/* Contact Info Content Start */}
                                     <div className="contact-info-content">
-                                        <p>من السبت إلى الخميس من الساعة 9:00 صباحًا إلى 9:00 مساءً</p>
+                                        <p>{t('contact.hours')}</p>
                                     </div>
                                     {/* Contact Info Content End */}
                                 </div>
@@ -71,7 +77,7 @@ export default function Contact() {
                             {/* Footer Appointment Button Start  */}
                             <div className="contact-appointment-btn wow fadeInUp" data-wow-delay="1s">
                                 <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" className="btn-default">
-                                    حجز موعد
+                                    {t('common.bookAppointment')}
                                 </a>
                             </div>
                             {/* Footer Appointment Button End  */}
