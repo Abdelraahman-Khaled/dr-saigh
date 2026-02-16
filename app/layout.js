@@ -1,11 +1,14 @@
-import Script from 'next/script';
+import Script from "next/script";
 import "./globals.css";
-import { LanguageProvider } from '@/context/LanguageContext';
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata = {
-  title: "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
-  description: "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة. خبرة واسعة في جراحات السمنة، تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض، المملكة العربية السعودية",
-  keywords: "الدكتور عبدالرحمن الصائغ, جراحة السمنة, تكميم المعدة, تحويل مسار المعدة, جراحة المناظير, استشاري جراحة, الرياض, السعودية, علاج السمنة, جراحة عامة",
+  title:
+    "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+  description:
+    "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة. خبرة واسعة في جراحات السمنة، تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض، المملكة العربية السعودية",
+  keywords:
+    "الدكتور عبدالرحمن الصائغ, جراحة السمنة, تكميم المعدة, تحويل مسار المعدة, جراحة المناظير, استشاري جراحة, الرياض, السعودية, علاج السمنة, جراحة عامة",
   authors: [{ name: "Dr. Abdelrahman Alsaigh" }],
   robots: "index, follow",
   openGraph: {
@@ -13,29 +16,33 @@ export const metadata = {
     locale: "ar_SA",
     url: "https://aalsaigh.com/",
     siteName: "الدكتور عبدالرحمن الصائغ",
-    title: "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
-    description: "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+    title:
+      "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+    description:
+      "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
     images: [
       {
         url: "https://aalsaigh.com/images/cover.png",
         width: 1200,
         height: 630,
-        alt: "Dr. Abdelrahman Alsaigh"
-      }
-    ]
+        alt: "Dr. Abdelrahman Alsaigh",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     url: "https://aalsaigh.com/",
-    title: "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
-    description: "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
-    images: ["https://aalsaigh.com/images/cover.png"]
+    title:
+      "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+    description:
+      "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+    images: ["https://aalsaigh.com/images/cover.png"],
   },
   verification: {
     google: "",
     yandex: "",
-    other: {}
-  }
+    other: {},
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -60,11 +67,11 @@ export default function RootLayout({ children }) {
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-PMBCVLQ5');
+            })(window,document,'script','dataLayer','GTM-N2LX6WFB');
           `}
         </Script>
       </head>
@@ -72,16 +79,14 @@ export default function RootLayout({ children }) {
         {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-PMBCVLQ5"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N2LX6WFB"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
 
-        <LanguageProvider initialLanguage="ar">
-          {children}
-        </LanguageProvider>
+        <LanguageProvider initialLanguage="ar">{children}</LanguageProvider>
 
         {/* JavaScript Files */}
         <Script src="/js/jquery-3.7.1.min.js" strategy="beforeInteractive" />
@@ -91,14 +96,20 @@ export default function RootLayout({ children }) {
         <Script src="/js/swiper-bundle.min.js" strategy="afterInteractive" />
         <Script src="/js/jquery.waypoints.min.js" strategy="afterInteractive" />
         <Script src="/js/jquery.counterup.min.js" strategy="afterInteractive" />
-        <Script src="/js/jquery.magnific-popup.min.js" strategy="afterInteractive" />
+        <Script
+          src="/js/jquery.magnific-popup.min.js"
+          strategy="afterInteractive"
+        />
         <Script src="/js/SmoothScroll.js" strategy="afterInteractive" />
         <Script src="/js/parallaxie.js" strategy="afterInteractive" />
         <Script src="/js/gsap.min.js" strategy="afterInteractive" />
         <Script src="/js/magiccursor.js" strategy="afterInteractive" />
         <Script src="/js/SplitText.js" strategy="afterInteractive" />
         <Script src="/js/ScrollTrigger.min.js" strategy="afterInteractive" />
-        <Script src="/js/jquery.mb.YTPlayer.min.js" strategy="afterInteractive" />
+        <Script
+          src="/js/jquery.mb.YTPlayer.min.js"
+          strategy="afterInteractive"
+        />
         <Script src="/js/wow.js" strategy="afterInteractive" />
         <Script src="/js/function.js" strategy="afterInteractive" />
       </body>
