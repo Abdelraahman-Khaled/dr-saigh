@@ -77,7 +77,7 @@ export default function Footer() {
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/dr_Abdelrahman_alsaigh?igsh=MjVuYjlobTE4MnJv" target="_blank">
+                                    <a href="https://www.instagram.com/dr_abdulrahman_alsaigh" target="_blank">
                                         <i className="fa-brands fa-instagram fa-2x"></i>
                                     </a>
                                 </li>
