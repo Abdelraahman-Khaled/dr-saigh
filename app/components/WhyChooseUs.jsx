@@ -10,9 +10,9 @@ export default function WhyChooseUs() {
     const benefitIcons = [
         'weight-loss.png',
         'hormone-therapy.png',
-        'cholesterol.png',
+        'cholesterol.webp',
         'gym.png',
-        'sleep-quality.png',
+        'sleep-quality.webp',
         'eat.png'
     ];
 
@@ -63,7 +63,7 @@ export default function WhyChooseUs() {
                         {/* Why Choose Image Start */}
                         <div className="why-choose-image wow fadeInUp">
                             <figure>
-                                <img src="images/why-choose-us-img.png" alt="image" />
+                                <img src="images/why-choose-us-img.webp" alt="image" />
                             </figure>
                         </div>
                         {/* Why Choose Image End */}

@@ -22,6 +22,48 @@ const faSolid = localFont({
   weight: "900",
 });
 
+const tajawal = localFont({
+  src: [
+    {
+      path: "../public/webfonts/tajawal-200.woff2",
+      weight: "200",
+      style: "normal",
+    },
+    {
+      path: "../public/webfonts/tajawal-300.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/webfonts/tajawal-400.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/webfonts/tajawal-500.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/webfonts/tajawal-700.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/webfonts/tajawal-800.woff2",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/webfonts/tajawal-900.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-tajawal",
+  display: "swap",
+});
+
 export const metadata = {
   title:
     "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
@@ -76,7 +118,7 @@ export default async function RootLayout({ children }) {
     <html
       lang={language}
       dir={dir}
-      className={`${faBrands.variable} ${faRegular.variable} ${faSolid.variable}`}
+      className={`${faBrands.variable} ${faRegular.variable} ${faSolid.variable} ${tajawal.variable}`}
     >
       <head>
         {/* Favicon - WebP with fallback */}

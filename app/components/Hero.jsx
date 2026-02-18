@@ -49,7 +49,7 @@ export default function Hero() {
                             <div className="export-dantist-box">
                                 <div className="icon-box">
                                     <figure className="image-anime">
-                                        <img src="images/dantist-doctor-img.jpg" alt="image" />
+                                        <img src="images/dantist-doctor-img.webp" alt="image" />
                                     </figure>
                                 </div>
                                 <div className="export-dantist-content">
