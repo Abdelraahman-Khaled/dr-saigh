@@ -16,8 +16,8 @@ export default function Footer() {
                         <div className="about-footer">
                             {/* Footer Logo Start */}
                             <div className="footer-logo">
-                                <Link href="https://aalsaigh.com">
-                                    <Image src="/images/logo.webp" width={100} height={128} loading="lazy" alt="logo" />
+                                <Link href="https://aalsaigh.com" aria-label={t('footer.logoAlt') || 'د. عبدالرحمن الصايغ - الصفحة الرئيسية'}>
+                                    <Image src="/images/logo.webp" width={100} height={128} loading="lazy" alt="شعار عيادة د. عبدالرحمن الصايغ" />
                                 </Link>
                             </div>
                             {/* Footer Logo End */}
@@ -56,33 +56,33 @@ export default function Footer() {
                             <h3>{t('footer.socialMedia')}</h3>
                             <ul className="d-flex flex-wrap gap-1 mt-5 justify-content-between">
                                 <li>
-                                    <Link href="https://www.facebook.com/profile.php?id=100063006469853&mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer">
-                                        <i className="fa-brands fa-facebook-f fa-2x"></i>
+                                    <Link href="https://www.facebook.com/profile.php?id=100063006469853&mibextid=LQQJ4d" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                        <i className="fa-brands fa-facebook-f fa-2x" aria-hidden="true"></i>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" target="_blank" rel="noopener noreferrer">
-                                        <i className="fa-brands fa-youtube fa-2x"></i>
+                                    <Link href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                                        <i className="fa-brands fa-youtube fa-2x" aria-hidden="true"></i>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://www.tiktok.com/@dralsaigh?_t=8mhhDHkrj61&_r=1" target="_blank" rel="noopener noreferrer">
-                                        <i className="fa-brands fa-tiktok fa-2x"></i>
+                                    <Link href="https://www.tiktok.com/@dralsaigh?_t=8mhhDHkrj61&_r=1" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                                        <i className="fa-brands fa-tiktok fa-2x" aria-hidden="true"></i>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://www.snapchat.com/add/dr.alsaigh?invite_id=61uL12f6&locale=en_SA%40calendar%3Dgregorian&share_id=kzKwOgRTTw-EiB2avINOfw&sid=6367c8d2dd774adc9e2d84cda7f26ae0" target="_blank" rel="noopener noreferrer">
-                                        <i className="fa-brands fa-snapchat fa-2x"></i>
+                                    <Link href="https://www.snapchat.com/add/dr.alsaigh?invite_id=61uL12f6&locale=en_SA%40calendar%3Dgregorian&share_id=kzKwOgRTTw-EiB2avINOfw&sid=6367c8d2dd774adc9e2d84cda7f26ae0" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+                                        <i className="fa-brands fa-snapchat fa-2x" aria-hidden="true"></i>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://x.com/aarsaigh" target="_blank" rel="noopener noreferrer">
-                                        <i className="fa-brands fa-twitter fa-2x"></i>
+                                    <Link href="https://x.com/aarsaigh" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                                        <i className="fa-brands fa-twitter fa-2x" aria-hidden="true"></i>
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link href="https://www.instagram.com/dr_abdulrahman_alsaigh" target="_blank" rel="noopener noreferrer">
-                                        <i className="fa-brands fa-instagram fa-2x"></i>
+                                    <Link href="https://www.instagram.com/dr_abdulrahman_alsaigh" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                                        <i className="fa-brands fa-instagram fa-2x" aria-hidden="true"></i>
                                     </Link>
                                 </li>
                             </ul>

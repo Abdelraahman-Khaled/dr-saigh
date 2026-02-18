@@ -61,10 +61,12 @@ export default function ContactPage() {
     <>
       <Preloader />
       <Header />
-      <ContactHero />
-      <ContactInfo />
-      <ContactForm />
-      <GoogleMap />
+      <main>
+        <ContactHero />
+        <ContactInfo />
+        <ContactForm />
+        <GoogleMap />
+      </main>
       <Footer />
       <WhatsAppButton />
       <ClientScripts />

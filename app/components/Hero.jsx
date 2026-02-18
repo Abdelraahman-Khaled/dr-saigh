@@ -46,7 +46,9 @@ export default function Hero() {
                                         alt="د. عبدالرحمن الصائغ"
                                         width={570}
                                         height={570}
-                                        priority
+                                        fetchPriority="high"
+                                        decoding="sync"
+                                        loading="eager"
                                         quality={85}
                                     />
                                 </figure>
@@ -67,7 +69,7 @@ export default function Hero() {
                                     </figure>
                                 </div>
                                 <div className="export-dantist-content">
-                                    <h3>{t('hero.doctorName')}</h3>
+                                    <h2>{t('hero.doctorName')}</h2>
                                     <p>{t('hero.doctorTitle')}</p>
                                 </div>
                             </div>

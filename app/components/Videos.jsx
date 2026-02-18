@@ -13,7 +13,7 @@ export default function Videos() {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">{t('videos.subtitle')}</h3>
+                            <p className="wow fadeInUp">{t('videos.subtitle')}</p>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
                                 {t('videos.title')} <span>{t('videos.titleHighlight')}</span> {t('videos.titleEnd')}
                             </h2>

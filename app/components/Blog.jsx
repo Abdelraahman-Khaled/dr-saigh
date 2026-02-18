@@ -13,7 +13,7 @@ export default function Blog({ initialBlogs = [] }) {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">{t('blog.subtitle')}</h3>
+                            <p className="wow fadeInUp">{t('blog.subtitle')}</p>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
                                 {t('blog.title')} <span>{t('blog.titleHighlight')}</span> {t('blog.titleEnd')}
                             </h2>

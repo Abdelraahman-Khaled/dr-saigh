@@ -18,7 +18,9 @@ export default function Header() {
                 alt="Logo"
                 width={70}
                 height={90}
-                priority
+                fetchPriority="high"
+                decoding="sync"
+                loading="eager"
               />
             </a>
             {/* Logo End */}

@@ -103,8 +103,9 @@ export default async function BlogDetailsPage({ params }) {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Preloader />
         <Header />
-
-        <BlogContent slug={slug} initialBlog={blog} />
+        <main>
+          <BlogContent slug={slug} initialBlog={blog} />
+        </main>
         <Footer />
         <WhatsAppButton />
         <ClientScripts />

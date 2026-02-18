@@ -32,16 +32,18 @@ export default async function Home() {
     <>
       <Preloader />
       <Header />
-      <Hero />
-      <ScrollingTicker />
-      <About />
-      <Services />
-      <BMICalculator />
-      <WhyChooseUs />
-      <FAQ />
-      <Blog initialBlogs={homeBlogs} />
-      <Videos />
-      <Contact />
+      <main>
+        <Hero />
+        <ScrollingTicker />
+        <About />
+        <Services />
+        <BMICalculator />
+        <WhyChooseUs />
+        <FAQ />
+        <Blog initialBlogs={homeBlogs} />
+        <Videos />
+        <Contact />
+      </main>
       <Footer />
       <WhatsAppButton />
       <ClientScripts />

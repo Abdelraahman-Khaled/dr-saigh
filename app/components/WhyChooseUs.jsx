@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">{t('whyChooseUs.subtitle')}</h3>
+                            <p className="wow fadeInUp">{t('whyChooseUs.subtitle')}</p>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
                                 {t('whyChooseUs.title')} <span>{t('whyChooseUs.titleHighlight')}</span> {t('whyChooseUs.titleEnd')}
                             </h2>

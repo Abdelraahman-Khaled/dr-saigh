@@ -22,7 +22,7 @@ export default function Services() {
                     <div className="col-lg-12">
                         {/* Section Title Start */}
                         <div className="section-title">
-                            <h3 className="wow fadeInUp">{t('services.subtitle')}</h3>
+                            <p className="wow fadeInUp">{t('services.subtitle')}</p>
                             <h2 className="wow fadeInUp" data-cursor="-opaque">
                                 {t('services.title')} <span>{t('services.titleHighlight')}</span> {t('services.titleEnd')}
                             </h2>

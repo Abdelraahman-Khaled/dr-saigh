@@ -9,10 +9,12 @@
     "lint": "eslint"
   },
   "browserslist": [
-    "last 2 versions",
-    "> 0.5%",
-    "not dead",
-    "not ie 11"
+    "chrome >= 80",
+    "firefox >= 78",
+    "safari >= 14",
+    "edge >= 80",
+    "not ie 11",
+    "not op_mini all"
   ],
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

@@ -15,7 +15,7 @@ export default function Contact() {
                         <div className="contact-now-content">
                             {/* Section Title Start */}
                             <div className="section-title">
-                                <h3 className="wow fadeInUp">{t('contact.subtitle')}</h3>
+                                <p className="wow fadeInUp">{t('contact.subtitle')}</p>
                                 <h2 className="wow fadeInUp" data-cursor="-opaque">
                                     {t('contact.title')}<span> {t('contact.titleHighlight')}</span> {t('contact.titleEnd')}
                                 </h2>

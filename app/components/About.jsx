@@ -62,7 +62,7 @@ export default function About() {
                         <div className="about-content">
                             {/* Section Title Start */}
                             <div className="section-title">
-                                <h3 className="wow fadeInUp">{t('about.subtitle')}</h3>
+                                <p className="wow fadeInUp">{t('about.subtitle')}</p>
                                 <h2 className="wow fadeInUp" data-cursor="-opaque">
                                     {t('about.title')}
                                 </h2>

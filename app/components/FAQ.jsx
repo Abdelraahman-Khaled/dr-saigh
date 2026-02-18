@@ -33,7 +33,7 @@ export default function FAQ() {
                         <div className="how-it-work-content">
                             {/* Section Title Start */}
                             <div className="section-title">
-                                <h3 className="wow fadeInUp">{t('faq.subtitle')}</h3>
+                                <p className="wow fadeInUp">{t('faq.subtitle')}</p>
                                 <h2 className="wow fadeInUp" data-cursor="-opaque">
                                     {t('faq.title')} <span>{t('faq.titleHighlight')}</span> {t('faq.titleEnd')}
                                 </h2>

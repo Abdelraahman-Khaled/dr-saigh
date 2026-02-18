@@ -8,13 +8,13 @@ export default function Preloader() {
             const timer = setTimeout(() => {
                 const preloader = document.querySelector('.preloader');
                 if (preloader) {
-                    preloader.style.transition = 'opacity 0.6s ease';
+                    preloader.style.transition = 'opacity 0.3s ease';
                     preloader.style.opacity = '0';
                     setTimeout(() => {
                         preloader.style.display = 'none';
-                    }, 600);
+                    }, 300);
                 }
-            }, 500); // Small delay for visual effect
+            }, 50); // Minimal delay for visual effect
 
             return () => clearTimeout(timer);
         }
