@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import Preloader from "../../components/Preloader";
 import Header from "../../components/Header";
-import BlogHero from "./components/BlogHero";
 import BlogContent from "./components/BlogContent";
 import Footer from "../../components/Footer";
 import WhatsAppButton from "../../components/WhatsAppButton";
