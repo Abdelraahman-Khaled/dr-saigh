@@ -10,8 +10,8 @@ export const getBlogs = async () => {
 };
 
 export const getBlogDetails = async (slug) => {
-    const res = await fetch(`${API}/blog_show?slug=${encodeURIComponent(slug)}`, {
-        next: { revalidate: 60 }, // IMPORTANT
+    const res = await fetch(`${API}/blog_show?slug=${slug}`, {
+        cache: 'no-store',
     });
 
     if (!res.ok) throw new Error('Failed to fetch blog');

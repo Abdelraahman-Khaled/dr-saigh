@@ -1,6 +1,7 @@
 import Script from "next/script";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
+import ReactQueryProvider from "./providers";
 
 export const metadata = {
   title:
@@ -45,9 +46,15 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+import { cookies } from "next/headers";
+
+export default async function RootLayout({ children }) {
+  const cookieStore = await cookies();
+  const language = cookieStore.get("NEXT_LOCALE")?.value || "ar";
+  const dir = language === "ar" ? "rtl" : "ltr";
+
   return (
-    <html lang="ar" dir="rtl">
+    <html lang={language} dir={dir}>
       <head>
         {/* Favicon - WebP with fallback */}
         <link rel="icon" type="image/webp" href="/images/favicon.webp" />
@@ -86,7 +93,11 @@ export default function RootLayout({ children }) {
           ></iframe>
         </noscript>
 
-        <LanguageProvider initialLanguage="ar">{children}</LanguageProvider>
+        <ReactQueryProvider>
+          <LanguageProvider initialLanguage={language}>
+            {children}
+          </LanguageProvider>
+        </ReactQueryProvider>
 
         {/* JavaScript Files */}
         <Script src="/js/jquery-3.7.1.min.js" strategy="beforeInteractive" />

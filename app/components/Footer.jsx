@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
 export default function Footer() {
     const { t, language } = useLanguage();
@@ -14,7 +15,9 @@ export default function Footer() {
                         <div className="about-footer">
                             {/* Footer Logo Start */}
                             <div className="footer-logo">
-                                <img src="/images/logo.webp" style={{ width: '100px' }} alt="image" />
+                                <Link href="https://aalsaigh.com">
+                                    <img src="/images/logo.webp" style={{ width: '100px' }} alt="image" />
+                                </Link>
                             </div>
                             {/* Footer Logo End */}
 
@@ -33,13 +36,13 @@ export default function Footer() {
                         <div className="footer-links footer-quick-links">
                             <h3>{t('footer.quickLinks')}</h3>
                             <ul>
-                                <li><a href="#home">{t('footer.links.home')}</a></li>
-                                <li><a href="#about">{t('footer.links.about')}</a></li>
-                                <li><a href="#operations">{t('footer.links.operations')}</a></li>
+                                <li><Link href="/">{t('footer.links.home')}</Link></li>
+                                <li><Link href="/about">{t('footer.links.about')}</Link></li>
+                                <li><Link href="/operations">{t('footer.links.operations')}</Link></li>
                                 <li>
-                                    <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
+                                    <Link target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
                                         {t('footer.links.bookAppointment')}
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -52,34 +55,34 @@ export default function Footer() {
                             <h3>{t('footer.socialMedia')}</h3>
                             <ul className="d-flex flex-wrap gap-1 mt-5 justify-content-between">
                                 <li>
-                                    <a href="https://www.facebook.com/profile.php?id=100063006469853&mibextid=LQQJ4d" target="_blank">
+                                    <Link href="https://www.facebook.com/profile.php?id=100063006469853&mibextid=LQQJ4d" target="_blank">
                                         <i className="fa-brands fa-facebook-f fa-2x"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" target="_blank">
+                                    <Link href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" target="_blank">
                                         <i className="fa-brands fa-youtube fa-2x"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="https://www.tiktok.com/@dralsaigh?_t=8mhhDHkrj61&_r=1" target="_blank">
+                                    <Link href="https://www.tiktok.com/@dralsaigh?_t=8mhhDHkrj61&_r=1" target="_blank">
                                         <i className="fa-brands fa-tiktok fa-2x"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="https://www.snapchat.com/add/dr.alsaigh?invite_id=61uL12f6&locale=en_SA%40calendar%3Dgregorian&share_id=kzKwOgRTTw-EiB2avINOfw&sid=6367c8d2dd774adc9e2d84cda7f26ae0" target="_blank">
+                                    <Link href="https://www.snapchat.com/add/dr.alsaigh?invite_id=61uL12f6&locale=en_SA%40calendar%3Dgregorian&share_id=kzKwOgRTTw-EiB2avINOfw&sid=6367c8d2dd774adc9e2d84cda7f26ae0" target="_blank">
                                         <i className="fa-brands fa-snapchat fa-2x"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="https://x.com/aarsaigh" target="_blank">
+                                    <Link href="https://x.com/aarsaigh" target="_blank">
                                         <i className="fa-brands fa-twitter fa-2x"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li>
-                                    <a href="https://www.instagram.com/dr_abdulrahman_alsaigh" target="_blank">
+                                    <Link href="https://www.instagram.com/dr_abdulrahman_alsaigh" target="_blank">
                                         <i className="fa-brands fa-instagram fa-2x"></i>
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -91,8 +94,8 @@ export default function Footer() {
                         <div className="footer-links footer-contact-links">
                             <h3>{t('footer.contactUs')}</h3>
                             <ul>
-                                <li><a href="mailto:aarsaigh@hotmail.com">{t('contact.email')}</a></li>
-                                <li dir="ltr" className={`${language === 'ar' ? 'text-end' : 'text-start'}`}><a href="tel:966552200258">{t('contact.phone')}</a></li>
+                                <li><Link href="mailto:aarsaigh@hotmail.com">{t('contact.email')}</Link></li>
+                                <li dir="ltr" className={`${language === 'ar' ? 'text-end' : 'text-start'}`}><Link href="tel:966552200258">{t('contact.phone')}</Link></li>
                             </ul>
                         </div>
                         {/* Footer Contact Links End */}

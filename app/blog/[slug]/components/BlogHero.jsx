@@ -1,11 +1,4 @@
-export default function BlogHero({ title, author = "د. عبدالرحمن الصائغ", date }) {
-    // Format date if provided
-    const formattedDate = date ? new Date(date).toLocaleDateString('ar-SA', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
-    }) : '';
-
+export default function BlogHero({ title, author }) {
     return (
         <div className="page-header">
             <div className="container">
@@ -21,11 +14,7 @@ export default function BlogHero({ title, author = "د. عبدالرحمن ال�
                                     <li className="breadcrumb-item">
                                         <i className="fa-solid fa-user-nurse"></i> {author}
                                     </li>
-                                    {formattedDate && (
-                                        <li className="breadcrumb-item">
-                                            <i className="fa-regular fa-clock"></i> {formattedDate}
-                                        </li>
-                                    )}
+
                                 </ol>
                             </div>
                         </div>

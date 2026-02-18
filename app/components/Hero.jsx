@@ -40,7 +40,7 @@ export default function Hero() {
                             {/* Hero Img Start */}
                             <div className="hero-img">
                                 <figure>
-                                    <img src="images/hero-img.webp" alt="image" />
+                                    <img src="images/hero-img.webp" alt="image" height={570} width={570} />
                                 </figure>
                             </div>
                             {/* Hero Img End */}
