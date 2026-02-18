@@ -1,1 +1,333 @@
-!function(e){"use strict";var t=e(window);e("body");if(e(".active-sticky-header").length){function r(){e("header.main-header").css("height",e("header .header-sticky").outerHeight())}t.on("resize",(function(){r()})),e(window).on("scroll",(function(){var t=e(window).scrollTop();r();var o=e("header .header-sticky").outerHeight();e("header .header-sticky").toggleClass("hide",t>o+100),e("header .header-sticky").toggleClass("active",t>600)}))}if(e("#menu").slicknav({label:"",prependTo:".responsive-menu"}),e("a[href='#top']").length&&e("a[href='#top']").click((function(){return e("html, body").animate({scrollTop:0},"slow"),!1})),e(".skills-progress-bar").length&&e(".skills-progress-bar").waypoint((function(){e(".skillbar").each((function(){e(this).find(".count-bar").animate({width:e(this).attr("data-percent")},2e3)}))}),{offset:"50%"}),e("#herovideo").length)e("#herovideo").YTPlayer();if(e(".counter").length&&e(".counter").counterUp({delay:6,time:3e3}),e(".reveal").length){gsap.registerPlugin(ScrollTrigger),document.querySelectorAll(".reveal").forEach((e=>{let t=e.querySelector("img"),o=gsap.timeline({scrollTrigger:{trigger:e,toggleActions:"play none none none"}});o.set(e,{autoAlpha:1}),o.from(e,1,{xPercent:-100,ease:Power2.out}),o.from(t,1,{xPercent:100,scale:1,delay:-1,ease:Power2.out})}))}if(e(".text-anime-style-1").length){let i=.05,c=.5;document.querySelectorAll(".text-anime-style-1").forEach((e=>{let t=new SplitText(e,{type:"chars, words"});gsap.from(t.words,{duration:1,delay:c,x:20,autoAlpha:0,stagger:i,scrollTrigger:{trigger:e,start:"top 85%"}})}))}if(e(".text-anime-style-2").length){let p=.03,u=20,f=.1,d="power2.out";document.querySelectorAll(".text-anime-style-2").forEach((e=>{let t=new SplitText(e,{type:"chars, words"});gsap.from(t.chars,{duration:1,delay:f,x:u,autoAlpha:0,stagger:p,ease:d,scrollTrigger:{trigger:e,start:"top 85%"}})}))}if(e(".text-anime-style-3").length){document.querySelectorAll(".text-anime-style-3").forEach((e=>{e.animation&&(e.animation.progress(1).kill(),e.split.revert()),e.split=new SplitText(e,{type:"lines,words,chars",linesClass:"split-line"}),gsap.set(e,{perspective:400}),gsap.set(e.split.chars,{opacity:0,x:"50"}),e.animation=gsap.to(e.split.chars,{scrollTrigger:{trigger:e,start:"top 90%"},x:"0",y:"0",rotateX:"0",opacity:1,duration:1,ease:Back.easeOut,stagger:.02})}))}var o=e(".parallaxie");o.length&&t.width()>991&&t.width()>768&&o.parallaxie({speed:.55,offset:0}),e(".gallery-items").magnificPopup({delegate:"a",type:"image",closeOnContentClick:!1,closeBtnInside:!1,mainClass:"mfp-with-zoom",image:{verticalFit:!0},gallery:{enabled:!0},zoom:{enabled:!0,duration:300,opener:function(e){return e.find("img")}}});var a=e("#contactForm");function s(t,o){if(t)var a="h3 text-success";else a="h3 text-danger";e("#msgSubmit").removeClass().addClass(a).text(o)}a.validator({focus:!1}).on("submit",(function(t){var o,n,l,r,i;t.isDefaultPrevented()||(t.preventDefault(),o=e("#fullname").val(),n=e("#email").val(),l=e("#phone").val(),r=e("#subject").val(),i=e("#msg").val(),e.ajax({type:"POST",url:"form-process.php",data:"fullname="+o+"&name=&email="+n+"&phone="+l+"&subject="+r+"&message="+i,success:function(e){"success"==e?(a[0].reset(),s(!0,"Message Sent Successfully!")):s(!1,e)}}))}));var n=e("#appointmentForm");function l(t,o){if(t)var a="h3 text-success";else a="h3 text-danger";e("#msgSubmit").removeClass().addClass(a).text(o)}n.validator({focus:!1}).on("submit",(function(t){var o,a,s,r;t.isDefaultPrevented()||(t.preventDefault(),o=e("#name").val(),a=e("#email").val(),s=e("#phone").val(),s=e("#services").val(),r=e("#date").val(),e.ajax({type:"POST",url:"form-appointment.php",data:"name="+o+"&email="+a+"&phone="+s+"&services="+services+"&date="+r,success:function(e){"success"==e?(n[0].reset(),l(!0,"Message Sent Successfully!")):l(!1,e)}}))})),(new WOW).init(),e(".popup-video").length&&e(".popup-video").magnificPopup({type:"iframe",mainClass:"mfp-fade",removalDelay:160,preloader:!1,fixedContentPos:!0}),e(document).ready((function(){e("#bmiForm").on("submit",(function(t){t.preventDefault();const o=e("#height").val(),a=e("#weight").val();if(!o||!a||o<=0||a<=0)return void alert("الرجاء إدخال قيم صحيحة للطول والوزن.");const s=o/100,n=(a/(s*s)).toFixed(2);let l="";l=n<18.5?"نقص الوزن":n>=18.5&&n<24.9?"وزن طبيعي":n>=25&&n<29.9?"زيادة الوزن":"السمنة",e(".status").text(`مؤشر كتلة الجسم: ${n} - ${l}`),e(".status").css("background-color",n<18.5?"lightblue":n<24.9?"lightgreen":n<29.9?"yellow":"red"),e(".layout").fadeIn()})),e(".fa-xmark").on("click",(function(){e(".layout").fadeOut()})),e(document).on("click",(function(t){const o=e(".layout"),a=e(".result");o.is(":visible")&&!a.is(t.target)&&0===a.has(t.target).length&&o.fadeOut()}))})),e(document).ready((function(){e(".read-more-1").on("click",(function(){e(".popup.one").addClass("show")})),e(".popup.one .fa-close").on("click",(function(){e(".popup.one").removeClass("show")})),e(".popup.one").on("click",(function(t){e(t.target).closest(".layer").length||e(".popup.one").removeClass("show")}))})),e(document).ready((function(){e(".read-more-2").on("click",(function(){e(".popup.two").addClass("show")})),e(".popup.two .fa-close").on("click",(function(){e(".popup.two").removeClass("show")})),e(".popup.two").on("click",(function(t){e(t.target).closest(".layer").length||e(".popup.two").removeClass("show")}))})),e(document).ready((function(){e(".read-more-3").on("click",(function(){e(".popup.three").addClass("show")})),e(".popup.three .fa-close").on("click",(function(){e(".popup.three").removeClass("show")})),e(".popup.three").on("click",(function(t){e(t.target).closest(".layer").length||e(".popup.three").removeClass("show")}))})),e(document).ready((function(){e(".read-more-4").on("click",(function(){e(".popup.four").addClass("show")})),e(".popup.four .fa-close").on("click",(function(){e(".popup.four").removeClass("show")})),e(".popup.four").on("click",(function(t){e(t.target).closest(".layer").length||e(".popup.four").removeClass("show")}))})),e(document).ready((function(){e(".read-more-5").on("click",(function(){e(".popup.five").addClass("show")})),e(".popup.five .fa-close").on("click",(function(){e(".popup.five").removeClass("show")})),e(".popup.five").on("click",(function(t){e(t.target).closest(".layer").length||e(".popup.five").removeClass("show")}))}))}(jQuery);
+!(function (e) {
+  "use strict";
+  var t = e(window);
+  e("body");
+  if (e(".active-sticky-header").length) {
+    var headerMain = e("header.main-header"),
+      headerSticky = e("header .header-sticky"),
+      cachedHeaderHeight = 0;
+    function r() {
+      cachedHeaderHeight = headerSticky.outerHeight();
+      headerMain.css("height", cachedHeaderHeight);
+    }
+    r();
+    t.on("resize", function () {
+      r();
+    });
+    var lastScrollTop = 0,
+      ticking = !1;
+    e(window).on("scroll", function () {
+      lastScrollTop = e(window).scrollTop();
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          headerSticky.toggleClass(
+            "hide",
+            lastScrollTop > cachedHeaderHeight + 100,
+          );
+          headerSticky.toggleClass("active", lastScrollTop > 600);
+          ticking = !1;
+        });
+        ticking = !1;
+      }
+    });
+  }
+  if (
+    (e("#menu").slicknav({ label: "", prependTo: ".responsive-menu" }),
+    e("a[href='#top']").length &&
+      e("a[href='#top']").click(function () {
+        return (e("html, body").animate({ scrollTop: 0 }, "slow"), !1);
+      }),
+    e(".skills-progress-bar").length &&
+      e(".skills-progress-bar").waypoint(
+        function () {
+          e(".skillbar").each(function () {
+            e(this)
+              .find(".count-bar")
+              .animate({ width: e(this).attr("data-percent") }, 2e3);
+          });
+        },
+        { offset: "50%" },
+      ),
+    e("#herovideo").length)
+  )
+    e("#herovideo").YTPlayer();
+  if (
+    (e(".counter").length && e(".counter").counterUp({ delay: 6, time: 3e3 }),
+    e(".reveal").length)
+  ) {
+    (gsap.registerPlugin(ScrollTrigger),
+      document.querySelectorAll(".reveal").forEach((e) => {
+        let t = e.querySelector("img"),
+          o = gsap.timeline({
+            scrollTrigger: { trigger: e, toggleActions: "play none none none" },
+          });
+        (o.set(e, { autoAlpha: 1 }),
+          o.from(e, 1, { xPercent: -100, ease: Power2.out }),
+          o.from(t, 1, {
+            xPercent: 100,
+            scale: 1,
+            delay: -1,
+            ease: Power2.out,
+          }));
+      }));
+  }
+  if (e(".text-anime-style-1").length) {
+    let i = 0.05,
+      c = 0.5;
+    document.querySelectorAll(".text-anime-style-1").forEach((e) => {
+      let t = new SplitText(e, { type: "chars, words" });
+      gsap.from(t.words, {
+        duration: 1,
+        delay: c,
+        x: 20,
+        autoAlpha: 0,
+        stagger: i,
+        scrollTrigger: { trigger: e, start: "top 85%" },
+      });
+    });
+  }
+  if (e(".text-anime-style-2").length) {
+    let p = 0.03,
+      u = 20,
+      f = 0.1,
+      d = "power2.out";
+    document.querySelectorAll(".text-anime-style-2").forEach((e) => {
+      let t = new SplitText(e, { type: "chars, words" });
+      gsap.from(t.chars, {
+        duration: 1,
+        delay: f,
+        x: u,
+        autoAlpha: 0,
+        stagger: p,
+        ease: d,
+        scrollTrigger: { trigger: e, start: "top 85%" },
+      });
+    });
+  }
+  if (e(".text-anime-style-3").length) {
+    document.querySelectorAll(".text-anime-style-3").forEach((e) => {
+      (e.animation && (e.animation.progress(1).kill(), e.split.revert()),
+        (e.split = new SplitText(e, {
+          type: "lines,words,chars",
+          linesClass: "split-line",
+        })),
+        gsap.set(e, { perspective: 400 }),
+        gsap.set(e.split.chars, { opacity: 0, x: "50" }),
+        (e.animation = gsap.to(e.split.chars, {
+          scrollTrigger: { trigger: e, start: "top 90%" },
+          x: "0",
+          y: "0",
+          rotateX: "0",
+          opacity: 1,
+          duration: 1,
+          ease: Back.easeOut,
+          stagger: 0.02,
+        })));
+    });
+  }
+  var o = e(".parallaxie");
+  (o.length &&
+    t.width() > 991 &&
+    t.width() > 768 &&
+    o.parallaxie({ speed: 0.55, offset: 0 }),
+    e(".gallery-items").magnificPopup({
+      delegate: "a",
+      type: "image",
+      closeOnContentClick: !1,
+      closeBtnInside: !1,
+      mainClass: "mfp-with-zoom",
+      image: { verticalFit: !0 },
+      gallery: { enabled: !0 },
+      zoom: {
+        enabled: !0,
+        duration: 300,
+        opener: function (e) {
+          return e.find("img");
+        },
+      },
+    }));
+  var a = e("#contactForm");
+  function s(t, o) {
+    if (t) var a = "h3 text-success";
+    else a = "h3 text-danger";
+    e("#msgSubmit").removeClass().addClass(a).text(o);
+  }
+  a.validator({ focus: !1 }).on("submit", function (t) {
+    var o, n, l, r, i;
+    t.isDefaultPrevented() ||
+      (t.preventDefault(),
+      (o = e("#fullname").val()),
+      (n = e("#email").val()),
+      (l = e("#phone").val()),
+      (r = e("#subject").val()),
+      (i = e("#msg").val()),
+      e.ajax({
+        type: "POST",
+        url: "form-process.php",
+        data:
+          "fullname=" +
+          o +
+          "&name=&email=" +
+          n +
+          "&phone=" +
+          l +
+          "&subject=" +
+          r +
+          "&message=" +
+          i,
+        success: function (e) {
+          "success" == e
+            ? (a[0].reset(), s(!0, "Message Sent Successfully!"))
+            : s(!1, e);
+        },
+      }));
+  });
+  var n = e("#appointmentForm");
+  function l(t, o) {
+    if (t) var a = "h3 text-success";
+    else a = "h3 text-danger";
+    e("#msgSubmit").removeClass().addClass(a).text(o);
+  }
+  (n.validator({ focus: !1 }).on("submit", function (t) {
+    var o, a, s, r;
+    t.isDefaultPrevented() ||
+      (t.preventDefault(),
+      (o = e("#name").val()),
+      (a = e("#email").val()),
+      (s = e("#phone").val()),
+      (s = e("#services").val()),
+      (r = e("#date").val()),
+      e.ajax({
+        type: "POST",
+        url: "form-appointment.php",
+        data:
+          "name=" +
+          o +
+          "&email=" +
+          a +
+          "&phone=" +
+          s +
+          "&services=" +
+          services +
+          "&date=" +
+          r,
+        success: function (e) {
+          "success" == e
+            ? (n[0].reset(), l(!0, "Message Sent Successfully!"))
+            : l(!1, e);
+        },
+      }));
+  }),
+    new WOW().init(),
+    e(".popup-video").length &&
+      e(".popup-video").magnificPopup({
+        type: "iframe",
+        mainClass: "mfp-fade",
+        removalDelay: 160,
+        preloader: !1,
+        fixedContentPos: !0,
+      }),
+    e(document).ready(function () {
+      (e("#bmiForm").on("submit", function (t) {
+        t.preventDefault();
+        const o = e("#height").val(),
+          a = e("#weight").val();
+        if (!o || !a || o <= 0 || a <= 0)
+          return void alert("الرجاء إدخال قيم صحيحة للطول والوزن.");
+        const s = o / 100,
+          n = (a / (s * s)).toFixed(2);
+        let l = "";
+        ((l =
+          n < 18.5
+            ? "نقص الوزن"
+            : n >= 18.5 && n < 24.9
+              ? "وزن طبيعي"
+              : n >= 25 && n < 29.9
+                ? "زيادة الوزن"
+                : "السمنة"),
+          e(".status").text(`مؤشر كتلة الجسم: ${n} - ${l}`),
+          e(".status").css(
+            "background-color",
+            n < 18.5
+              ? "lightblue"
+              : n < 24.9
+                ? "lightgreen"
+                : n < 29.9
+                  ? "yellow"
+                  : "red",
+          ),
+          e(".layout").fadeIn());
+      }),
+        e(".fa-xmark").on("click", function () {
+          e(".layout").fadeOut();
+        }),
+        e(document).on("click", function (t) {
+          const o = e(".layout"),
+            a = e(".result");
+          o.is(":visible") &&
+            !a.is(t.target) &&
+            0 === a.has(t.target).length &&
+            o.fadeOut();
+        }));
+    }),
+    e(document).ready(function () {
+      (e(".read-more-1").on("click", function () {
+        e(".popup.one").addClass("show");
+      }),
+        e(".popup.one .fa-close").on("click", function () {
+          e(".popup.one").removeClass("show");
+        }),
+        e(".popup.one").on("click", function (t) {
+          e(t.target).closest(".layer").length ||
+            e(".popup.one").removeClass("show");
+        }));
+    }),
+    e(document).ready(function () {
+      (e(".read-more-2").on("click", function () {
+        e(".popup.two").addClass("show");
+      }),
+        e(".popup.two .fa-close").on("click", function () {
+          e(".popup.two").removeClass("show");
+        }),
+        e(".popup.two").on("click", function (t) {
+          e(t.target).closest(".layer").length ||
+            e(".popup.two").removeClass("show");
+        }));
+    }),
+    e(document).ready(function () {
+      (e(".read-more-3").on("click", function () {
+        e(".popup.three").addClass("show");
+      }),
+        e(".popup.three .fa-close").on("click", function () {
+          e(".popup.three").removeClass("show");
+        }),
+        e(".popup.three").on("click", function (t) {
+          e(t.target).closest(".layer").length ||
+            e(".popup.three").removeClass("show");
+        }));
+    }),
+    e(document).ready(function () {
+      (e(".read-more-4").on("click", function () {
+        e(".popup.four").addClass("show");
+      }),
+        e(".popup.four .fa-close").on("click", function () {
+          e(".popup.four").removeClass("show");
+        }),
+        e(".popup.four").on("click", function (t) {
+          e(t.target).closest(".layer").length ||
+            e(".popup.four").removeClass("show");
+        }));
+    }),
+    e(document).ready(function () {
+      (e(".read-more-5").on("click", function () {
+        e(".popup.five").addClass("show");
+      }),
+        e(".popup.five .fa-close").on("click", function () {
+          e(".popup.five").removeClass("show");
+        }),
+        e(".popup.five").on("click", function (t) {
+          e(t.target).closest(".layer").length ||
+            e(".popup.five").removeClass("show");
+        }));
+    }));
+})(jQuery);
