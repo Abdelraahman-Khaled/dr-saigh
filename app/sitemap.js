@@ -1,5 +1,5 @@
 export default async function sitemap() {
-  const baseUrl = "https://www.aalsaigh.com";
+  const baseUrl = "https://aalsaigh.com";
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
   // Static routes
