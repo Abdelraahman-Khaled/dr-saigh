@@ -3,33 +3,22 @@
   var t = e(window);
   e("body");
   if (e(".active-sticky-header").length) {
-    var headerMain = e("header.main-header"),
-      headerSticky = e("header .header-sticky"),
-      cachedHeaderHeight = 0;
     function r() {
-      cachedHeaderHeight = headerSticky.outerHeight();
-      headerMain.css("height", cachedHeaderHeight);
+      e("header.main-header").css(
+        "height",
+        e("header .header-sticky").outerHeight(),
+      );
     }
-    r();
-    t.on("resize", function () {
+    (t.on("resize", function () {
       r();
-    });
-    var lastScrollTop = 0,
-      ticking = !1;
-    e(window).on("scroll", function () {
-      lastScrollTop = e(window).scrollTop();
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          headerSticky.toggleClass(
-            "hide",
-            lastScrollTop > cachedHeaderHeight + 100,
-          );
-          headerSticky.toggleClass("active", lastScrollTop > 600);
-          ticking = !1;
-        });
-        ticking = !1;
-      }
-    });
+    }),
+      e(window).on("scroll", function () {
+        var t = e(window).scrollTop();
+        r();
+        var o = e("header .header-sticky").outerHeight();
+        (e("header .header-sticky").toggleClass("hide", t > o + 100),
+          e("header .header-sticky").toggleClass("active", t > 600));
+      }));
   }
   if (
     (e("#menu").slicknav({ label: "", prependTo: ".responsive-menu" }),

@@ -49,8 +49,8 @@ export default function BMICalculator() {
                 <div className="hc-appointment-row">
                     <div className="hc-appointmnet-text">
                         <div className="hc-about-top">
-                            <p className="hc-about-subhead">{t('bmiCalculator.subtitle')}</p>
-                            <h2 className="hc-about-head">{t('bmiCalculator.title')}</h2>
+                            <h3 className="hc-about-subhead">{t('bmiCalculator.subtitle')}</h3>
+                            <h4 className="hc-about-head">{t('bmiCalculator.title')}</h4>
                             <p className="hc-paragraph">
                                 {t('bmiCalculator.description')}
                             </p>

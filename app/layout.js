@@ -3,8 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import ReactQueryProvider from "./providers";
-import DeferredStyles from "./components/DeferredStyles";
-
 const faBrands = localFont({
   src: "../public/webfonts/fa-brands-400.woff2",
   variable: "--font-fa-brands",
@@ -133,13 +131,17 @@ export default async function RootLayout({ children }) {
         <link rel="icon" type="image/webp" href="/images/favicon.webp" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/favicon.webp" />
+
         {/* CSS Files */}
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <link href="/css/slicknav.min.css" rel="stylesheet" />
 
         <link href="/css/all.css" rel="stylesheet" media="screen" />
-        <DeferredStyles />
+        <link href="/css/animate.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/magnific-popup.css" />
+        <link rel="stylesheet" href="/css/mousecursor.css" />
         <link href="/css/custom.css" rel="stylesheet" media="screen" />
+
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
