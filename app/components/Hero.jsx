@@ -69,7 +69,7 @@ export default function Hero() {
                                     </figure>
                                 </div>
                                 <div className="export-dantist-content">
-                                    <h2>{t('hero.doctorName')}</h2>
+                                    <h3>{t('hero.doctorName')}</h3>
                                     <p>{t('hero.doctorTitle')}</p>
                                 </div>
                             </div>
