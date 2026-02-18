@@ -84,7 +84,7 @@ export default function About() {
 
                             {/* About Us Footer Start */}
                             <div className="about-us-footer wow fadeInUp" data-wow-delay="0.75s">
-                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" target="_blank" className="btn-default">
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" target="_blank" rel="noopener noreferrer" className="btn-default">
                                     {t('common.bookAppointment')}
                                 </a>
                             </div>

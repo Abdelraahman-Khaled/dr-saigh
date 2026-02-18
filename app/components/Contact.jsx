@@ -77,7 +77,7 @@ export default function Contact() {
 
                             {/* Footer Appointment Button Start  */}
                             <div className="contact-appointment-btn wow fadeInUp" data-wow-delay="1s">
-                                <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" className="btn-default">
+                                <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" className="btn-default">
                                     {t('common.bookAppointment')}
                                 </a>
                             </div>

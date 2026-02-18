@@ -5,6 +5,6 @@ export default function robots() {
       allow: "/",
       disallow: "/cdn-cgi/", // ده السطر اللي هيحل المشكلة اللي في الصورة
     },
-    sitemap: "https://www.aalsaigh.com/sitemap.xml", // استبدل الدومين بموقعك
+    sitemap: "https://aalsaigh.com/sitemap.xml",
   };
 }

@@ -41,7 +41,7 @@ export default function Videos() {
 
                             {/* Post Item Footer Start*/}
                             <div className="post-item-footer">
-                                <a target="_blank" href="https://www.youtube.com/watch?v=Tj8eV90-nVM" className="read-more-btn">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=Tj8eV90-nVM" className="read-more-btn">
                                     اسباب اعادة عمليات السمنة د الصائغ
                                 </a>
                             </div>
@@ -68,7 +68,7 @@ export default function Videos() {
 
                             {/* Post Item Footer Start*/}
                             <div className="post-item-footer">
-                                <a target="_blank" href="https://www.youtube.com/watch?v=wGfuMyImE7M" className="read-more-btn">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=wGfuMyImE7M" className="read-more-btn">
                                     التكميم مع د الصائغ
                                 </a>
                             </div>
@@ -95,7 +95,7 @@ export default function Videos() {
 
                             {/* Post Item Footer Start*/}
                             <div className="post-item-footer">
-                                <a target="_blank" href="https://www.youtube.com/watch?v=80mOaGs_Poc" className="read-more-btn">
+                                <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=80mOaGs_Poc" className="read-more-btn">
                                     ابرة ساكسيندا تنحف و طريقة الاستخدام
                                 </a>
                             </div>
@@ -105,7 +105,7 @@ export default function Videos() {
                     </div>
 
                     <div className="contact-appointment-btn wow fadeInUp" style={{ width: 'fit-content', margin: 'auto', marginTop: '30px' }} data-wow-delay="1s">
-                        <a target="_blank" href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" className="btn-default">
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA?app=desktop" className="btn-default">
                             {t('videos.moreVideos')}
                         </a>
                     </div>
