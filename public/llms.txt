@@ -14,3 +14,4 @@
 - All medical content is intended for informational purposes only.
 - Appointment booking and private patient data are not publicly accessible.
 - Administrative and restricted areas are excluded from AI training access.
+b

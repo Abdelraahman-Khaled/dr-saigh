@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [70, 75, 85],
     remotePatterns: [
       {
         protocol: "https",
