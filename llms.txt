@@ -1,0 +1,16 @@
+# Dr. Al Saigh Clinic
+
+## Sitemaps
+[XML Sitemap](https://aalsaigh.com/sitemap.xml): Includes all crawlable and indexable pages.
+
+## Pages
+- [Home](https://aalsaigh.com/): Leading clinic specialized in advanced surgical techniques.
+- [About Us](https://aalsaigh.com/#about): Learn more about Dr. Al Saigh and the clinic’s expertise.
+- [Services](https://aalsaigh.com/#services): Medical and surgical services provided by the clinic.
+- [Contact](https://aalsaigh.com/#contact): Get in touch or book an appointment.
+- [Blog](https://aalsaigh.com/blog/): Latest medical articles and updates.
+
+## Important Notes
+- All medical content is intended for informational purposes only.
+- Appointment booking and private patient data are not publicly accessible.
+- Administrative and restricted areas are excluded from AI training access.

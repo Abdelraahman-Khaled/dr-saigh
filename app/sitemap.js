@@ -2,35 +2,57 @@ export default async function sitemap() {
   const baseUrl = "https://aalsaigh.com";
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
-  // Static routes
-  const routes = ["", "/contact", "/blog"].map((route) => ({
+  // 1. المسارات الثابتة (Static Routes)
+  const staticRoutes = ["", "/contact", "/blog"].map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date().toISOString(),
+    lastModified: new Date(),
     changeFrequency: "daily",
     priority: route === "" ? 1 : 0.8,
   }));
 
-  // Dynamic routes (Blogs)
+  // 2. جلب المقالات من الـ API
   let blogs = [];
   try {
     const res = await fetch(`${API_URL}/blogs_landing`, {
-      next: { revalidate: 60 },
+      next: { revalidate: 3600 }, // تحديث البيانات كل ساعة (Cache)
     });
+
     if (res.ok) {
       blogs = await res.json();
     } else {
-      console.error("Failed to fetch blogs for sitemap");
+      console.error("Sitemap fetch failed: Status", res.status);
     }
   } catch (error) {
     console.error("Error fetching blogs for sitemap:", error);
   }
 
-  const blogRoutes = blogs.map((blog) => ({
-    url: `${baseUrl}/blog/${blog.slug}`,
-    lastModified: new Date().toISOString(), // Or use blog.updatedAt if available
-    changeFrequency: "weekly",
-    priority: 0.8,
-  }));
+  // 3. المسارات الديناميكية (Dynamic Routes) باستخدام flatMap
+  const blogRoutes = blogs.flatMap((blog) => {
+    const entries = [];
 
-  return [...routes, ...blogRoutes];
+    // إضافة المسار بالإنجليزية لو موجود
+    if (blog.slug) {
+      entries.push({
+        url: `${baseUrl}/blog/${blog.slug}`,
+        lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      });
+    }
+
+    // إضافة المسار بالعربية لو موجود
+    if (blog.slug_ar) {
+      entries.push({
+        url: `${baseUrl}/blog/${blog.slug_ar}`,
+        lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
+        changeFrequency: "weekly",
+        priority: 0.8,
+      });
+    }
+
+    return entries;
+  });
+
+  // دمج كل المسارات في مصفوفة واحدة
+  return [...staticRoutes, ...blogRoutes];
 }
