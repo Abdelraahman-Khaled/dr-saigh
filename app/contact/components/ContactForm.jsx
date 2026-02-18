@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import Image from 'next/image';
 import emailjs from '@emailjs/browser';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -81,7 +82,7 @@ export default function ContactForm() {
                         {/* Contact Us Image Start */}
                         <div className="contact-us-img">
                             <figure className="reveal image-anime">
-                                <img src="/images/about-us-img-1.jpg" alt="contact us" />
+                                <Image src="/images/about-us-img-1.jpg" alt="contact us" width={600} height={630} loading="lazy" quality={85} />
                             </figure>
                         </div>
                         {/* Contact Us Image End */}

@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Contact() {
@@ -27,7 +28,7 @@ export default function Contact() {
                                 <a href="tel:966552200258" className="contact-info-list wow fadeInUp d-flex" data-wow-delay="0.4s">
                                     {/* Icon Box Start */}
                                     <div className="icon-box">
-                                        <img src="images/phone-call.png" alt="image" />
+                                        <Image src="/images/phone-call.png" alt="phone" width={28} height={28} loading="lazy" />
                                     </div>
                                     {/* Icon Box End */}
 
@@ -45,7 +46,7 @@ export default function Contact() {
                                 <a href="mailto:aarsaigh@hotmail.com" className="d-flex contact-info-list wow fadeInUp" data-wow-delay="0.6s">
                                     {/* Icon Box Start */}
                                     <div className="icon-box">
-                                        <img src="images/icon-mail.svg" alt="image" />
+                                        <Image src="/images/icon-mail.svg" alt="email" width={28} height={28} loading="lazy" />
                                     </div>
                                     {/* Icon Box End */}
 
@@ -61,7 +62,7 @@ export default function Contact() {
                                 <div className="contact-info-list wow fadeInUp" data-wow-delay="0.8s">
                                     {/* Icon Box Start */}
                                     <div className="icon-box">
-                                        <img src="images/icon-clock.svg" alt="image" />
+                                        <Image src="/images/icon-clock.svg" alt="hours" width={28} height={28} loading="lazy" />
                                     </div>
                                     {/* Icon Box End */}
 

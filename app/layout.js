@@ -169,7 +169,6 @@ export default async function RootLayout({ children }) {
         <Script src="/js/bootstrap.min.js" strategy="afterInteractive" />
         <Script src="/js/validator.min.js" strategy="afterInteractive" />
         <Script src="/js/jquery.slicknav.js" strategy="afterInteractive" />
-        <Script src="/js/swiper-bundle.min.js" strategy="afterInteractive" />
         <Script src="/js/jquery.waypoints.min.js" strategy="afterInteractive" />
         <Script src="/js/jquery.counterup.min.js" strategy="afterInteractive" />
         <Script

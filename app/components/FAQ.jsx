@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function FAQ() {
@@ -22,7 +23,7 @@ export default function FAQ() {
                         {/* How It Work Image Start */}
                         <div className="how-it-work-img">
                             <figure className="reveal image-anime">
-                                <img src="images/faq.png" alt="image" />
+                                <Image src="/images/faq.png" alt="FAQ" width={600} height={630} loading="lazy" quality={85} />
                             </figure>
                         </div>
                         {/* How It Work Image End */}
@@ -51,7 +52,7 @@ export default function FAQ() {
                                         data-wow-delay={`${index * 0.25}s`}
                                     >
                                         <div className="icon-box">
-                                            <img src={icons[index] || icons[0]} alt="image" />
+                                            <Image src={`/${icons[index] || icons[0]}`} alt="icon" width={40} height={40} loading="lazy" />
                                         </div>
                                         <h2 className="accordion-header" id={`heading${index + 1}`}>
                                             <button

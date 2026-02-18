@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Header() {
@@ -12,7 +13,13 @@ export default function Header() {
           <div className="container">
             {/* Logo Start */}
             <a className="navbar-brand" href="/">
-              <img src="/images/logo.webp" alt="Logo" style={{ width: '70px' }} />
+              <Image
+                src="/images/logo.webp"
+                alt="Logo"
+                width={70}
+                height={90}
+                priority
+              />
             </a>
             {/* Logo End */}
 

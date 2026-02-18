@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Videos() {
@@ -29,7 +30,7 @@ export default function Videos() {
                             <div className="post-featured-image" data-cursor-text={t('common.watch')}>
                                 <figure>
                                     <a href="https://www.youtube.com/watch?v=Tj8eV90-nVM" className="image-anime popup-video">
-                                        <img src="/images/thumbnail/1.png" alt="Video Thumbnail" />
+                                        <Image src="/images/thumbnail/1.png" alt="Video Thumbnail" width={400} height={225} loading="lazy" />
                                         <div className="video-play-button">
                                             <i className="fa-solid fa-play"></i>
                                         </div>
@@ -56,7 +57,7 @@ export default function Videos() {
                             <div className="post-featured-image" data-cursor-text={t('common.watch')}>
                                 <figure>
                                     <a href="https://www.youtube.com/watch?v=wGfuMyImE7M" className="image-anime popup-video">
-                                        <img src="/images/thumbnail/2.png" alt="Video Thumbnail" />
+                                        <Image src="/images/thumbnail/2.png" alt="Video Thumbnail" width={400} height={225} loading="lazy" />
                                         <div className="video-play-button">
                                             <i className="fa-solid fa-play"></i>
                                         </div>
@@ -83,7 +84,7 @@ export default function Videos() {
                             <div className="post-featured-image" data-cursor-text={t('common.watch')}>
                                 <figure>
                                     <a href="https://www.youtube.com/watch?v=80mOaGs_Poc" className="image-anime popup-video">
-                                        <img src="/images/thumbnail/3.png" alt="Video Thumbnail" />
+                                        <Image src="/images/thumbnail/3.png" alt="Video Thumbnail" width={400} height={225} loading="lazy" />
                                         <div className="video-play-button">
                                             <i className="fa-solid fa-play"></i>
                                         </div>
@@ -112,7 +113,7 @@ export default function Videos() {
             </div>
             {/* Icon Start Image Start */}
             <div className="icon-star-image">
-                <img src="images/icon-star.svg" alt="image" />
+                <Image src="/images/icon-star.svg" alt="icon" width={112} height={112} loading="lazy" />
             </div>
             {/* Icon Start Image End */}
         </div>

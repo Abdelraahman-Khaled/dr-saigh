@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Hero() {
@@ -40,7 +41,14 @@ export default function Hero() {
                             {/* Hero Img Start */}
                             <div className="hero-img">
                                 <figure>
-                                    <img src="images/hero-img.webp" alt="image" height={570} width={570} />
+                                    <Image
+                                        src="/images/hero-img.webp"
+                                        alt="د. عبدالرحمن الصائغ"
+                                        width={570}
+                                        height={570}
+                                        priority
+                                        quality={85}
+                                    />
                                 </figure>
                             </div>
                             {/* Hero Img End */}
@@ -49,7 +57,13 @@ export default function Hero() {
                             <div className="export-dantist-box">
                                 <div className="icon-box">
                                     <figure className="image-anime">
-                                        <img src="images/dantist-doctor-img.webp" alt="image" />
+                                        <Image
+                                            src="/images/dantist-doctor-img.webp"
+                                            alt="doctor"
+                                            width={78}
+                                            height={78}
+                                            loading="lazy"
+                                        />
                                     </figure>
                                 </div>
                                 <div className="export-dantist-content">
@@ -61,7 +75,7 @@ export default function Hero() {
 
                             {/* Icon Start Image Start */}
                             <div className="icon-star-image">
-                                <img src="images/icon-star.svg" alt="image" />
+                                <Image src="/images/icon-star.svg" alt="icon" width={112} height={112} loading="lazy" />
                             </div>
                             {/* Icon Start Image End */}
                         </div>

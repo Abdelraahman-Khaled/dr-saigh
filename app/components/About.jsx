@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function About() {
@@ -15,20 +16,40 @@ export default function About() {
                         <div className="about-image">
                             <div className="about-img-1">
                                 <figure className="image-anime reveal">
-                                    <img src="images/about-us-img-1.jpg" alt="image" />
+                                    <Image
+                                        src="/images/about-us-img-1.jpg"
+                                        alt="about"
+                                        width={410}
+                                        height={394}
+                                        loading="lazy"
+                                        quality={85}
+                                    />
                                 </figure>
                             </div>
 
                             <div className="about-img-2">
                                 <figure className="image-anime reveal">
-                                    <img src="images/about-us-img-2.jpg" alt="image" />
+                                    <Image
+                                        src="/images/about-us-img-2.jpg"
+                                        alt="about"
+                                        width={300}
+                                        height={216}
+                                        loading="lazy"
+                                        quality={85}
+                                    />
                                 </figure>
                             </div>
 
                             {/* About Experience Circle Start */}
                             <div className="about-experience">
                                 <figure>
-                                    <img src="images/about-experience-circle.png" alt="image" />
+                                    <Image
+                                        src="/images/about-experience-circle.png"
+                                        alt="experience"
+                                        width={112}
+                                        height={112}
+                                        loading="lazy"
+                                    />
                                 </figure>
                             </div>
                             {/* About Experience Circle End */}

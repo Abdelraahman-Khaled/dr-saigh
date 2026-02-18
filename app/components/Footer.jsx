@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
 
@@ -16,7 +17,7 @@ export default function Footer() {
                             {/* Footer Logo Start */}
                             <div className="footer-logo">
                                 <Link href="https://aalsaigh.com">
-                                    <img src="/images/logo.webp" style={{ width: '100px' }} alt="image" />
+                                    <Image src="/images/logo.webp" width={100} height={128} loading="lazy" alt="logo" />
                                 </Link>
                             </div>
                             {/* Footer Logo End */}
