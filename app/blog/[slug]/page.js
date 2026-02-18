@@ -1,6 +1,6 @@
 import { getBlogDetails } from "@/api/blog";
 import { cookies } from "next/headers";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import Preloader from "../../components/Preloader";
 import Header from "../../components/Header";
 import BlogHero from "./components/BlogHero";
@@ -97,8 +97,7 @@ export default async function BlogDetailsPage({ params }) {
   const cookieStore = await cookies();
   const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
-  if (!blog) notFound();
-  console.log(blog);
+  if (!blog) redirect("/");
 
   return (
     <>
