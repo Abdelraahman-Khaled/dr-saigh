@@ -37,8 +37,8 @@ export default function Footer() {
                             <h3>{t('footer.quickLinks')}</h3>
                             <ul>
                                 <li><Link href="/">{t('footer.links.home')}</Link></li>
-                                <li><Link href="/about">{t('footer.links.about')}</Link></li>
-                                <li><Link href="/operations">{t('footer.links.operations')}</Link></li>
+                                <li><Link href="/#about">{t('footer.links.about')}</Link></li>
+                                <li><Link href="/#operations">{t('footer.links.operations')}</Link></li>
                                 <li>
                                     <Link target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
                                         {t('footer.links.bookAppointment')}

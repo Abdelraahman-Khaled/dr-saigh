@@ -1,7 +1,26 @@
 import Script from "next/script";
+import localFont from "next/font/local";
 import "./globals.css";
 import { LanguageProvider } from "@/context/LanguageContext";
 import ReactQueryProvider from "./providers";
+
+const faBrands = localFont({
+  src: "../public/webfonts/fa-brands-400.woff2",
+  variable: "--font-fa-brands",
+  weight: "400",
+});
+
+const faRegular = localFont({
+  src: "../public/webfonts/fa-regular-400.woff2",
+  variable: "--font-fa-regular",
+  weight: "400",
+});
+
+const faSolid = localFont({
+  src: "../public/webfonts/fa-solid-900.woff2",
+  variable: "--font-fa-solid",
+  weight: "900",
+});
 
 export const metadata = {
   title:
@@ -54,7 +73,11 @@ export default async function RootLayout({ children }) {
   const dir = language === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={language} dir={dir}>
+    <html
+      lang={language}
+      dir={dir}
+      className={`${faBrands.variable} ${faRegular.variable} ${faSolid.variable}`}
+    >
       <head>
         {/* Favicon - WebP with fallback */}
         <link rel="icon" type="image/webp" href="/images/favicon.webp" />
@@ -64,7 +87,7 @@ export default async function RootLayout({ children }) {
         {/* CSS Files */}
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
         <link href="/css/slicknav.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
+
         <link href="/css/all.css" rel="stylesheet" media="screen" />
         <link href="/css/animate.css" rel="stylesheet" />
         <link rel="stylesheet" href="/css/magnific-popup.css" />
