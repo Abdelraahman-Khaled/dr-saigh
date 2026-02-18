@@ -14,6 +14,7 @@ export default function ContactInfo() {
                         <div className="section-title text-center">
                             <h3 className="wow fadeInUp">{t('contactPage.info.subtitle')}</h3>
                             <h2 className="wow fadeInUp" data-wow-delay="0.25s">{t('contactPage.info.title')}</h2>
+                            <p className="wow fadeInUp" data-wow-delay="0.5s">{t('contactPage.info.description')}</p>
                         </div>
                         {/* Section Title End */}
                     </div>

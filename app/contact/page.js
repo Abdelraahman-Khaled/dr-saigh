@@ -1,3 +1,5 @@
+import { cookies } from "next/headers";
+import translations from "../translations";
 import Preloader from "../components/Preloader";
 import Header from "../components/Header";
 import ContactHero from "./components/ContactHero";
@@ -8,45 +10,51 @@ import Footer from "../components/Footer";
 import WhatsAppButton from "../components/WhatsAppButton";
 import ClientScripts from "../components/ClientScripts";
 
-export const metadata = {
-  title:
-    "تواصل معنا - الدكتور عبدالرحمن الصائغ | Contact Us - Dr. Abdulrahman AlSaigh",
-  description:
-    "تواصل مع د. عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير في الرياض | Contact Dr. AlSaigh - Bariatric Surgery",
-  keywords:
-    "اتصل بنا, تواصل معنا, contact us, الدكتور الصائغ, Dr AlSaigh, جراحة السمنة الرياض, bariatric surgery Riyadh, حجز موعد, book appointment",
-  robots: "index, follow",
-  alternates: {
-    canonical: "https://aalsaigh.com/contact",
-  },
-  openGraph: {
-    type: "website",
-    locale: "ar_SA",
-    url: "https://aalsaigh.com/contact",
-    siteName: "الدكتور عبدالرحمن الصائغ | Dr. Abdulrahman AlSaigh",
-    title:
-      "تواصل معنا - الدكتور عبدالرحمن الصائغ | Contact Us - Dr. Abdulrahman AlSaigh",
-    description:
-      "تواصل مع د. عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير في الرياض",
-    images: [
-      {
-        url: "https://aalsaigh.com/images/cover.png",
-        width: 1200,
-        height: 630,
-        alt: "Dr. Abdelrahman Alsaigh Contact",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    url: "https://aalsaigh.com/contact",
-    title:
-      "تواصل معنا - الدكتور عبدالرحمن الصائغ | Contact Us - Dr. Abdulrahman AlSaigh",
-    description:
-      "تواصل مع د. عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير في الرياض",
-    images: ["https://aalsaigh.com/images/cover.png"],
-  },
-};
+export async function generateMetadata() {
+  const cookieStore = await cookies();
+  const language = cookieStore.get("NEXT_LOCALE")?.value || "ar";
+  const t = translations[language] || translations["ar"];
+  const isAr = language === "ar";
+
+  const title = t.contactPage.metadata.title;
+  const description = t.contactPage.metadata.description;
+  const keywords = isAr
+    ? "اتصل بنا, تواصل معنا, الدكتور الصائغ, جراحة السمنة الرياض, حجز موعد"
+    : "contact us, Dr AlSaigh, bariatric surgery Riyadh, book appointment";
+
+  return {
+    title,
+    description,
+    keywords,
+    robots: "index, follow",
+    alternates: {
+      canonical: "https://aalsaigh.com/contact",
+    },
+    openGraph: {
+      type: "website",
+      locale: isAr ? "ar_SA" : "en_US",
+      url: "https://aalsaigh.com/contact",
+      siteName: isAr ? "الدكتور عبدالرحمن الصائغ" : "Dr. Abdulrahman AlSaigh",
+      title,
+      description,
+      images: [
+        {
+          url: "https://aalsaigh.com/images/cover.png",
+          width: 1200,
+          height: 630,
+          alt: "Dr. Abdelrahman Alsaigh Contact",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      url: "https://aalsaigh.com/contact",
+      title,
+      description,
+      images: ["https://aalsaigh.com/images/cover.png"],
+    },
+  };
+}
 
 export default function ContactPage() {
   return (

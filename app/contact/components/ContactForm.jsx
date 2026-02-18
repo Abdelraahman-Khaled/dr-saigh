@@ -95,6 +95,7 @@ export default function ContactForm() {
                             <div className="section-title">
                                 <h3 className="wow fadeInUp">{t('contactPage.form.subtitle')}</h3>
                                 <h2 className="wow fadeInUp">{t('contactPage.form.title')}</h2>
+                                <p className="wow fadeInUp" data-wow-delay="0.25s">{t('contactPage.form.description')}</p>
                             </div>
                             {/* Section Title End */}
 
