@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
       images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
     },
     alternates: {
-      canonical: `/blog/${currentSlug}`,
+      canonical: `https://aalsaigh.com/blog/${currentSlug}`,
       languages: {
         ar: `https://aalsaigh.com/blog/${blog.slug_ar}`,
         en: `https://aalsaigh.com/blog/${blog.slug}`,
@@ -105,7 +105,7 @@ export default async function BlogDetailsPage({ params }) {
       <HydrationBoundary state={dehydrate(queryClient)}>
         <Preloader />
         <Header />
-       
+
         <BlogContent slug={slug} initialBlog={blog} />
         <Footer />
         <WhatsAppButton />
