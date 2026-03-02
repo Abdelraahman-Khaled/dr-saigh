@@ -27,13 +27,9 @@ export async function generateMetadata() {
     description,
     keywords,
     robots: "index, follow",
-    alternates: {
-      canonical: "https://aalsaigh.com/contact",
-    },
     openGraph: {
       type: "website",
       locale: isAr ? "ar_SA" : "en_US",
-      url: "https://aalsaigh.com/contact",
       siteName: isAr ? "الدكتور عبدالرحمن الصائغ" : "Dr. Abdulrahman AlSaigh",
       title,
       description,
@@ -48,7 +44,6 @@ export async function generateMetadata() {
     },
     twitter: {
       card: "summary_large_image",
-      url: "https://aalsaigh.com/contact",
       title,
       description,
       images: ["https://aalsaigh.com/images/cover.png"],

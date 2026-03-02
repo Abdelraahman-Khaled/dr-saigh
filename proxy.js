@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
 const locales = ["ar", "en"];
 const defaultLocale = "ar";
@@ -18,13 +17,13 @@ const IGNORED_PATHS = [
   "/robots",
 ];
 
-function shouldIgnore(pathname: string) {
+function shouldIgnore(pathname) {
   return (
     IGNORED_PATHS.some((p) => pathname.startsWith(p)) || pathname.includes(".")
   );
 }
 
-export function middleware(request: NextRequest) {
+export default function proxy(request) {
   const { pathname } = request.nextUrl;
 
   // Ignore static assets and Next.js internals
@@ -62,13 +61,11 @@ export function middleware(request: NextRequest) {
 
   // No locale in URL → redirect to preferred locale
   const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
-  const acceptLanguage = request.headers.get("accept-language") || "";
-  const browserLocale = acceptLanguage.startsWith("en") ? "en" : defaultLocale;
 
   const locale =
     cookieLocale && locales.includes(cookieLocale)
       ? cookieLocale
-      : browserLocale;
+      : defaultLocale;
 
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;

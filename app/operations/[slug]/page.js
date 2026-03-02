@@ -58,23 +58,21 @@ export async function generateMetadata({ params }) {
     },
     openGraph: {
       type: "article",
-      url: `https://aalsaigh.com/${language}/operations/${currentSlug}`,
       title: `Dr. Alsaigh | ${title}`,
       description,
       images: photoUrl ? [photoUrl] : ["/images/icons/favicon.ico"],
     },
     twitter: {
       card: "summary_large_image",
-      url: `https://aalsaigh.com/${language}/operations/${currentSlug}`,
       title: `Dr. Alsaigh | ${title}`,
       description,
       images: photoUrl ? [photoUrl] : ["/images/icons/favicon.ico"],
     },
     alternates: {
-      canonical: `https://aalsaigh.com/${language}/operations/${currentSlug}`,
+      canonical: `/${language}/operations/${currentSlug}`,
       languages: {
-        ar: `https://aalsaigh.com/ar/operations/${operation.slug_ar}`,
-        en: `https://aalsaigh.com/en/operations/${operation.slug}`,
+        ar: `/ar/operations/${operation.slug_ar}`,
+        en: `/en/operations/${operation.slug}`,
       },
     },
   };

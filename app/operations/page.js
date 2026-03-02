@@ -16,12 +16,8 @@ export const metadata = {
     "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ | Learn about bariatric and laparoscopic operations performed by Dr. AlSaigh",
   keywords:
     "عمليات السمنة, bariatric surgery, تكميم المعدة, gastric sleeve, تحويل مسار, bypass, الدكتور الصائغ, Dr AlSaigh, جراحة المناظير, laparoscopic surgery",
-  alternates: {
-    canonical: "https://aalsaigh.com/operations",
-  },
   openGraph: {
     type: "website",
-    url: "https://aalsaigh.com/operations",
     title:
       "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
     description:
@@ -37,7 +33,6 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    url: "https://aalsaigh.com/operations",
     title:
       "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
     description:

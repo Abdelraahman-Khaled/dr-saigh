@@ -15,12 +15,8 @@ export const metadata = {
     "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير | Medical articles by Dr. AlSaigh",
   keywords:
     "مدونة طبية, medical blog, جراحة السمنة, bariatric surgery, نصائح طبية, medical advice, الدكتور الصائغ, Dr AlSaigh, مقالات طبية, medical articles",
-  alternates: {
-    canonical: "https://aalsaigh.com/blog",
-  },
   openGraph: {
     type: "website",
-    url: "https://aalsaigh.com/blog",
     title:
       "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
     description:
@@ -36,7 +32,6 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    url: "https://aalsaigh.com/blog",
     title:
       "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
     description:
