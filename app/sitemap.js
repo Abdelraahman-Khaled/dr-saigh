@@ -1,14 +1,18 @@
 export default async function sitemap() {
   const baseUrl = "https://aalsaigh.com";
   const API_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const locales = ["ar", "en"];
 
   // 1. المسارات الثابتة (Static Routes)
-  const staticRoutes = ["", "/contact", "/blog"].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "daily",
-    priority: route === "" ? 1 : 0.8,
-  }));
+  const staticRoutes = ["", "/contact", "/blog", "/operations"].flatMap(
+    (route) =>
+      locales.map((locale) => ({
+        url: `${baseUrl}/${locale}${route}`,
+        lastModified: new Date(),
+        changeFrequency: "daily",
+        priority: route === "" ? 1 : 0.8,
+      })),
+  );
 
   // 2. جلب المقالات من الـ API
   let blogs = [];
@@ -26,14 +30,14 @@ export default async function sitemap() {
     console.error("Error fetching blogs for sitemap:", error);
   }
 
-  // 3. المسارات الديناميكية (Dynamic Routes) باستخدام flatMap
+  // 3. المسارات الديناميكية للمدونة (Dynamic Routes) باستخدام flatMap
   const blogRoutes = blogs.flatMap((blog) => {
     const entries = [];
 
     // إضافة المسار بالإنجليزية لو موجود
     if (blog.slug) {
       entries.push({
-        url: `${baseUrl}/blog/${blog.slug}`,
+        url: `${baseUrl}/en/blog/${blog.slug}`,
         lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
         changeFrequency: "weekly",
         priority: 0.8,
@@ -43,7 +47,7 @@ export default async function sitemap() {
     // إضافة المسار بالعربية لو موجود
     if (blog.slug_ar) {
       entries.push({
-        url: `${baseUrl}/blog/${blog.slug_ar}`,
+        url: `${baseUrl}/ar/blog/${blog.slug_ar}`,
         lastModified: blog.updatedAt ? new Date(blog.updatedAt) : new Date(),
         changeFrequency: "weekly",
         priority: 0.8,

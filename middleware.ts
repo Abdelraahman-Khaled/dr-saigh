@@ -41,7 +41,14 @@ export function middleware(request: NextRequest) {
     const rewriteUrl = request.nextUrl.clone();
     rewriteUrl.pathname = strippedPath;
 
-    const response = NextResponse.rewrite(rewriteUrl);
+    const requestHeaders = new Headers(request.headers);
+    requestHeaders.set("x-current-path", pathname);
+
+    const response = NextResponse.rewrite(rewriteUrl, {
+      request: {
+        headers: requestHeaders,
+      },
+    });
 
     // Set locale cookie so server components know the language
     response.cookies.set("NEXT_LOCALE", pathnameLocale, {

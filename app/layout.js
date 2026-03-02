@@ -63,55 +63,65 @@ const tajawal = localFont({
   display: "swap",
 });
 
-export const metadata = {
-  title:
-    "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
-  description:
-    "استشاري جراحة السمنة والمناظير د. عبدالرحمن الصائغ - تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض",
-  keywords:
-    "الدكتور عبدالرحمن الصائغ, جراحة السمنة, تكميم المعدة, تحويل مسار المعدة, جراحة المناظير, استشاري جراحة, الرياض, السعودية, علاج السمنة, جراحة عامة",
-  authors: [{ name: "Dr. Abdelrahman Alsaigh" }],
-  robots: "index, follow",
-  alternates: {
-    canonical: "https://aalsaigh.com",
-    languages: {
-      ar: "https://aalsaigh.com",
-      "x-default": "https://aalsaigh.com",
-    },
-  },
-  openGraph: {
-    type: "website",
-    locale: "ar_SA",
-    url: "https://aalsaigh.com/",
-    siteName: "الدكتور عبدالرحمن الصائغ",
+import { headers } from "next/headers";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const currentPath = headersList.get("x-current-path") || "/ar";
+
+  // Remove language prefix safely to build alternates
+  const strippedPath = currentPath.replace(/^\/(ar|en)/, "") || "";
+
+  return {
     title:
       "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
     description:
       "استشاري جراحة السمنة والمناظير د. عبدالرحمن الصائغ - تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض",
-    images: [
-      {
-        url: "https://aalsaigh.com/images/cover.png",
-        width: 1200,
-        height: 630,
-        alt: "Dr. Abdelrahman Alsaigh",
+    keywords:
+      "الدكتور عبدالرحمن الصائغ, جراحة السمنة, تكميم المعدة, تحويل مسار المعدة, جراحة المناظير, استشاري جراحة, الرياض, السعودية, علاج السمنة, جراحة عامة",
+    authors: [{ name: "Dr. Abdelrahman Alsaigh" }],
+    metadataBase: new URL("https://aalsaigh.com"),
+    robots: "index, follow",
+    alternates: {
+      canonical: currentPath,
+      languages: {
+        ar: `/ar${strippedPath}`,
+        en: `/en${strippedPath}`,
+        "x-default": `/ar${strippedPath}`,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    url: "https://aalsaigh.com/",
-    title:
-      "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
-    description:
-      "استشاري جراحة السمنة والمناظير د. عبدالرحمن الصائغ - تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض",
-    images: ["https://aalsaigh.com/images/cover.png"],
-  },
-  verification: {
-    google: "",
-    yandex: "",
-    other: {},
-  },
-};
+    },
+    openGraph: {
+      type: "website",
+      locale: "ar_SA",
+      siteName: "الدكتور عبدالرحمن الصائغ",
+      title:
+        "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+      description:
+        "استشاري جراحة السمنة والمناظير د. عبدالرحمن الصائغ - تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض",
+      images: [
+        {
+          url: "https://aalsaigh.com/images/cover.png",
+          width: 1200,
+          height: 630,
+          alt: "Dr. Abdelrahman Alsaigh",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        "الدكتور عبدالرحمن الصائغ - استشاري جراحة السمنة والمناظير و الجراحة العامة",
+      description:
+        "استشاري جراحة السمنة والمناظير د. عبدالرحمن الصائغ - تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير في الرياض",
+      images: ["https://aalsaigh.com/images/cover.png"],
+    },
+    verification: {
+      google: "",
+      yandex: "",
+      other: {},
+    },
+  };
+}
 
 import { cookies } from "next/headers";
 
