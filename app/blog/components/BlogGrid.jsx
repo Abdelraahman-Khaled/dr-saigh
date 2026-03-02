@@ -5,12 +5,14 @@ import { getBlogs } from '@/api/blog';
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
+const PAGE_SIZE = 9;
 
 export default function BlogGrid({ initialBlogs = [], initialError = null }) {
-    const { t, language } = useLanguage();
-    const [blogs, setBlogs] = useState(initialBlogs);
+    const { t, language, localePath } = useLanguage();
+    const [blogs, setBlogs] = useState(() => [...initialBlogs].reverse());
     const [loading, setLoading] = useState(initialBlogs.length === 0 && !initialError);
     const [error, setError] = useState(initialError);
+    const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
     useEffect(() => {
         // If we already have blogs or an error from server, don't fetch again
@@ -23,7 +25,7 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
             try {
                 const data = await getBlogs();
                 if (Array.isArray(data)) {
-                    setBlogs(data);
+                    setBlogs([...data].reverse());
                 } else {
                     console.error('Invalid blogs data format:', data);
                     setBlogs([]);
@@ -90,12 +92,14 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
         );
     }
 
+    const visibleBlogs = blogs.slice(0, visibleCount);
+    const hasMore = visibleCount < blogs.length;
 
     return (
         <div className="our-blog" style={{ backgroundColor: '#fff', paddingTop: '80px', paddingBottom: '80px' }}>
             <div className="container">
                 <div className="row">
-                    {blogs.map((blog) => {
+                    {visibleBlogs.map((blog) => {
                         // Determine content based on language
                         const isAr = language === 'ar';
 
@@ -126,7 +130,7 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
                                     {/* Post Featured Image Start*/}
                                     <div className="post-featured-image" data-cursor-text={t('blogPage.grid.readArticle')}>
                                         <figure>
-                                            <Link href={`/blog/${slug}`} className="image-anime">
+                                            <Link href={localePath(`/blog/${slug}`)} className="image-anime">
                                                 <img src={imageUrl} alt={imageAlt} />
                                             </Link>
                                         </figure>
@@ -136,7 +140,7 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
                                     {/* post Item Body Start */}
                                     <div className="post-item-body">
                                         <h2>
-                                            <Link href={`/blog/${slug}`}>
+                                            <Link href={localePath(`/blog/${slug}`)}>
                                                 {title}
                                             </Link>
                                         </h2>
@@ -148,7 +152,7 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
 
                                     {/* Post Item Footer Start*/}
                                     <div className="post-item-footer">
-                                        <Link href={`/blog/${slug}`} className="read-more-btn">{t('blogPage.grid.readMore')}</Link>
+                                        <Link href={localePath(`/blog/${slug}`)} className="read-more-btn">{t('blogPage.grid.readMore')}</Link>
                                     </div>
                                     {/* Post Item Footer End*/}
                                 </div>
@@ -157,7 +161,22 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
                         );
                     })}
                 </div>
+
+                {/* Load More Button */}
+                {hasMore && (
+                    <div className="row">
+                        <div className="col-12 text-center" style={{ marginTop: '40px' }}>
+                            <button
+                                className="btn-default"
+                                onClick={() => setVisibleCount(prev => prev + PAGE_SIZE)}
+                            >
+                                {t('blogPage.grid.loadMore')}
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </div>
     );
 }
+

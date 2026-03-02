@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Header() {
-  const { language, toggleLanguage, t } = useLanguage();
+  const { language, toggleLanguage, localePath, t } = useLanguage();
 
   return (
     <header className="main-header" id="home">
@@ -12,7 +12,7 @@ export default function Header() {
         <nav className="navbar navbar-expand-lg">
           <div className="container">
             {/* Logo Start */}
-            <a className="navbar-brand" href="/">
+            <a className="navbar-brand" href={localePath('/')}>
               <Image
                 src="/images/logo.webp"
                 alt="Logo"
@@ -29,12 +29,12 @@ export default function Header() {
             <div className="collapse navbar-collapse main-menu">
               <div className="nav-menu-wrapper">
                 <ul className="navbar-nav mr-auto" id="menu">
-                  <li className="nav-item"><a className="nav-link" href="/">{t('navbar.home')}</a></li>
-                  <li className="nav-item"><a className="nav-link" href="/#about">{t('navbar.about')}</a></li>
-                  <li className="nav-item"><a className="nav-link" href="/#operations">{t('navbar.operations')}</a></li>
-                  <li className="nav-item"><a className="nav-link" href="/#types">{t('navbar.obesityDiseases')}</a></li>
-                  <li className="nav-item"><a className="nav-link" href="/blog">{t('navbar.blog')}</a></li>
-                  <li className="nav-item"><a className="nav-link" href="/contact">{t('navbar.contact')}</a></li>
+                  <li className="nav-item"><a className="nav-link" href={localePath('/')}>{t('navbar.home')}</a></li>
+                  <li className="nav-item"><a className="nav-link" href={localePath('/#about')}>{t('navbar.about')}</a></li>
+                  <li className="nav-item"><a className="nav-link" href={localePath('/operations')}>{t('navbar.operations')}</a></li>
+                  <li className="nav-item"><a className="nav-link" href={localePath('/#types')}>{t('navbar.obesityDiseases')}</a></li>
+                  <li className="nav-item"><a className="nav-link" href={localePath('/blog')}>{t('navbar.blog')}</a></li>
+                  <li className="nav-item"><a className="nav-link" href={localePath('/contact')}>{t('navbar.contact')}</a></li>
                   <li className="nav-item highlighted-menu">
                     <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
                       {t('navbar.bookAppointment')}

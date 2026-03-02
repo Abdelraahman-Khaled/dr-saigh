@@ -26,7 +26,7 @@ export default async function Home() {
   }
 
   // Only show first 3 blogs on home page
-  const homeBlogs = initialBlogs.slice(0, 3);
+  const homeBlogs = initialBlogs.reverse().slice(0, 3);
 
   return (
     <>

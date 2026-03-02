@@ -349,11 +349,29 @@ const translations = {
           "يرجى المحاولة مرة أخرى لاحقاً أو التواصل مع الدعم الفني.",
         noBlogsTitle: "لا توجد مدونات متاحة حالياً",
         noBlogsMessage: "يرجى العودة لاحقاً للاطلاع على المحتوى الجديد.",
+        loadMore: "تحميل المزيد",
       },
       metadata: {
         title: "المدونة - الدكتور عبدالرحمن الصائغ",
         description:
           "اطلع على أحدث المقالات والنصائح الطبية من الدكتور عبدالرحمن الصائغ حول جراحة السمنة والمناظير",
+      },
+    },
+
+    operationsPage: {
+      hero: {
+        title: "العمليات",
+        breadcrumbHome: "الرئيسية",
+        breadcrumbCurrent: "العمليات",
+      },
+      grid: {
+        readMore: "اقرأ المزيد",
+        viewOperation: "عرض العملية",
+        errorTitle: "⚠️ خطأ في تحميل العمليات",
+        errorMessage:
+          "يرجى المحاولة مرة أخرى لاحقاً أو التواصل مع الدعم الفني.",
+        noItemsTitle: "لا توجد عمليات متاحة حالياً",
+        noItemsMessage: "يرجى العودة لاحقاً للاطلاع على المحتوى الجديد.",
       },
     },
 
@@ -718,11 +736,28 @@ const translations = {
         errorMessage: "Please try again later or contact technical support.",
         noBlogsTitle: "No blogs available at the moment",
         noBlogsMessage: "Please check back later for new content.",
+        loadMore: "Load More",
       },
       metadata: {
         title: "Blog - Dr. Abdulrahman AlSaigh",
         description:
           "Check out the latest articles and medical advice from Dr. Abdulrahman AlSaigh about bariatric and laparoscopic surgery",
+      },
+    },
+
+    operationsPage: {
+      hero: {
+        title: "Operations",
+        breadcrumbHome: "Home",
+        breadcrumbCurrent: "Operations",
+      },
+      grid: {
+        readMore: "Read More",
+        viewOperation: "View Operation",
+        errorTitle: "⚠️ Error Loading Operations",
+        errorMessage: "Please try again later or contact technical support.",
+        noItemsTitle: "No operations available at the moment",
+        noItemsMessage: "Please check back later for new content.",
       },
     },
 

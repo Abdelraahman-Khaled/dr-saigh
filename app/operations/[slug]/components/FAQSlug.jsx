@@ -7,7 +7,6 @@ export default function FAQSlug({ items = [] }) {
 
     if (!items || items.length === 0) return null;
 
-    // Icon mapping for visual variety (you can customize these)
     const icons = [
         "/images/sad-face.png",
         "/images/number-2.png",
@@ -28,7 +27,6 @@ export default function FAQSlug({ items = [] }) {
                                     const question = language === 'ar' ? faq.question_ar : faq.question_en;
                                     const answer = language === 'ar' ? faq.answer_ar : faq.answer_en;
                                     const delay = index * 0.25;
-                                    const iconSrc = icons[index % icons.length];
 
                                     return (
                                         <div

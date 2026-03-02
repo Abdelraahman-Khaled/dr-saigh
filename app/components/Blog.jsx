@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Blog({ initialBlogs = [] }) {
-    const { t, language } = useLanguage();
+    const { t, language, localePath } = useLanguage();
 
     return (
         <div className="our-blog" id="blog">
@@ -44,7 +44,7 @@ export default function Blog({ initialBlogs = [] }) {
                                     {/* Post Featured Image Start*/}
                                     <div className="post-featured-image" data-cursor-text={t('common.readMore')}>
                                         <figure>
-                                            <Link href={`/blog/${slug}`} className="image-anime">
+                                            <Link href={localePath(`/blog/${slug}`)} className="image-anime">
                                                 <img src={imageUrl} alt={title} />
                                             </Link>
                                         </figure>
@@ -54,7 +54,7 @@ export default function Blog({ initialBlogs = [] }) {
                                     {/* post Item Body Start */}
                                     <div className="post-item-body">
                                         <h2>
-                                            <Link href={`/blog/${slug}`}>
+                                            <Link href={localePath(`/blog/${slug}`)}>
                                                 {title}
                                             </Link>
                                         </h2>
@@ -66,7 +66,7 @@ export default function Blog({ initialBlogs = [] }) {
 
                                     {/* Post Item Footer Start*/}
                                     <div className="post-item-footer">
-                                        <Link href={`/blog/${slug}`} className="read-more-btn">{t('common.readMore')}</Link>
+                                        <Link href={localePath(`/blog/${slug}`)} className="read-more-btn">{t('common.readMore')}</Link>
                                     </div>
                                     {/* Post Item Footer End*/}
                                 </div>

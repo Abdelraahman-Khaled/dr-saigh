@@ -10,7 +10,7 @@ import BlogHero from "./BlogHero";
 
 export default function BlogContent({ slug, initialBlog }) {
     // Find the Arabic image
-    const { language, prevLanguage } = useLanguage();
+    const { language, prevLanguage, localePath } = useLanguage();
     const router = useRouter();
 
     const { data: blog = initialBlog } = useQuery({
@@ -33,8 +33,8 @@ export default function BlogContent({ slug, initialBlog }) {
                 ? blog.slug_ar || blog.slug
                 : blog.slug || blog.slug_ar;
 
-        router.replace(`/blog/${targetSlug}`, { scroll: false });
-    }, [language, blog, router, prevLanguage]);
+        router.replace(localePath(`/blog/${targetSlug}`), { scroll: false });
+    }, [language, blog, router, prevLanguage, localePath]);
 
 
     // Render Logic

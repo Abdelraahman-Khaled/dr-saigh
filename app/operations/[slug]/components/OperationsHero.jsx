@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
-export default function BlogHero() {
+export default function OperationsHero({ title }) {
     const { t, localePath } = useLanguage();
 
     return (
@@ -14,12 +14,17 @@ export default function BlogHero() {
                         {/* Page Header Box Start */}
                         <div className="page-header-box">
                             <h1 className="wow fadeInUp" data-cursor="-opaque">
-                                {t('blogPage.hero.title')}
+                                {title}
                             </h1>
                             <nav className="wow fadeInUp" data-wow-delay="0.25s">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><Link href={localePath('/')}>{t('blogPage.hero.breadcrumbHome')}</Link></li>
-                                    <li className="breadcrumb-item active">{t('blogPage.hero.breadcrumbCurrent')}</li>
+                                    <li className="breadcrumb-item">
+                                        <Link href={localePath('/')}>{t('operationsPage.hero.breadcrumbHome')}</Link>
+                                    </li>
+                                    <li className="breadcrumb-item">
+                                        <Link href={localePath('/operations')}>{t('operationsPage.hero.breadcrumbCurrent')}</Link>
+                                    </li>
+                                    <li className="breadcrumb-item active">{title}</li>
                                 </ol>
                             </nav>
                         </div>

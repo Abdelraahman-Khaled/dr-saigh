@@ -5,7 +5,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
 
 export default function Footer() {
-    const { t, language } = useLanguage();
+    const { t, language, localePath } = useLanguage();
 
     return (
         <footer className="main-footer">
@@ -37,9 +37,9 @@ export default function Footer() {
                         <div className="footer-links footer-quick-links">
                             <h3>{t('footer.quickLinks')}</h3>
                             <ul>
-                                <li><Link href="/">{t('footer.links.home')}</Link></li>
-                                <li><Link href="/#about">{t('footer.links.about')}</Link></li>
-                                <li><Link href="/#operations">{t('footer.links.operations')}</Link></li>
+                                <li><Link href={localePath('/')}>{t('footer.links.home')}</Link></li>
+                                <li><Link href={localePath('/#about')}>{t('footer.links.about')}</Link></li>
+                                <li><Link href={localePath('/operations')}>{t('footer.links.operations')}</Link></li>
                                 <li>
                                     <Link target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
                                         {t('footer.links.bookAppointment')}

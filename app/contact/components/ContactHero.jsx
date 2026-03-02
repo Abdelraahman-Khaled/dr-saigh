@@ -1,9 +1,10 @@
 'use client';
 
+import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function ContactHero() {
-    const { t } = useLanguage();
+    const { t, localePath } = useLanguage();
 
     return (
         <div className="page-header">
@@ -17,7 +18,7 @@ export default function ContactHero() {
                             </h1>
                             <nav className="wow fadeInUp" data-wow-delay="0.25s">
                                 <ol className="breadcrumb">
-                                    <li className="breadcrumb-item"><a href="/">{t('contactPage.hero.breadcrumbHome')}</a></li>
+                                    <li className="breadcrumb-item"><Link href={localePath('/')}>{t('contactPage.hero.breadcrumbHome')}</Link></li>
                                     <li className="breadcrumb-item active">{t('contactPage.hero.breadcrumbCurrent')}</li>
                                 </ol>
                             </nav>

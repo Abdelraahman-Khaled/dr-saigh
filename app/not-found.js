@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import { useLanguage } from "@/context/LanguageContext";
 
 export default function NotFound() {
-  const { t } = useLanguage();
+  const { t, localePath } = useLanguage();
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function NotFound() {
                 <div className="error-text wow fadeInUp" data-wow-delay="0.25s">
                   <h2 className="section-title-h2">{t("notFound.subtitle")}</h2>
                   <p>{t("notFound.description")}</p>
-                  <Link href="/" className="btn-default">
+                  <Link href={localePath("/")} className="btn-default">
                     {t("notFound.backToHome")}
                   </Link>
                 </div>
