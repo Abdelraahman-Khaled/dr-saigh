@@ -98,10 +98,20 @@ export default async function OperationDetailsPage({ params }) {
   const cookieStore = await cookies();
   const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
+  const decodedSlug = decodeURIComponent(slug);
+
   // Redirect to correct localized slug if mismatch
-  if (language === "ar" && operation.slug_ar && slug !== operation.slug_ar) {
+  if (
+    language === "ar" &&
+    operation.slug_ar &&
+    decodedSlug !== operation.slug_ar
+  ) {
     redirect(`/ar/operations/${operation.slug_ar}`);
-  } else if (language === "en" && operation.slug && slug !== operation.slug) {
+  } else if (
+    language === "en" &&
+    operation.slug &&
+    decodedSlug !== operation.slug
+  ) {
     redirect(`/en/operations/${operation.slug}`);
   }
 

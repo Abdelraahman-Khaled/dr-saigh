@@ -101,10 +101,12 @@ export default async function BlogDetailsPage({ params }) {
   const cookieStore = await cookies();
   const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
+  const decodedSlug = decodeURIComponent(slug);
+
   // Redirect to correct localized slug if mismatch
-  if (language === "ar" && blog.slug_ar && slug !== blog.slug_ar) {
+  if (language === "ar" && blog.slug_ar && decodedSlug !== blog.slug_ar) {
     redirect(`/ar/blog/${blog.slug_ar}`);
-  } else if (language === "en" && blog.slug && slug !== blog.slug) {
+  } else if (language === "en" && blog.slug && decodedSlug !== blog.slug) {
     redirect(`/en/blog/${blog.slug}`);
   }
 
