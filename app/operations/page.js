@@ -9,37 +9,56 @@ import ClientScripts from "../components/ClientScripts";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  title:
-    "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
-  description:
-    "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ | Learn about bariatric and laparoscopic operations performed by Dr. AlSaigh",
-  keywords:
-    "عمليات السمنة, bariatric surgery, تكميم المعدة, gastric sleeve, تحويل مسار, bypass, الدكتور الصائغ, Dr AlSaigh, جراحة المناظير, laparoscopic surgery",
-  openGraph: {
-    type: "website",
+import { headers, cookies } from "next/headers";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const cookieStore = await cookies();
+  const language = cookieStore.get("NEXT_LOCALE")?.value || "ar";
+  const currentPath =
+    headersList.get("x-current-path") || `/${language}/operations`;
+  const strippedPath = currentPath.replace(/^\/(ar|en)/, "") || "/operations";
+
+  return {
     title:
       "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
     description:
-      "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ",
-    images: [
-      {
-        url: "https://aalsaigh.com/images/cover.png",
-        width: 1200,
-        height: 630,
-        alt: "Dr. Abdelrahman Alsaigh Operations",
+      "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ | Learn about bariatric and laparoscopic operations performed by Dr. AlSaigh",
+    keywords:
+      "عمليات السمنة, bariatric surgery, تكميم المعدة, gastric sleeve, تحويل مسار, bypass, الدكتور الصائغ, Dr AlSaigh, جراحة المناظير, laparoscopic surgery",
+    alternates: {
+      canonical: `https://aalsaigh.com${currentPath}`,
+      languages: {
+        ar: `https://aalsaigh.com/ar${strippedPath}`,
+        en: `https://aalsaigh.com/en${strippedPath}`,
+        "x-default": `https://aalsaigh.com/ar${strippedPath}`,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
-    description:
-      "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ",
-    images: ["https://aalsaigh.com/images/cover.png"],
-  },
-};
+    },
+    openGraph: {
+      type: "website",
+      title:
+        "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
+      description:
+        "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ",
+      images: [
+        {
+          url: "https://aalsaigh.com/images/cover.png",
+          width: 1200,
+          height: 630,
+          alt: "Dr. Abdelrahman Alsaigh Operations",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        "العمليات - الدكتور عبدالرحمن الصائغ | Operations - Dr. Abdulrahman AlSaigh",
+      description:
+        "تعرف على أنواع عمليات السمنة والمناظير التي يجريها د. عبدالرحمن الصائغ",
+      images: ["https://aalsaigh.com/images/cover.png"],
+    },
+  };
+}
 
 export default async function OperationsPage() {
   let initialOperations = [];

@@ -14,6 +14,28 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ClientScripts from "./components/ClientScripts";
 import { getBlogs } from "@/api/blog";
+import { headers, cookies } from "next/headers";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const currentPath = headersList.get("x-current-path") || "/ar";
+  const cookieStore = await cookies();
+  const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
+
+  // Build the relative path without the language prefix for hreflang construction
+  const strippedPath = currentPath.replace(/^\/(ar|en)/, "") || "";
+
+  return {
+    alternates: {
+      canonical: `https://aalsaigh.com${currentPath}`,
+      languages: {
+        ar: `https://aalsaigh.com/ar${strippedPath}`,
+        en: `https://aalsaigh.com/en${strippedPath}`,
+        "x-default": `https://aalsaigh.com/ar${strippedPath}`,
+      },
+    },
+  };
+}
 
 export const dynamic = "force-dynamic";
 

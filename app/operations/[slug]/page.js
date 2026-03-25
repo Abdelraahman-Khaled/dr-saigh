@@ -40,7 +40,9 @@ export async function generateMetadata({ params }) {
       ? `${operation.title_ar}, جراحة السمنة, الدكتور الصائغ, عمليات`
       : `${operation.title_en}, bariatric surgery, Dr. Alsaigh, operations`;
 
-  const currentSlug = language === "ar" ? operation.slug_ar : operation.slug;
+  const safeSlugAr = operation.slug_ar || operation.slug;
+  const safeSlugEn = operation.slug || operation.slug_ar;
+  const currentSlug = language === "ar" ? safeSlugAr : safeSlugEn;
 
   // Prefer a non-landing photo for OG image
   const featuredPhoto =
@@ -69,10 +71,11 @@ export async function generateMetadata({ params }) {
       images: photoUrl ? [photoUrl] : ["/images/icons/favicon.ico"],
     },
     alternates: {
-      canonical: `/${language}/operations/${currentSlug}`,
+      canonical: `https://aalsaigh.com/${language}/operations/${currentSlug}`,
       languages: {
-        ar: `/ar/operations/${operation.slug_ar}`,
-        en: `/en/operations/${operation.slug}`,
+        ar: `https://aalsaigh.com/ar/operations/${safeSlugAr}`,
+        en: `https://aalsaigh.com/en/operations/${safeSlugEn}`,
+        "x-default": `https://aalsaigh.com/ar/operations/${safeSlugAr}`,
       },
     },
   };
@@ -89,10 +92,18 @@ export default async function OperationDetailsPage({ params }) {
   });
 
   const operation = queryClient.getQueryData(["operation", slug]);
+
+  if (!operation) redirect("/");
+
   const cookieStore = await cookies();
   const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
-  if (!operation) redirect("/");
+  // Redirect to correct localized slug if mismatch
+  if (language === "ar" && operation.slug_ar && slug !== operation.slug_ar) {
+    redirect(`/ar/operations/${operation.slug_ar}`);
+  } else if (language === "en" && operation.slug && slug !== operation.slug) {
+    redirect(`/en/operations/${operation.slug}`);
+  }
 
   return (
     <>

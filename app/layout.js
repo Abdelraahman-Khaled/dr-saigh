@@ -82,14 +82,6 @@ export async function generateMetadata() {
     authors: [{ name: "Dr. Abdelrahman Alsaigh" }],
     metadataBase: new URL("https://aalsaigh.com"),
     robots: "index, follow",
-    alternates: {
-      canonical: currentPath,
-      languages: {
-        ar: `/ar${strippedPath}`,
-        en: `/en${strippedPath}`,
-        "x-default": `/ar${strippedPath}`,
-      },
-    },
     openGraph: {
       type: "website",
       locale: "ar_SA",

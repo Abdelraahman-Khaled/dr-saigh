@@ -41,7 +41,9 @@ export async function generateMetadata({ params }) {
       ? `${blog.title_ar}, جراحة السمنة, الدكتور الصائغ, مقالات طبية`
       : `${blog.title_en}, bariatric surgery, Dr. Alsaigh, medical articles`;
 
-  const currentSlug = language === "ar" ? blog.slug_ar : blog.slug;
+  const safeSlugAr = blog.slug_ar || blog.slug;
+  const safeSlugEn = blog.slug || blog.slug_ar;
+  const currentSlug = language === "ar" ? safeSlugAr : safeSlugEn;
 
   const featuredPhoto =
     blog.photos?.find((p) => p.is_arabic === (language === "ar")) ||
@@ -69,14 +71,16 @@ export async function generateMetadata({ params }) {
       images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
     },
     alternates: {
-      canonical: `/${language}/blog/${currentSlug}`,
+      canonical: `https://aalsaigh.com/${language}/blog/${currentSlug}`,
       languages: {
-        ar: `/ar/blog/${blog.slug_ar}`,
-        en: `/en/blog/${blog.slug}`,
+        ar: `https://aalsaigh.com/ar/blog/${safeSlugAr}`,
+        en: `https://aalsaigh.com/en/blog/${safeSlugEn}`,
+        "x-default": `https://aalsaigh.com/ar/blog/${safeSlugAr}`,
       },
     },
   };
 }
+
 // Generate metadata for SEO
 export default async function BlogDetailsPage({ params }) {
   const { slug } = await params;
@@ -91,10 +95,18 @@ export default async function BlogDetailsPage({ params }) {
 
   // Get the data from cache or fetch again if needed (usually it's in cache now)
   const blog = queryClient.getQueryData(["blog", slug]);
+
+  if (!blog) redirect("/");
+
   const cookieStore = await cookies();
   const language = (await cookieStore.get("NEXT_LOCALE"))?.value || "ar";
 
-  if (!blog) redirect("/");
+  // Redirect to correct localized slug if mismatch
+  if (language === "ar" && blog.slug_ar && slug !== blog.slug_ar) {
+    redirect(`/ar/blog/${blog.slug_ar}`);
+  } else if (language === "en" && blog.slug && slug !== blog.slug) {
+    redirect(`/en/blog/${blog.slug}`);
+  }
 
   return (
     <>

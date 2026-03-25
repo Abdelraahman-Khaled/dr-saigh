@@ -9,36 +9,54 @@ import ClientScripts from "../components/ClientScripts";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
-  title: "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
-  description:
-    "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير | Medical articles by Dr. AlSaigh",
-  keywords:
-    "مدونة طبية, medical blog, جراحة السمنة, bariatric surgery, نصائح طبية, medical advice, الدكتور الصائغ, Dr AlSaigh, مقالات طبية, medical articles",
-  openGraph: {
-    type: "website",
-    title:
-      "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
+import { headers, cookies } from "next/headers";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const cookieStore = await cookies();
+  const language = cookieStore.get("NEXT_LOCALE")?.value || "ar";
+  const currentPath = headersList.get("x-current-path") || `/${language}/blog`;
+  const strippedPath = currentPath.replace(/^\/(ar|en)/, "") || "/blog";
+
+  return {
+    title: "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
     description:
-      "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير",
-    images: [
-      {
-        url: "https://aalsaigh.com/images/cover.png",
-        width: 1200,
-        height: 630,
-        alt: "Dr. Abdelrahman Alsaigh Blog",
+      "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير | Medical articles by Dr. AlSaigh",
+    keywords:
+      "مدونة طبية, medical blog, جراحة السمنة, bariatric surgery, نصائح طبية, medical advice, الدكتور الصائغ, Dr AlSaigh, مقالات طبية, medical articles",
+    alternates: {
+      canonical: `https://aalsaigh.com${currentPath}`,
+      languages: {
+        ar: `https://aalsaigh.com/ar${strippedPath}`,
+        en: `https://aalsaigh.com/en${strippedPath}`,
+        "x-default": `https://aalsaigh.com/ar${strippedPath}`,
       },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
-    description:
-      "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير",
-    images: ["https://aalsaigh.com/images/cover.png"],
-  },
-};
+    },
+    openGraph: {
+      type: "website",
+      title:
+        "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
+      description:
+        "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير",
+      images: [
+        {
+          url: "https://aalsaigh.com/images/cover.png",
+          width: 1200,
+          height: 630,
+          alt: "Dr. Abdelrahman Alsaigh Blog",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:
+        "المدونة - الدكتور عبدالرحمن الصائغ | Blog - Dr. Abdulrahman AlSaigh",
+      description:
+        "أحدث المقالات والنصائح الطبية من د. عبدالرحمن الصائغ حول جراحة السمنة والمناظير",
+      images: ["https://aalsaigh.com/images/cover.png"],
+    },
+  };
+}
 
 export default async function BlogPage() {
   let initialBlogs = [];

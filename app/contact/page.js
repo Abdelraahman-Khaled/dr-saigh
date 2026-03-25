@@ -16,6 +16,10 @@ export async function generateMetadata() {
   const t = translations[language] || translations["ar"];
   const isAr = language === "ar";
 
+  const headersList = await headers();
+  const currentPath = headersList.get("x-current-path") || `/${language}/contact`;
+  const strippedPath = currentPath.replace(/^\/(ar|en)/, "") || "/contact";
+
   const title = t.contactPage.metadata.title;
   const description = t.contactPage.metadata.description;
   const keywords = isAr
@@ -27,6 +31,14 @@ export async function generateMetadata() {
     description,
     keywords,
     robots: "index, follow",
+    alternates: {
+      canonical: `https://aalsaigh.com${currentPath}`,
+      languages: {
+        ar: `https://aalsaigh.com/ar${strippedPath}`,
+        en: `https://aalsaigh.com/en${strippedPath}`,
+        "x-default": `https://aalsaigh.com/ar${strippedPath}`,
+      },
+    },
     openGraph: {
       type: "website",
       locale: isAr ? "ar_SA" : "en_US",
