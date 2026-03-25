@@ -1,19 +1,15 @@
 'use client';
 
 import { useLanguage } from '@/context/LanguageContext';
+import Link from 'next/link';
 
-export default function Services() {
-    const { t } = useLanguage();
-    const servicesData = t('services.types');
+export default function Services({ initialOperations = [] }) {
+    const { language, t } = useLanguage();
 
-    // Service types array with their keys and icons
-    const serviceTypes = [
-        { key: 'gastricSleeve', icon: 'gastric-bypass.png', popupClass: 'one' },
-        { key: 'gastricBypass', icon: 'stomach.png', popupClass: 'two' },
-        { key: 'classicBypass', icon: 'recycle.png', popupClass: 'three' },
-        { key: 'miniBypass', icon: 'stomach-2.png', popupClass: 'four' },
-        { key: 'revision', icon: 'plastic-surgery.png', popupClass: 'five' }
-    ];
+    // Split operations for the specific grid layout (3+2)
+    const firstThree = initialOperations.slice(0, 3);
+    const nextTwo = initialOperations.slice(3, 5);
+    console.log(initialOperations);
 
     return (
         <div className="our-services" id="operations">
@@ -35,51 +31,81 @@ export default function Services() {
                 </div>
 
                 <div className="row">
-                    {serviceTypes.slice(0, 3).map((service, index) => (
-                        <div key={service.key} className="col-lg-4 col-md-6">
-                            {/* Service Item Start */}
-                            <div className="service-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
-                                <div className="icon-box">
-                                    <div className="img">
-                                        <img src={`images/${service.icon}`} alt="image" />
-                                    </div>
-                                </div>
-                                <div className="service-body">
-                                    <h3>{servicesData[service.key]?.title}</h3>
-                                    <p>{servicesData[service.key]?.preview}</p>
-                                </div>
-                                <div className="read-more-btn">
-                                    <a href="javascript:void(0)" className={`read-more read-more-${index + 1}`}>
-                                        {t('common.readMore')}
-                                    </a>
-                                </div>
-                            </div>
-                            {/* Service Item End */}
-                        </div>
-                    ))}
+                    {firstThree.map((op, index) => {
+                        const title = language === 'ar' ? op.title_ar : op.title_en;
+                        const preview = language === 'ar' ? op.description_ar : op.description_en;
+                        const slug = language === 'ar' ? op.slug_ar : op.slug;
+                        const imageUrl = op.photos?.[0]?.url || 'images/gastric-bypass.png';
 
-                    {serviceTypes.slice(3, 5).map((service, index) => (
-                        <div key={service.key} className="col-md-6">
-                            {/* Service Item Start */}
-                            <div className="service-item wow fadeInUp" data-wow-delay="0.75s">
-                                <div className="icon-box">
-                                    <div className="img">
-                                        <img src={`images/${service.icon}`} alt="image" />
+                        return (
+                            <div key={op.id || index} className="col-lg-4 col-md-6">
+                                {/* Service Item Start */}
+                                <div className="service-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
+                                    <div className="icon-box">
+                                        <div className="img">
+                                            <img
+                                                src={imageUrl}
+                                                alt={title}
+                                                style={{ width: '64px', height: '64px', objectFit: 'contain' }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="service-body">
+                                        <h3>
+                                            <Link href={`/operations/${slug}`}>
+                                                {title}
+                                            </Link>
+                                        </h3>
+                                        <p>{preview}</p>
+                                    </div>
+                                    <div className="read-more-btn">
+                                        <Link href={`/operations/${slug}`} className="read-more">
+                                            {t('common.readMore')}
+                                        </Link>
                                     </div>
                                 </div>
-                                <div className="service-body">
-                                    <h3>{servicesData[service.key]?.title}</h3>
-                                    <p>{servicesData[service.key]?.preview}</p>
-                                </div>
-                                <div className="read-more-btn">
-                                    <a href="javascript:void(0)" className={`read-more read-more-${index + 4}`}>
-                                        {t('common.readMore')}
-                                    </a>
-                                </div>
+                                {/* Service Item End */}
                             </div>
-                            {/* Service Item End */}
-                        </div>
-                    ))}
+                        );
+                    })}
+
+                    {nextTwo.map((op, index) => {
+                        const title = language === 'ar' ? op.title_ar : op.title_en;
+                        const preview = language === 'ar' ? op.description_ar : op.description_en;
+                        const slug = language === 'ar' ? op.slug_ar : op.slug;
+                        const imageUrl = op.photos?.[0]?.url || 'images/plastic-surgery.png';
+
+                        return (
+                            <div key={op.id || index} className="col-md-6">
+                                {/* Service Item Start */}
+                                <div className="service-item wow fadeInUp" data-wow-delay="0.75s">
+                                    <div className="icon-box">
+                                        <div className="img">
+                                            <img
+                                                src={imageUrl}
+                                                alt={title}
+                                                style={{ width: '64px', height: '64px', objectFit: 'contain' }}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="service-body">
+                                        <h3>
+                                            <Link href={`/operations/${slug}`}>
+                                                {title}
+                                            </Link>
+                                        </h3>
+                                        <p>{preview}</p>
+                                    </div>
+                                    <div className="read-more-btn">
+                                        <Link href={`/operations/${slug}`} className="read-more">
+                                            {t('common.readMore')}
+                                        </Link>
+                                    </div>
+                                </div>
+                                {/* Service Item End */}
+                            </div>
+                        );
+                    })}
 
                     <div className="col-lg-12">
                         {/* Service Box Footer Start */}
@@ -92,65 +118,6 @@ export default function Services() {
                         {/* Service Box Footer End */}
                     </div>
                 </div>
-
-                {/* POPUPS START */}
-                {serviceTypes.map((service, index) => {
-                    const serviceData = servicesData[service.key];
-                    return (
-                        <section key={service.key} className={`popup ${service.popupClass}`}>
-                            <div className="layer">
-                                <div className="container">
-                                    <div className="d-flex align-items-center justify-content-between mb-3">
-                                        <h3>{serviceData?.title}</h3>
-                                        <i className="fa fa-close"></i>
-                                    </div>
-                                    <p>{serviceData?.description}</p>
-
-                                    {serviceData?.mechanism && (
-                                        <>
-                                            <h3>{serviceData.mechanism}</h3>
-                                            <p>{serviceData.mechanismText}</p>
-                                        </>
-                                    )}
-
-                                    {serviceData?.advantages && (
-                                        <>
-                                            <h3>{serviceData.advantages}</h3>
-                                            <ul>
-                                                {Array.isArray(serviceData.advantagesList) && serviceData.advantagesList.map((advantage, idx) => (
-                                                    <li key={idx}>{advantage}</li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    )}
-
-                                    {serviceData?.procedures && (
-                                        <>
-                                            <h3>{serviceData.procedures}</h3>
-                                            <ul>
-                                                {Array.isArray(serviceData.proceduresList) && serviceData.proceduresList.map((procedure, idx) => (
-                                                    <li key={idx}>{procedure}</li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    )}
-
-                                    {serviceData?.reasons && (
-                                        <>
-                                            <h3>{serviceData.reasons}</h3>
-                                            <ul>
-                                                {Array.isArray(serviceData.reasonsList) && serviceData.reasonsList.map((reason, idx) => (
-                                                    <li key={idx}>{reason}</li>
-                                                ))}
-                                            </ul>
-                                        </>
-                                    )}
-                                </div>
-                            </div>
-                        </section>
-                    );
-                })}
-                {/* POPUPS END */}
             </div>
 
             {/* Intro Clinic Video Section Start */}

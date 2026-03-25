@@ -102,37 +102,35 @@ export default function OperationsGrid({ initialOperations = [], initialError = 
                         return (
                             <div key={operation.id} className="col-lg-4 col-md-6">
                                 {/* Operation Item Start */}
-                                <div className="blog-item wow fadeInUp">
-                                    {/* Post Featured Image Start*/}
-                                    <div className="post-featured-image" data-cursor-text={t('operationsPage.grid.viewOperation')}>
-                                        <figure>
-                                            <Link href={localePath(`/operations/${slug}`)} className="image-anime">
-                                                <img src={imageUrl} alt={imageAlt} />
+                                <div className="service-item wow fadeInUp">
+                                    <div className="icon-box">
+                                        <div className="img">
+                                            <Link href={localePath(`/operations/${slug}`)}>
+                                                <img 
+                                                    src={imageUrl} 
+                                                    alt={imageAlt} 
+                                                    style={{ width: '64px', height: '64px', objectFit: 'contain' }}
+                                                />
                                             </Link>
-                                        </figure>
+                                        </div>
                                     </div>
-                                    {/* Post Featured Image End */}
-
-                                    {/* post Item Body Start */}
-                                    <div className="post-item-body">
-                                        <h2>
+                                    <div className="service-body">
+                                        <h3>
                                             <Link href={localePath(`/operations/${slug}`)}>
                                                 {title}
                                             </Link>
-                                        </h2>
+                                        </h3>
                                         {description && (
                                             <p className="line-clamp-2">
                                                 {description}
                                             </p>
                                         )}
                                     </div>
-                                    {/* Post Item Body End*/}
-
-                                    {/* Post Item Footer Start*/}
-                                    <div className="post-item-footer">
-                                        <Link href={localePath(`/operations/${slug}`)} className="read-more-btn">{t('operationsPage.grid.readMore')}</Link>
+                                    <div className="read-more-btn">
+                                        <Link href={localePath(`/operations/${slug}`)} className="read-more">
+                                            {t('common.readMore')}
+                                        </Link>
                                     </div>
-                                    {/* Post Item Footer End*/}
                                 </div>
                                 {/* Operation Item End */}
                             </div>

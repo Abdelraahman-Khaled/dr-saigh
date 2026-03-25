@@ -14,6 +14,7 @@ import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
 import ClientScripts from "./components/ClientScripts";
 import { getBlogs } from "@/api/blog";
+import { getOperations } from "@/api/operations";
 import { headers, cookies } from "next/headers";
 
 export async function generateMetadata() {
@@ -41,14 +42,23 @@ export const dynamic = "force-dynamic";
 
 export default async function Home() {
   let initialBlogs = [];
+  let initialOperations = [];
   try {
     initialBlogs = (await getBlogs()) || [];
   } catch (err) {
     console.error("Error fetching blogs for home:", err);
   }
 
+  try {
+    initialOperations = (await getOperations()) || [];
+  } catch (err) {
+    console.error("Error fetching operations for home:", err);
+  }
+
   // Only show first 3 blogs on home page
   const homeBlogs = initialBlogs.reverse().slice(0, 3);
+  // Show first 5 operations on home page to match layout
+  const homeOperations = initialOperations.slice(0, 5);
 
   return (
     <>
@@ -58,7 +68,7 @@ export default async function Home() {
         <Hero />
         <ScrollingTicker />
         <About />
-        <Services />
+        <Services initialOperations={homeOperations} />
         <BMICalculator />
         <WhyChooseUs />
         <FAQ />
