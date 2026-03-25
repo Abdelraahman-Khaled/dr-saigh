@@ -100,18 +100,21 @@ export default async function OperationDetailsPage({ params }) {
 
   const decodedSlug = decodeURIComponent(slug);
 
-  // Redirect to correct localized slug if mismatch
-  if (
-    language === "ar" &&
-    operation.slug_ar &&
-    decodedSlug !== operation.slug_ar
-  ) {
+  // REDIRECTION LOGIC: Handle cross-language slug matches
+  // If user enters an English slug while in Arabic context → Switch to English
+  if (language === 'ar' && decodedSlug === operation.slug) {
+    redirect(`/en/operations/${operation.slug}`);
+  }
+  // If user enters an Arabic slug while in English context → Switch to Arabic
+  if (language === 'en' && decodedSlug === operation.slug_ar) {
     redirect(`/ar/operations/${operation.slug_ar}`);
-  } else if (
-    language === "en" &&
-    operation.slug &&
-    decodedSlug !== operation.slug
-  ) {
+  }
+
+  // Same-language normalization (e.g. if slug is slightly different from canonical)
+  if (language === 'ar' && operation.slug_ar && decodedSlug !== operation.slug_ar) {
+    redirect(`/ar/operations/${operation.slug_ar}`);
+  } 
+  if (language === 'en' && operation.slug && decodedSlug !== operation.slug) {
     redirect(`/en/operations/${operation.slug}`);
   }
 

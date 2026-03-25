@@ -1724,7 +1724,9 @@ header.main-header .header-sticky.active {
   border-radius: 30px;
   object-fit: cover;
   transition: all 0.5s ease-in-out;
-  height: 250px;
+  height: 230px;
+  width: 403px;
+  object-position: bottom;
 }
 .blog-item:hover .post-featured-image img {
   transform: scale(1.1);

@@ -103,7 +103,17 @@ export default async function BlogDetailsPage({ params }) {
 
   const decodedSlug = decodeURIComponent(slug);
 
-  // Redirect to correct localized slug if mismatch
+  // REDIRECTION LOGIC: Handle cross-language slug matches
+  // If user enters an English slug while in Arabic context → Switch to English 
+  if (language === 'ar' && decodedSlug === blog.slug) {
+    redirect(`/en/blog/${blog.slug}`);
+  }
+  // If user enters an Arabic slug while in English context → Switch to Arabic
+  if (language === 'en' && decodedSlug === blog.slug_ar) {
+    redirect(`/ar/blog/${blog.slug_ar}`);
+  }
+
+  // Same-language normalization (e.g. if slug is slightly different from canonical)
   if (language === "ar" && blog.slug_ar && decodedSlug !== blog.slug_ar) {
     redirect(`/ar/blog/${blog.slug_ar}`);
   } else if (language === "en" && blog.slug && decodedSlug !== blog.slug) {
