@@ -9,6 +9,7 @@ import WhyChooseUs from "./components/WhyChooseUs";
 import FAQ from "./components/FAQ";
 import Blog from "./components/Blog";
 import Videos from "./components/Videos";
+import PdfGuide from "./components/PdfGuide";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
@@ -74,6 +75,7 @@ export default async function Home() {
         <FAQ />
         <Blog initialBlogs={homeBlogs} />
         <Videos />
+        <PdfGuide />
         <Contact />
       </main>
       <Footer />

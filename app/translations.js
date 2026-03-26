@@ -289,6 +289,27 @@ const translations = {
       moreVideos: "المزيد من الفيديوهات",
     },
 
+    pdfGuide: {
+      subtitle: "دليلك الصحي",
+      title: "دليلك نحو",
+      titleHighlight: "حياة صحية",
+      titleEnd: "أفضل",
+      download: "تحميل",
+      close: "إغلاق",
+      docs: [
+        {
+          title: "النظام الغذائي بعد عملية السمنة",
+          file: "/images/pdf/Brochure.pdf",
+          thumbnail: "/images/pdf-thubmnail/النظام-الغذائي-بعد-عملية-السمنة.png",
+        },
+        {
+          title: "النظام الغذائي",
+          file: "/images/pdf/Folded Brochure.pdf",
+          thumbnail: "/images/pdf-thubmnail/النظام-الغذائي.png",
+        },
+      ],
+    },
+
     contactPage: {
       hero: {
         title: "تواصل معنا",
@@ -674,6 +695,27 @@ const translations = {
       titleHighlight: "Our Latest",
       titleEnd: "Videos",
       moreVideos: "More Videos",
+    },
+
+    pdfGuide: {
+      subtitle: "Your Health Guide",
+      title: "Your Guide to a",
+      titleHighlight: "Healthier",
+      titleEnd: "Life",
+      download: "Download",
+      close: "Close",
+      docs: [
+        {
+          title: "Diet After Bariatric Surgery",
+          file: "/images/pdf/Brochure.pdf",
+          thumbnail: "/images/pdf-thubmnail/النظام-الغذائي-بعد-عملية-السمنة.png",
+        },
+        {
+          title: "Dietary Guide",
+          file: "/images/pdf/Folded Brochure.pdf",
+          thumbnail: "/images/pdf-thubmnail/النظام-الغذائي.png",
+        },
+      ],
     },
 
     contactPage: {
