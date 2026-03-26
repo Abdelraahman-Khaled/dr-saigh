@@ -70,7 +70,7 @@ export default function middleware(request) {
   const redirectUrl = request.nextUrl.clone();
   redirectUrl.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
 
-  return NextResponse.redirect(redirectUrl);
+  return NextResponse.redirect(redirectUrl, 301);
 }
 
 export const config = {

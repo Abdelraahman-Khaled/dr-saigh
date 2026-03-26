@@ -1,6 +1,6 @@
 import { getBlogDetails } from "@/api/blog";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { redirect, permanentRedirect } from "next/navigation";
 import Preloader from "../../components/Preloader";
 import Header from "../../components/Header";
 import BlogContent from "./components/BlogContent";
@@ -106,18 +106,18 @@ export default async function BlogDetailsPage({ params }) {
   // REDIRECTION LOGIC: Handle cross-language slug matches
   // If user enters an English slug while in Arabic context → Switch to English
   if (language === "ar" && decodedSlug === blog.slug) {
-    redirect(`/en/blog/${blog.slug}`);
+    permanentRedirect(`/en/blog/${blog.slug}`);
   }
   // If user enters an Arabic slug while in English context → Switch to Arabic
   if (language === "en" && decodedSlug === blog.slug_ar) {
-    redirect(`/ar/blog/${blog.slug_ar}`);
+    permanentRedirect(`/ar/blog/${blog.slug_ar}`);
   }
 
   // Same-language normalization (e.g. if slug is slightly different from canonical)
   if (language === "ar" && blog.slug_ar && decodedSlug !== blog.slug_ar) {
-    redirect(`/ar/blog/${blog.slug_ar}`);
+    permanentRedirect(`/ar/blog/${blog.slug_ar}`);
   } else if (language === "en" && blog.slug && decodedSlug !== blog.slug) {
-    redirect(`/en/blog/${blog.slug}`);
+    permanentRedirect(`/en/blog/${blog.slug}`);
   }
 
   return (

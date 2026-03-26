@@ -1,6 +1,6 @@
 import { getOperationDetails } from "@/api/operations";
 import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
+import { redirect, permanentRedirect } from "next/navigation";
 import Preloader from "../../components/Preloader";
 import Header from "../../components/Header";
 import OperationsContent from "./components/OperationsContent";
@@ -103,19 +103,19 @@ export default async function OperationDetailsPage({ params }) {
   // REDIRECTION LOGIC: Handle cross-language slug matches
   // If user enters an English slug while in Arabic context → Switch to English
   if (language === 'ar' && decodedSlug === operation.slug) {
-    redirect(`/en/operations/${operation.slug}`);
+    permanentRedirect(`/en/operations/${operation.slug}`);
   }
   // If user enters an Arabic slug while in English context → Switch to Arabic
   if (language === 'en' && decodedSlug === operation.slug_ar) {
-    redirect(`/ar/operations/${operation.slug_ar}`);
+    permanentRedirect(`/ar/operations/${operation.slug_ar}`);
   }
 
   // Same-language normalization (e.g. if slug is slightly different from canonical)
   if (language === 'ar' && operation.slug_ar && decodedSlug !== operation.slug_ar) {
-    redirect(`/ar/operations/${operation.slug_ar}`);
+    permanentRedirect(`/ar/operations/${operation.slug_ar}`);
   } 
   if (language === 'en' && operation.slug && decodedSlug !== operation.slug) {
-    redirect(`/en/operations/${operation.slug}`);
+    permanentRedirect(`/en/operations/${operation.slug}`);
   }
 
   return (
