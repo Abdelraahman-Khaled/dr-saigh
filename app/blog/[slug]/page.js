@@ -51,7 +51,7 @@ export async function generateMetadata({ params }) {
   const photoUrl = featuredPhoto?.url || blog.photo_url;
 
   return {
-    title: `Dr. Alsaigh | ${title}`,
+    title: `${title}`,
     description,
     keywords,
     icons: {
@@ -60,13 +60,13 @@ export async function generateMetadata({ params }) {
     },
     openGraph: {
       type: "article",
-      title: `Dr. Alsaigh | ${title}`,
+      title: `${title}`,
       description,
       images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
     },
     twitter: {
       card: "summary_large_image",
-      title: `Dr. Alsaigh | ${title}`,
+      title: `${title}`,
       description,
       images: blog.photo_url ? [blog.photo_url] : ["/images/icons/favicon.ico"],
     },
@@ -104,12 +104,12 @@ export default async function BlogDetailsPage({ params }) {
   const decodedSlug = decodeURIComponent(slug);
 
   // REDIRECTION LOGIC: Handle cross-language slug matches
-  // If user enters an English slug while in Arabic context → Switch to English 
-  if (language === 'ar' && decodedSlug === blog.slug) {
+  // If user enters an English slug while in Arabic context → Switch to English
+  if (language === "ar" && decodedSlug === blog.slug) {
     redirect(`/en/blog/${blog.slug}`);
   }
   // If user enters an Arabic slug while in English context → Switch to Arabic
-  if (language === 'en' && decodedSlug === blog.slug_ar) {
+  if (language === "en" && decodedSlug === blog.slug_ar) {
     redirect(`/ar/blog/${blog.slug_ar}`);
   }
 
