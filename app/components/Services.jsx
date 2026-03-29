@@ -9,7 +9,6 @@ export default function Services({ initialOperations = [] }) {
     // Split operations for the specific grid layout (3+2)
     const firstThree = initialOperations.slice(0, 3);
     const nextTwo = initialOperations.slice(3, 5);
-    console.log(initialOperations);
 
     return (
         <div className="our-services" id="operations">
