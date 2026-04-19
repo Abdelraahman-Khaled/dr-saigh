@@ -9,7 +9,7 @@ const PAGE_SIZE = 9;
 
 export default function BlogGrid({ initialBlogs = [], initialError = null }) {
     const { t, language, localePath } = useLanguage();
-    const [blogs, setBlogs] = useState(() => [...initialBlogs].reverse());
+    const [blogs, setBlogs] = useState(() => initialBlogs);
     const [loading, setLoading] = useState(initialBlogs.length === 0 && !initialError);
     const [error, setError] = useState(initialError);
     const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
@@ -25,7 +25,7 @@ export default function BlogGrid({ initialBlogs = [], initialError = null }) {
             try {
                 const data = await getBlogs();
                 if (Array.isArray(data)) {
-                    setBlogs([...data].reverse());
+                    setBlogs(data);
                 } else {
                     console.error('Invalid blogs data format:', data);
                     setBlogs([]);

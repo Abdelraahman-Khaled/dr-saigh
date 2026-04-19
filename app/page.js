@@ -57,7 +57,7 @@ export default async function Home() {
   }
 
   // Only show first 3 blogs on home page
-  const homeBlogs = initialBlogs.reverse().slice(0, 3);
+  const homeBlogs = initialBlogs.slice(0, 3);
   // Show first 5 operations on home page to match layout
   const homeOperations = initialOperations.slice(0, 5);
 
