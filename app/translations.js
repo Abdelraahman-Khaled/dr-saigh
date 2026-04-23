@@ -300,12 +300,18 @@ const translations = {
         {
           title: "النظام الغذائي بعد عملية السمنة",
           file: "/images/pdf/Brochure.pdf",
-          thumbnail: "/images/pdf-thubmnail/النظام-الغذائي-بعد-عملية-السمنة.png",
+          thumbnail:
+            "/images/pdf-thubmnail/النظام-الغذائي-بعد-عملية-السمنة.png",
         },
         {
           title: "النظام الغذائي",
           file: "/images/pdf/Folded Brochure.pdf",
           thumbnail: "/images/pdf-thubmnail/النظام-الغذائي.png",
+        },
+        {
+          title: "مرض-الارتجاع-المريئي",
+          file: "/images/pdf/Gastroesophageal Reflux Disease.pdf",
+          thumbnail: "/images/pdf-thubmnail/مرض-الارتجاع-المريئي.png",
         },
       ],
     },
@@ -708,12 +714,18 @@ const translations = {
         {
           title: "Diet After Bariatric Surgery",
           file: "/images/pdf/Brochure.pdf",
-          thumbnail: "/images/pdf-thubmnail/النظام-الغذائي-بعد-عملية-السمنة.png",
+          thumbnail:
+            "/images/pdf-thubmnail/النظام-الغذائي-بعد-عملية-السمنة.png",
         },
         {
           title: "Dietary Guide",
           file: "/images/pdf/Folded Brochure.pdf",
           thumbnail: "/images/pdf-thubmnail/النظام-الغذائي.png",
+        },
+        {
+          title: "Gastroesophageal Reflux Disease",
+          file: "/images/pdf/Gastroesophageal Reflux Disease.pdf",
+          thumbnail: "/images/pdf-thubmnail/مرض-الارتجاع-المريئي.png",
         },
       ],
     },
