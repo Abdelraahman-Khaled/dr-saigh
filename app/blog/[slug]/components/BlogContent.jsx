@@ -7,6 +7,7 @@ import FAQSlug from "./FAQSlug";
 import { getBlogDetails } from "@/api/blog";
 import { useQuery } from '@tanstack/react-query';
 import BlogHero from "./BlogHero";
+import FAQSchema from "./FAQSchema";
 
 export default function BlogContent({ slug, initialBlog }) {
     // Find the Arabic image
@@ -76,6 +77,7 @@ export default function BlogContent({ slug, initialBlog }) {
 
     return (
         <>
+            <FAQSchema faqs={blog.faqs} />
             <BlogHero
                 title={language === "ar" ? (blog.title_ar || blog.title_en) : (blog.title_en || blog.title_ar)}
                 author={language === "ar" ? "د. عبدالرحمن الصائغ" : "Dr. Alsaigh"}
