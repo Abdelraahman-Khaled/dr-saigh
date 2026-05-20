@@ -54,7 +54,7 @@ export default function BlogContent({ slug, initialBlog }) {
                                     <figure>
                                         <Image
                                             src={img.url}
-                                            alt={img.alt}
+                                            alt={language === 'ar' ? (img.alt_ar || img.alt_en) : (img.alt_en || img.alt_ar) || `Blog Image ${imgIndex + 1}`}
                                             width={1200}
                                             height={630}
                                             className="img-fluid rounded"
