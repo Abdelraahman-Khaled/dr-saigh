@@ -2,6 +2,7 @@
 
 import { useLanguage } from '@/context/LanguageContext';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Services({ initialOperations = [] }) {
     const { language, t } = useLanguage();
@@ -34,7 +35,7 @@ export default function Services({ initialOperations = [] }) {
                         const title = language === 'ar' ? op.title_ar : op.title_en;
                         const preview = language === 'ar' ? op.description_ar : op.description_en;
                         const slug = language === 'ar' ? op.slug_ar : op.slug;
-                        const imageUrl = op.photos?.[0]?.url || 'images/gastric-bypass.png';
+                        const imageUrl = op.photos?.[0]?.url || '/images/gastric-bypass.png';
 
                         return (
                             <div key={op.id || index} className="col-lg-4 col-md-6">
@@ -42,9 +43,11 @@ export default function Services({ initialOperations = [] }) {
                                 <div className="service-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
                                     <div className="icon-box">
                                         <div className="img">
-                                            <img
+                                            <Image
                                                 src={imageUrl}
                                                 alt={title}
+                                                width={64}
+                                                height={64}
                                                 style={{ width: '64px', height: '64px', objectFit: 'contain' }}
                                             />
                                         </div>
@@ -72,7 +75,7 @@ export default function Services({ initialOperations = [] }) {
                         const title = language === 'ar' ? op.title_ar : op.title_en;
                         const preview = language === 'ar' ? op.description_ar : op.description_en;
                         const slug = language === 'ar' ? op.slug_ar : op.slug;
-                        const imageUrl = op.photos?.[0]?.url || 'images/plastic-surgery.png';
+                        const imageUrl = op.photos?.[0]?.url || '/images/plastic-surgery.png';
 
                         return (
                             <div key={op.id || index} className="col-md-6">
@@ -80,9 +83,11 @@ export default function Services({ initialOperations = [] }) {
                                 <div className="service-item wow fadeInUp" data-wow-delay="0.75s">
                                     <div className="icon-box">
                                         <div className="img">
-                                            <img
+                                            <Image
                                                 src={imageUrl}
                                                 alt={title}
+                                                width={64}
+                                                height={64}
                                                 style={{ width: '64px', height: '64px', objectFit: 'contain' }}
                                             />
                                         </div>

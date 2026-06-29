@@ -7,6 +7,20 @@ export default function FAQ() {
     const { t } = useLanguage();
     const questions = t('faq.questions');
 
+    // سكيمة FAQPage (AEO) — تُصدَّر في الـ SSR من نفس بيانات الأسئلة
+    const faqSchema =
+        Array.isArray(questions) && questions.length > 0
+            ? {
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: questions.map((q) => ({
+                      '@type': 'Question',
+                      name: q.question,
+                      acceptedAnswer: { '@type': 'Answer', text: q.answer },
+                  })),
+              }
+            : null;
+
     const icons = [
         "images/sad-face.png",
         "images/number-2.png",
@@ -17,13 +31,19 @@ export default function FAQ() {
 
     return (
         <div className="how-it-work" id="FAQs">
+            {faqSchema && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
+            )}
             <div className="container">
                 <div className="row align-items-center">
                     <div className="col-lg-6">
                         {/* How It Work Image Start */}
                         <div className="how-it-work-img">
                             <figure className="reveal image-anime">
-                                <Image src="/images/faq.png" alt="FAQ" width={600} height={630} loading="lazy" quality={85} />
+                                <Image src="/images/faq.png" alt="أسئلة شائعة حول جراحة السمنة وتكميم المعدة" width={600} height={630} loading="lazy" quality={85} />
                             </figure>
                         </div>
                         {/* How It Work Image End */}

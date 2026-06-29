@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Blog({ initialBlogs = [] }) {
@@ -35,7 +36,7 @@ export default function Blog({ initialBlogs = [] }) {
 
                         // Image logic
                         const mainPhoto = blog.photos?.find(p => isAr ? p.is_arabic : !p.is_arabic) || blog.photos?.[0];
-                        const imageUrl = mainPhoto?.url || blog.photo_url || 'images/blog/default.webp';
+                        const imageUrl = mainPhoto?.url || blog.photo_url || '/images/blog/default.webp';
 
                         return (
                             <div key={blog.id} className="col-lg-4 col-md-6">
@@ -45,7 +46,13 @@ export default function Blog({ initialBlogs = [] }) {
                                     <div className="post-featured-image" data-cursor-text={t('common.readMore')}>
                                         <figure>
                                             <Link href={localePath(`/blog/${slug}`)} className="image-anime">
-                                                <img src={imageUrl} alt={title} />
+                                                <Image
+                                                    src={imageUrl}
+                                                    alt={title}
+                                                    width={600}
+                                                    height={400}
+                                                    sizes="(max-width: 768px) 100vw, 33vw"
+                                                />
                                             </Link>
                                         </figure>
                                     </div>

@@ -117,6 +117,60 @@ export async function generateMetadata() {
 
 import { cookies } from "next/headers";
 
+// سكيمة الكيان (Physician/MedicalBusiness) — تظهر على كل الصفحات وتعرّف العيادة
+// لمحركات البحث والـ AI. العنوان التفصيلي والخريطة سيُضافان لاحقًا.
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "@id": "https://aalsaigh.com/#physician",
+  name: "الدكتور عبدالرحمن الصائغ",
+  alternateName: "Dr. Abdulrahman AlSaigh",
+  url: "https://aalsaigh.com",
+  logo: "https://aalsaigh.com/images/favicon.webp",
+  image: "https://aalsaigh.com/images/cover.png",
+  description:
+    "استشاري جراحة السمنة والمناظير والجراحة العامة في الرياض — تكميم المعدة، تحويل مسار المعدة، والجراحة بالمناظير.",
+  telephone: "+966552200258",
+  email: "aarsaigh@hotmail.com",
+  priceRange: "$$",
+  medicalSpecialty: ["Bariatric", "Surgical"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "الرياض",
+    addressRegion: "الرياض",
+    addressCountry: "SA",
+  },
+  areaServed: { "@type": "City", name: "الرياض" },
+  availableService: [
+    { "@type": "MedicalProcedure", name: "تكميم المعدة" },
+    { "@type": "MedicalProcedure", name: "تحويل مسار المعدة" },
+    { "@type": "MedicalProcedure", name: "جراحة المناظير" },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Saturday",
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+      ],
+      opens: "09:00",
+      closes: "21:00",
+    },
+  ],
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=100063006469853",
+    "https://www.youtube.com/channel/UCxWDOnuXT52pnrhm9kh7puA",
+    "https://www.tiktok.com/@dralsaigh",
+    "https://www.snapchat.com/add/dr.alsaigh",
+    "https://x.com/aarsaigh",
+    "https://www.instagram.com/dr_abdulrahman_alsaigh",
+  ],
+};
+
 export default async function RootLayout({ children }) {
   const cookieStore = await cookies();
   const language = cookieStore.get("NEXT_LOCALE")?.value || "ar";
@@ -133,6 +187,12 @@ export default async function RootLayout({ children }) {
         <link rel="icon" type="image/webp" href="/images/favicon.webp" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/images/favicon.webp" />
+
+        {/* بيانات منظمة: كيان الطبيب/العيادة */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+        />
 
         {/* CSS Files */}
         <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />

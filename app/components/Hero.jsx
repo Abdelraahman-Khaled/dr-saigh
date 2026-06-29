@@ -61,7 +61,7 @@ export default function Hero() {
                                     <figure className="image-anime">
                                         <Image
                                             src="/images/dantist-doctor-img.webp"
-                                            alt="doctor"
+                                            alt="د. عبدالرحمن الصائغ استشاري جراحة السمنة والمناظير"
                                             width={78}
                                             height={78}
                                             loading="lazy"

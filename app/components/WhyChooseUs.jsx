@@ -1,6 +1,7 @@
 'use client';
 
 import { useLanguage } from '@/context/LanguageContext';
+import Image from 'next/image';
 
 export default function WhyChooseUs() {
     const { t } = useLanguage();
@@ -43,7 +44,7 @@ export default function WhyChooseUs() {
                                 <div key={index} className="why-choose-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
                                     {/* Icon Box Start */}
                                     <div className="icon-box">
-                                        <img src={`images/${benefitIcons[index]}`} alt="image" />
+                                        <Image src={`/images/${benefitIcons[index]}`} alt={benefit.title} width={48} height={48} />
                                     </div>
                                     {/* Icon Box End */}
 
@@ -63,7 +64,13 @@ export default function WhyChooseUs() {
                         {/* Why Choose Image Start */}
                         <div className="why-choose-image wow fadeInUp">
                             <figure>
-                                <img src="images/why-choose-us-img.webp" alt="image" />
+                                <Image
+                                    src="/images/why-choose-us-img.webp"
+                                    alt="مميزات اختيار د. عبدالرحمن الصائغ لجراحة السمنة"
+                                    width={439}
+                                    height={429}
+                                    style={{ width: '100%', height: 'auto' }}
+                                />
                             </figure>
                         </div>
                         {/* Why Choose Image End */}
@@ -76,7 +83,7 @@ export default function WhyChooseUs() {
                                 <div key={index + 3} className="why-choose-item wow fadeInUp" data-wow-delay={`${index * 0.25}s`}>
                                     {/* Icon Box Start */}
                                     <div className="icon-box">
-                                        <img src={`images/${benefitIcons[index + 3]}`} alt="image" />
+                                        <Image src={`/images/${benefitIcons[index + 3]}`} alt={benefit.title} width={48} height={48} />
                                     </div>
                                     {/* Icon Box End */}
 

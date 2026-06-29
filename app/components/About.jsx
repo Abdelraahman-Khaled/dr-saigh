@@ -18,7 +18,7 @@ export default function About() {
                                 <figure className="image-anime reveal">
                                     <Image
                                         src="/images/about-us-img-1.jpg"
-                                        alt="about"
+                                        alt="د. عبدالرحمن الصائغ خلال عمله الجراحي"
                                         width={410}
                                         height={394}
                                         loading="lazy"
@@ -31,7 +31,7 @@ export default function About() {
                                 <figure className="image-anime reveal">
                                     <Image
                                         src="/images/about-us-img-2.jpg"
-                                        alt="about"
+                                        alt="عيادة د. عبدالرحمن الصائغ لجراحة السمنة بالرياض"
                                         width={300}
                                         height={216}
                                         loading="lazy"
@@ -45,7 +45,7 @@ export default function About() {
                                 <figure>
                                     <Image
                                         src="/images/about-experience-circle.png"
-                                        alt="experience"
+                                        alt="سنوات الخبرة في جراحة السمنة والمناظير"
                                         width={112}
                                         height={112}
                                         loading="lazy"
