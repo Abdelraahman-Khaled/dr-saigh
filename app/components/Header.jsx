@@ -36,7 +36,7 @@ export default function Header() {
                   <li className="nav-item"><a className="nav-link" href={localePath('/blog')}>{t('navbar.blog')}</a></li>
                   <li className="nav-item"><a className="nav-link" href={localePath('/contact')}>{t('navbar.contact')}</a></li>
                   <li className="nav-item highlighted-menu">
-                    <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
+                    <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://bit.ly/4vtNR86">
                       {t('navbar.bookAppointment')}
                     </a>
                   </li>
@@ -60,7 +60,7 @@ export default function Header() {
               </div>
               {/* Let's Start Button Start */}
               <div className="header-btn d-inline-flex">
-                <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" className="btn-default">
+                <a target="_blank" rel="noopener noreferrer" href="https://bit.ly/4vtNR86" className="btn-default">
                   {t('common.bookAppointment')}
                 </a>
               </div>

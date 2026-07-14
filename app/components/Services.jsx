@@ -115,7 +115,7 @@ export default function Services({ initialOperations = [] }) {
                         {/* Service Box Footer Start */}
                         <div className="services-box-footer wow fadeInUp" data-wow-delay="1s">
                             <p>{t('services.footer')}</p>
-                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" target="_blank" rel="noopener noreferrer" className="btn-default">
+                            <a href="https://bit.ly/4vtNR86" target="_blank" rel="noopener noreferrer" className="btn-default">
                                 {t('common.bookAppointment')}
                             </a>
                         </div>

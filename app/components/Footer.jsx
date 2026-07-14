@@ -41,7 +41,7 @@ export default function Footer() {
                                 <li><Link href={localePath('/#about')}>{t('footer.links.about')}</Link></li>
                                 <li><Link href={localePath('/operations')}>{t('footer.links.operations')}</Link></li>
                                 <li>
-                                    <Link target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform">
+                                    <Link target="_blank" rel="noopener noreferrer" href="https://bit.ly/4vtNR86">
                                         {t('footer.links.bookAppointment')}
                                     </Link>
                                 </li>

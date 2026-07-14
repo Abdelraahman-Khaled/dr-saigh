@@ -67,7 +67,7 @@ export default function ContactInfo() {
                         {/* Contact Us Item End */}
                     </div>
                     <div className="col-lg-4 col-md-6 text-center w-100">
-                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" target="_blank" rel="noopener noreferrer" className="btn-default" style={{ display: 'inline-block', marginTop: '10px' }}>
+                        <a href="https://bit.ly/4vtNR86" target="_blank" rel="noopener noreferrer" className="btn-default" style={{ display: 'inline-block', marginTop: '10px' }}>
                             {t('contactPage.info.bookNow')}
                         </a>
                     </div>

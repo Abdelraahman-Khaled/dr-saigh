@@ -26,7 +26,7 @@ export default function Hero() {
 
                             {/* Hero Content Body Start */}
                             <div className="hero-content-body wow fadeInUp" data-wow-delay="0.5s">
-                                <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeE7ppxwLRQMtFq0GCTSZNTcrQBpI_opFb2ey0Sckn_VPi-Ng/viewform" className="btn-default">
+                                <a target="_blank" rel="noopener noreferrer" href="https://bit.ly/4vtNR86" className="btn-default">
                                     {t('common.bookAppointment')}
                                 </a>
                             </div>
