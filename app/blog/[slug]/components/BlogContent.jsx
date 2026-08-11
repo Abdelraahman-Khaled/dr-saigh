@@ -8,6 +8,7 @@ import { getBlogDetails } from "@/api/blog";
 import { useQuery } from '@tanstack/react-query';
 import BlogHero from "./BlogHero";
 import FAQSchema from "./FAQSchema";
+import { formatContent, getYoutubeId } from "@/app/utils/youtube";
 
 export default function BlogContent({ slug, initialBlog }) {
     // Find the Arabic image
@@ -44,7 +45,7 @@ export default function BlogContent({ slug, initialBlog }) {
             return blog.contents.map((section, index) => (
                 <div key={index} className="blog-section mb-4">
                     {/* Section Content */}
-                    <div dangerouslySetInnerHTML={{ __html: language === 'ar' ? (section.content_ar || section.content_en) : (section.content_en || section.content_ar) }} />
+                    <div dangerouslySetInnerHTML={{ __html: formatContent(language === 'ar' ? (section.content_ar || section.content_en) : (section.content_en || section.content_ar)) }} />
 
                     {/* Section Images */}
                     {section.photos && section.photos.length > 0 && (
@@ -69,7 +70,7 @@ export default function BlogContent({ slug, initialBlog }) {
             ));
         } else {
             // Fallback for simple content
-            return <div dangerouslySetInnerHTML={{ __html: blog.contents }} />;
+            return <div dangerouslySetInnerHTML={{ __html: formatContent(blog.contents) }} />;
         }
     };
 
@@ -119,6 +120,25 @@ export default function BlogContent({ slug, initialBlog }) {
                                         className="wow fadeInUp"
                                     >
                                         {renderContent()}
+
+                                        {/* Dedicated YouTube video field from the backend */}
+                                        {(() => {
+                                            const videoId = getYoutubeId(blog.video_url || blog.youtube_url || blog.video);
+                                            if (!videoId) return null;
+                                            return (
+                                                <div className="video-responsive my-4">
+                                                    <iframe
+                                                        src={`https://www.youtube.com/embed/${videoId}`}
+                                                        title="YouTube video player"
+                                                        frameBorder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        referrerPolicy="strict-origin-when-cross-origin"
+                                                        allowFullScreen
+                                                    ></iframe>
+                                                </div>
+                                            );
+                                        })()}
+
                                         {blog && blog.faqs && Array.isArray(blog.faqs) && blog.faqs.length > 0 && (
                                             <FAQSlug items={blog.faqs} />
                                         )}

@@ -23,7 +23,7 @@ function shouldIgnore(pathname) {
   );
 }
 
-export default function middleware(request) {
+export default function proxy(request) {
   const { pathname } = request.nextUrl;
 
   // Ignore static assets and Next.js internals

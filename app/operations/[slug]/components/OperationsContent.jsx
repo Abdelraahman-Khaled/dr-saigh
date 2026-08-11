@@ -7,6 +7,7 @@ import FAQSlug from "./FAQSlug";
 import { getOperationDetails } from "@/api/operations";
 import { useQuery } from '@tanstack/react-query';
 import OperationsHero from "./OperationsHero";
+import { formatContent, getYoutubeId } from "@/app/utils/youtube";
 
 export default function OperationsContent({ slug, initialOperation }) {
     const { language, prevLanguage, localePath } = useLanguage();
@@ -40,7 +41,7 @@ export default function OperationsContent({ slug, initialOperation }) {
             return operation.contents.map((section, index) => (
                 <div key={index} className="blog-section mb-4">
                     {/* Section Content */}
-                    <div dangerouslySetInnerHTML={{ __html: language === 'ar' ? (section.content_ar || section.content_en) : (section.content_en || section.content_ar) }} />
+                    <div dangerouslySetInnerHTML={{ __html: formatContent(language === 'ar' ? (section.content_ar || section.content_en) : (section.content_en || section.content_ar)) }} />
 
                     {/* Section Images */}
                     {section.photos && section.photos.length > 0 && (
@@ -64,7 +65,7 @@ export default function OperationsContent({ slug, initialOperation }) {
                 </div>
             ));
         } else {
-            return <div dangerouslySetInnerHTML={{ __html: operation.contents }} />;
+            return <div dangerouslySetInnerHTML={{ __html: formatContent(operation.contents) }} />;
         }
     };
 
@@ -112,6 +113,25 @@ export default function OperationsContent({ slug, initialOperation }) {
                                 <div className="post-entry">
                                     <div className="wow fadeInUp">
                                         {renderContent()}
+
+                                        {/* Dedicated YouTube video field from the backend */}
+                                        {(() => {
+                                            const videoId = getYoutubeId(operation.video_url || operation.youtube_url || operation.video);
+                                            if (!videoId) return null;
+                                            return (
+                                                <div className="video-responsive my-4">
+                                                    <iframe
+                                                        src={`https://www.youtube.com/embed/${videoId}`}
+                                                        title="YouTube video player"
+                                                        frameBorder="0"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        referrerPolicy="strict-origin-when-cross-origin"
+                                                        allowFullScreen
+                                                    ></iframe>
+                                                </div>
+                                            );
+                                        })()}
+
                                         {operation && operation.faqs && Array.isArray(operation.faqs) && operation.faqs.length > 0 && (
                                             <FAQSlug items={operation.faqs} />
                                         )}
