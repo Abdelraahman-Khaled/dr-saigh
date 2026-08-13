@@ -8,6 +8,7 @@ import { getOperationDetails } from "@/api/operations";
 import { useQuery } from '@tanstack/react-query';
 import OperationsHero from "./OperationsHero";
 import { formatContent, getYoutubeId } from "@/app/utils/youtube";
+import { TIKTOK_IFRAME_ALLOW, buildTiktokPlayerSrc, getTiktokId } from "@/app/utils/tiktok";
 
 export default function OperationsContent({ slug, initialOperation }) {
     const { language, prevLanguage, localePath } = useLanguage();
@@ -114,17 +115,34 @@ export default function OperationsContent({ slug, initialOperation }) {
                                     <div className="wow fadeInUp">
                                         {renderContent()}
 
-                                        {/* Dedicated YouTube video field from the backend */}
+                                        {/* Dedicated video field from the backend (YouTube or TikTok) */}
                                         {(() => {
-                                            const videoId = getYoutubeId(operation.video_url || operation.youtube_url || operation.video);
-                                            if (!videoId) return null;
+                                            const rawVideo = operation.video_url || operation.youtube_url || operation.video;
+                                            const videoId = getYoutubeId(rawVideo);
+                                            if (videoId) {
+                                                return (
+                                                    <div className="video-responsive my-4">
+                                                        <iframe
+                                                            src={`https://www.youtube.com/embed/${videoId}`}
+                                                            title="YouTube video player"
+                                                            frameBorder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            referrerPolicy="strict-origin-when-cross-origin"
+                                                            allowFullScreen
+                                                        ></iframe>
+                                                    </div>
+                                                );
+                                            }
+
+                                            const tiktokId = getTiktokId(operation.tiktok_url || rawVideo);
+                                            if (!tiktokId) return null;
                                             return (
-                                                <div className="video-responsive my-4">
+                                                <div className="video-responsive video-tiktok my-4">
                                                     <iframe
-                                                        src={`https://www.youtube.com/embed/${videoId}`}
-                                                        title="YouTube video player"
+                                                        src={buildTiktokPlayerSrc(tiktokId)}
+                                                        title="TikTok video player"
                                                         frameBorder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        allow={TIKTOK_IFRAME_ALLOW}
                                                         referrerPolicy="strict-origin-when-cross-origin"
                                                         allowFullScreen
                                                     ></iframe>

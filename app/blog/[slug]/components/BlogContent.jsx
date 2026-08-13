@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import BlogHero from "./BlogHero";
 import FAQSchema from "./FAQSchema";
 import { formatContent, getYoutubeId } from "@/app/utils/youtube";
+import { TIKTOK_IFRAME_ALLOW, buildTiktokPlayerSrc, getTiktokId } from "@/app/utils/tiktok";
 
 export default function BlogContent({ slug, initialBlog }) {
     // Find the Arabic image
@@ -121,17 +122,34 @@ export default function BlogContent({ slug, initialBlog }) {
                                     >
                                         {renderContent()}
 
-                                        {/* Dedicated YouTube video field from the backend */}
+                                        {/* Dedicated video field from the backend (YouTube or TikTok) */}
                                         {(() => {
-                                            const videoId = getYoutubeId(blog.video_url || blog.youtube_url || blog.video);
-                                            if (!videoId) return null;
+                                            const rawVideo = blog.video_url || blog.youtube_url || blog.video;
+                                            const videoId = getYoutubeId(rawVideo);
+                                            if (videoId) {
+                                                return (
+                                                    <div className="video-responsive my-4">
+                                                        <iframe
+                                                            src={`https://www.youtube.com/embed/${videoId}`}
+                                                            title="YouTube video player"
+                                                            frameBorder="0"
+                                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                            referrerPolicy="strict-origin-when-cross-origin"
+                                                            allowFullScreen
+                                                        ></iframe>
+                                                    </div>
+                                                );
+                                            }
+
+                                            const tiktokId = getTiktokId(blog.tiktok_url || rawVideo);
+                                            if (!tiktokId) return null;
                                             return (
-                                                <div className="video-responsive my-4">
+                                                <div className="video-responsive video-tiktok my-4">
                                                     <iframe
-                                                        src={`https://www.youtube.com/embed/${videoId}`}
-                                                        title="YouTube video player"
+                                                        src={buildTiktokPlayerSrc(tiktokId)}
+                                                        title="TikTok video player"
                                                         frameBorder="0"
-                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                        allow={TIKTOK_IFRAME_ALLOW}
                                                         referrerPolicy="strict-origin-when-cross-origin"
                                                         allowFullScreen
                                                     ></iframe>
