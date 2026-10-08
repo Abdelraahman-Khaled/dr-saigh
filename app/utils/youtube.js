@@ -106,5 +106,12 @@ export const formatContent = (htmlContent) => {
         }
     );
 
+    // Tables from the editor come with fixed pixel widths — wrap each one in a
+    // scroll container so wide tables scroll horizontally instead of breaking the layout.
+    formatted = formatted.replace(
+        /(?<!<div class="table-responsive-wrapper">)(<table\b[\s\S]*?<\/table>)/gi,
+        '<div class="table-responsive-wrapper">$1</div>'
+    );
+
     return formatted;
 };
